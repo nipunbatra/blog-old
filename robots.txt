@@ -1,1 +1,1 @@
-Sitemap: https://nipunbatra.github.io/blog3/sitemap.xml
+Sitemap: https://nipunbatra.github.io/blog/sitemap.xml
