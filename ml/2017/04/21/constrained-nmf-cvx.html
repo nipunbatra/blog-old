@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Constrained Non-negative matrix factorisation using CVXPY | fastpages</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="Constrained Non-negative matrix factorisation using CVXPY" />
+<meta name="author" content="Nipun Batra" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Constrained NMF using CVXPY!" />
+<meta property="og:description" content="Constrained NMF using CVXPY!" />
+<link rel="canonical" href="https://nipunbatra.github.io/blog3/ml/2017/04/21/constrained-nmf-cvx.html" />
+<meta property="og:url" content="https://nipunbatra.github.io/blog3/ml/2017/04/21/constrained-nmf-cvx.html" />
+<meta property="og:site_name" content="fastpages" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2017-04-21T00:00:00-05:00" />
+<script type="application/ld+json">
+{"author":{"@type":"Person","name":"Nipun Batra"},"description":"Constrained NMF using CVXPY!","mainEntityOfPage":{"@type":"WebPage","@id":"https://nipunbatra.github.io/blog3/ml/2017/04/21/constrained-nmf-cvx.html"},"@type":"BlogPosting","url":"https://nipunbatra.github.io/blog3/ml/2017/04/21/constrained-nmf-cvx.html","headline":"Constrained Non-negative matrix factorisation using CVXPY","dateModified":"2017-04-21T00:00:00-05:00","datePublished":"2017-04-21T00:00:00-05:00","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/blog3/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://nipunbatra.github.io/blog3/feed.xml" title="fastpages" /><link rel="shortcut icon" type="image/x-icon" href="/blog3/images/favicon.ico"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Constrained Non-negative matrix factorisation using CVXPY | fastpages</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="Constrained Non-negative matrix factorisation using CVXPY" />
+<meta name="author" content="Nipun Batra" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Constrained NMF using CVXPY!" />
+<meta property="og:description" content="Constrained NMF using CVXPY!" />
+<link rel="canonical" href="https://nipunbatra.github.io/blog3/ml/2017/04/21/constrained-nmf-cvx.html" />
+<meta property="og:url" content="https://nipunbatra.github.io/blog3/ml/2017/04/21/constrained-nmf-cvx.html" />
+<meta property="og:site_name" content="fastpages" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2017-04-21T00:00:00-05:00" />
+<script type="application/ld+json">
+{"author":{"@type":"Person","name":"Nipun Batra"},"description":"Constrained NMF using CVXPY!","mainEntityOfPage":{"@type":"WebPage","@id":"https://nipunbatra.github.io/blog3/ml/2017/04/21/constrained-nmf-cvx.html"},"@type":"BlogPosting","url":"https://nipunbatra.github.io/blog3/ml/2017/04/21/constrained-nmf-cvx.html","headline":"Constrained Non-negative matrix factorisation using CVXPY","dateModified":"2017-04-21T00:00:00-05:00","datePublished":"2017-04-21T00:00:00-05:00","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+<link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
+<link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css"><link type="application/atom+xml" rel="alternate" href="https://nipunbatra.github.io/blog3/feed.xml" title="fastpages" />
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head><body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/blog3/">fastpages</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/blog3/about/">About Me</a><a class="page-link" href="/blog3/search/">Search</a><a class="page-link" href="/blog3/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Constrained Non-negative matrix factorisation using CVXPY</h1><p class="page-description">Constrained NMF using CVXPY!</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2017-04-21T00:00:00-05:00" itemprop="datePublished">
+        Apr 21, 2017
+      </time>• 
+          <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="p-author h-card" itemprop="name">Nipun Batra</span></span>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      4 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/blog3/categories/#ML">ML</a>
+        
+      
+      </p>
+    
+
+    
+      
+        <div class="pb-5 d-flex flex-wrap flex-justify-end">
+          <div class="px-2">
+
+    <a href="https://github.com/nipunbatra/blog3/tree/master/_notebooks/2017-04-21-constrained-nmf-cvx.ipynb" role="button" target="_blank">
+<img class="notebook-badge-image" src="/blog3/assets/badges/github.svg" alt="View On GitHub">
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://mybinder.org/v2/gh/nipunbatra/blog3/master?filepath=_notebooks%2F2017-04-21-constrained-nmf-cvx.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/blog3/assets/badges/binder.svg" alt="Open In Binder"/>
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://colab.research.google.com/github/nipunbatra/blog3/blob/master/_notebooks/2017-04-21-constrained-nmf-cvx.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/blog3/assets/badges/colab.svg" alt="Open In Colab"/>
+    </a>
+</div>
+        </div>
+      </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul class="section-nav">
+<li class="toc-entry toc-h3"><a href="#Creating-a-ratings-matrix">Creating a ratings matrix </a></li>
+<li class="toc-entry toc-h3"><a href="#CVX-routine-for-handling-input-constraints">CVX routine for handling input constraints </a></li>
+</ul><!--
+#################################################
+### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
+#################################################
+# file to edit: _notebooks/2017-04-21-constrained-nmf-cvx.ipynb
+-->
+
+<div class="container" id="notebook-container">
+        
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In a <a href="./nmf-cvx.html">previous post</a>, we saw how we can use CVXPY to perform non-negative matrix factorisation. In this post, I'll show how to add additional constraints that may arise from the problem domain. As a trivial example, I'll take constraints of the form when there is a less-than relationship among members of the matrix. For example, we may want to enforce certain movies to be always rated more than others? We'll create a matrix of 30 users and 12 items. We will enforce the contraint that the rating of the first 6 items be atleast twice that of the last 6 items.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Creating-a-ratings-matrix">
+<a class="anchor" href="#Creating-a-ratings-matrix" aria-hidden="true"><span class="octicon octicon-link"></span></a>Creating a ratings matrix<a class="anchor-link" href="#Creating-a-ratings-matrix"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We will now create a matrix where the relationship among items exists.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">K</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">M</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">30</span>
+<span class="n">Y_gen</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">M</span><span class="p">,</span> <span class="n">K</span><span class="p">)</span>
+<span class="n">X_1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">K</span><span class="p">,</span> <span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+<span class="c1"># So that atleast twice as much</span>
+<span class="n">X_2</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span> <span class="n">X_1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">K</span><span class="p">,</span> <span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">X_gen</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">X_2</span><span class="p">,</span> <span class="n">X_1</span><span class="p">])</span>
+<span class="c1"># Normalizing</span>
+<span class="n">X_gen</span> <span class="o">=</span> <span class="n">X_gen</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">X_gen</span><span class="p">)</span>
+<span class="c1"># Creating A (ratings matrix of size M, N)</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">Y_gen</span><span class="p">,</span> <span class="n">X_gen</span><span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">A</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+      <th>6</th>
+      <th>7</th>
+      <th>8</th>
+      <th>9</th>
+      <th>10</th>
+      <th>11</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.732046</td>
+      <td>0.613565</td>
+      <td>0.961128</td>
+      <td>0.920089</td>
+      <td>0.244323</td>
+      <td>0.506472</td>
+      <td>0.280477</td>
+      <td>0.251049</td>
+      <td>0.324418</td>
+      <td>0.378219</td>
+      <td>0.075556</td>
+      <td>0.131750</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.903630</td>
+      <td>0.340956</td>
+      <td>0.784109</td>
+      <td>0.919741</td>
+      <td>0.190856</td>
+      <td>0.433635</td>
+      <td>0.321932</td>
+      <td>0.135134</td>
+      <td>0.290862</td>
+      <td>0.394680</td>
+      <td>0.052976</td>
+      <td>0.081148</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.972145</td>
+      <td>0.576558</td>
+      <td>1.046197</td>
+      <td>1.098279</td>
+      <td>0.261103</td>
+      <td>0.562996</td>
+      <td>0.358574</td>
+      <td>0.233405</td>
+      <td>0.368118</td>
+      <td>0.460967</td>
+      <td>0.077286</td>
+      <td>0.128344</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.292231</td>
+      <td>0.263864</td>
+      <td>0.401968</td>
+      <td>0.377116</td>
+      <td>0.102567</td>
+      <td>0.210890</td>
+      <td>0.113070</td>
+      <td>0.108163</td>
+      <td>0.134489</td>
+      <td>0.154266</td>
+      <td>0.031993</td>
+      <td>0.056299</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.694038</td>
+      <td>0.803459</td>
+      <td>1.125454</td>
+      <td>0.987344</td>
+      <td>0.290605</td>
+      <td>0.582178</td>
+      <td>0.278848</td>
+      <td>0.331075</td>
+      <td>0.365935</td>
+      <td>0.397023</td>
+      <td>0.093088</td>
+      <td>0.168300</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We can see that for each user, the 0th item has higher rating compared to the 5th, 1st more than the 6th and so on. Now, in our alternating least squares implementation, we break down A as Y.X. Here X has dimensions of K, N. To ensure the relationship among the items, we will put contraints on X of the form: X[:, 0] &gt; 2 x X[:, 5] and so on. We will create a simple for loop for the same.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">e</span> <span class="o">=</span> <span class="s2">"["</span>
+<span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="p">):</span>
+    <span class="n">e</span><span class="o">+=</span><span class="s2">"X[:,</span><span class="si">%d</span><span class="s2">] &gt; 2 * X[:,</span><span class="si">%d</span><span class="s2">],"</span> <span class="o">%</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">a</span><span class="o">+</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">e</span> <span class="o">=</span> <span class="n">e</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="s2">"]"</span>
+<span class="n">e</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>'[X[:,0] &gt; 2 * X[:,6],X[:,1] &gt; 2 * X[:,7],X[:,2] &gt; 2 * X[:,8],X[:,3] &gt; 2 * X[:,9],X[:,4] &gt; 2 * X[:,10],X[:,5] &gt; 2 * X[:,11]]'</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>As we can see, we now have 6 constraints that we can feed into the optimisation routine. Whenever we learn X in the ALS, we apply these constraint.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="CVX-routine-for-handling-input-constraints">
+<a class="anchor" href="#CVX-routine-for-handling-input-constraints" aria-hidden="true"><span class="octicon octicon-link"></span></a>CVX routine for handling input constraints<a class="anchor-link" href="#CVX-routine-for-handling-input-constraints"> </a>
+</h3>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">nmf_features</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span>  <span class="n">MAX_ITERS</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">input_constraints_X</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">input_constraints_Y</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+    <span class="kn">import</span> <span class="nn">cvxpy</span> <span class="k">as</span> <span class="nn">cvx</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="c1"># Generate random data matrix A.</span>
+    <span class="n">m</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">shape</span>
+    <span class="n">mask</span> <span class="o">=</span> <span class="o">~</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+
+    <span class="c1"># Initialize Y randomly.</span>
+    <span class="n">Y_init</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>
+    <span class="n">Y</span> <span class="o">=</span> <span class="n">Y_init</span>
+
+    <span class="c1"># Perform alternating minimization.</span>
+
+    <span class="n">residual</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">MAX_ITERS</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">iter_num</span> <span class="ow">in</span> <span class="n">xrange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">MAX_ITERS</span><span class="p">):</span>
+    
+        <span class="c1"># For odd iterations, treat Y constant, optimize over X.</span>
+        <span class="k">if</span> <span class="n">iter_num</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">X</span> <span class="o">=</span> <span class="n">cvx</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+            <span class="n">constraint</span> <span class="o">=</span> <span class="p">[</span><span class="n">X</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">input_constraints_X</span><span class="p">:</span>
+                <span class="n">constraint</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="nb">eval</span><span class="p">(</span><span class="n">input_constraints_X</span><span class="p">))</span>
+
+        <span class="c1"># For even iterations, treat X constant, optimize over Y.</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">Y</span> <span class="o">=</span> <span class="n">cvx</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>
+            <span class="n">constraint</span> <span class="o">=</span> <span class="p">[</span><span class="n">Y</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">]</span>
+           
+
+        <span class="n">Temp</span> <span class="o">=</span> <span class="n">Y</span> <span class="o">*</span> <span class="n">X</span>
+        <span class="n">error</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">-</span> <span class="p">(</span><span class="n">Y</span> <span class="o">*</span> <span class="n">X</span><span class="p">)[</span><span class="n">mask</span><span class="p">]</span>
+       
+        
+        <span class="n">obj</span> <span class="o">=</span> <span class="n">cvx</span><span class="o">.</span><span class="n">Minimize</span><span class="p">(</span><span class="n">cvx</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">error</span><span class="p">,</span> <span class="s1">'fro'</span><span class="p">))</span>
+       
+
+        <span class="n">prob</span> <span class="o">=</span> <span class="n">cvx</span><span class="o">.</span><span class="n">Problem</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">constraint</span><span class="p">)</span>
+        <span class="n">prob</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">solver</span><span class="o">=</span><span class="n">cvx</span><span class="o">.</span><span class="n">SCS</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">prob</span><span class="o">.</span><span class="n">status</span> <span class="o">!=</span> <span class="n">cvx</span><span class="o">.</span><span class="n">OPTIMAL</span><span class="p">:</span>
+            <span class="k">pass</span>
+       
+        <span class="n">residual</span><span class="p">[</span><span class="n">iter_num</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">prob</span><span class="o">.</span><span class="n">value</span>
+      
+        <span class="k">if</span> <span class="n">iter_num</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">X</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">value</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">Y</span> <span class="o">=</span> <span class="n">Y</span><span class="o">.</span><span class="n">value</span>
+    <span class="k">return</span> <span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">residual</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Without constraints</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">r</span> <span class="o">=</span> <span class="n">nmf_features</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">MAX_ITERS</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="c1"># With contstraints</span>
+<span class="n">X_c</span><span class="p">,</span> <span class="n">Y_c</span><span class="p">,</span> <span class="n">r_c</span> <span class="o">=</span> <span class="n">nmf_features</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">MAX_ITERS</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">input_constraints_X</span><span class="o">=</span><span class="n">e</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+      <th>6</th>
+      <th>7</th>
+      <th>8</th>
+      <th>9</th>
+      <th>10</th>
+      <th>11</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.749994</td>
+      <td>0.112355</td>
+      <td>0.485850</td>
+      <td>0.674801</td>
+      <td>0.113004</td>
+      <td>0.281371</td>
+      <td>0.257239</td>
+      <td>0.04056</td>
+      <td>0.196474</td>
+      <td>0.297978</td>
+      <td>0.02745</td>
+      <td>0.033952</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.102384</td>
+      <td>0.222149</td>
+      <td>0.266055</td>
+      <td>0.199361</td>
+      <td>0.070403</td>
+      <td>0.133510</td>
+      <td>0.047174</td>
+      <td>0.09233</td>
+      <td>0.081233</td>
+      <td>0.076518</td>
+      <td>0.02375</td>
+      <td>0.045097</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.567213</td>
+      <td>0.558638</td>
+      <td>0.825066</td>
+      <td>0.756059</td>
+      <td>0.211427</td>
+      <td>0.430690</td>
+      <td>0.222174</td>
+      <td>0.22944</td>
+      <td>0.273260</td>
+      <td>0.307475</td>
+      <td>0.06659</td>
+      <td>0.118371</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">X_c</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+      <th>6</th>
+      <th>7</th>
+      <th>8</th>
+      <th>9</th>
+      <th>10</th>
+      <th>11</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.749882</td>
+      <td>0.112384</td>
+      <td>0.485923</td>
+      <td>0.674778</td>
+      <td>0.113027</td>
+      <td>0.281399</td>
+      <td>0.257206</td>
+      <td>0.040566</td>
+      <td>0.196489</td>
+      <td>0.297960</td>
+      <td>0.027461</td>
+      <td>0.033971</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.102366</td>
+      <td>0.222080</td>
+      <td>0.266058</td>
+      <td>0.199353</td>
+      <td>0.070404</td>
+      <td>0.133511</td>
+      <td>0.047168</td>
+      <td>0.092298</td>
+      <td>0.081233</td>
+      <td>0.076513</td>
+      <td>0.023751</td>
+      <td>0.045091</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.567363</td>
+      <td>0.558700</td>
+      <td>0.825253</td>
+      <td>0.756242</td>
+      <td>0.211473</td>
+      <td>0.430789</td>
+      <td>0.222234</td>
+      <td>0.229470</td>
+      <td>0.273319</td>
+      <td>0.307549</td>
+      <td>0.066604</td>
+      <td>0.118382</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Ok. The obtained X matrix looks fairly similar. How about we reverse the constraints.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">e_rev</span> <span class="o">=</span> <span class="s2">"["</span>
+<span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="p">):</span>
+    <span class="n">e_rev</span><span class="o">+=</span><span class="s2">" 2* X[:,</span><span class="si">%d</span><span class="s2">]  &lt; X[:,</span><span class="si">%d</span><span class="s2">],"</span> <span class="o">%</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">a</span><span class="o">+</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">e_rev</span> <span class="o">=</span> <span class="n">e_rev</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="s2">"]"</span>
+<span class="n">e_rev</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>'[ 2* X[:,0]  &lt; X[:,6], 2* X[:,1]  &lt; X[:,7], 2* X[:,2]  &lt; X[:,8], 2* X[:,3]  &lt; X[:,9], 2* X[:,4]  &lt; X[:,10], 2* X[:,5]  &lt; X[:,11]]'</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">X_c_rev</span><span class="p">,</span> <span class="n">Y_c_rev</span><span class="p">,</span> <span class="n">r_c_rev</span> <span class="o">=</span> <span class="n">nmf_features</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">MAX_ITERS</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">input_constraints_X</span><span class="o">=</span><span class="n">e_rev</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">X_c_rev</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+      <th>6</th>
+      <th>7</th>
+      <th>8</th>
+      <th>9</th>
+      <th>10</th>
+      <th>11</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.250945</td>
+      <td>0.038070</td>
+      <td>0.174189</td>
+      <td>0.252085</td>
+      <td>0.033251</td>
+      <td>0.069176</td>
+      <td>0.502026</td>
+      <td>0.076147</td>
+      <td>0.348450</td>
+      <td>0.504277</td>
+      <td>0.066521</td>
+      <td>0.138405</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.030757</td>
+      <td>0.088033</td>
+      <td>0.085947</td>
+      <td>0.065135</td>
+      <td>0.024395</td>
+      <td>0.045976</td>
+      <td>0.061398</td>
+      <td>0.176002</td>
+      <td>0.171773</td>
+      <td>0.130146</td>
+      <td>0.048760</td>
+      <td>0.091882</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.220256</td>
+      <td>0.183292</td>
+      <td>0.269014</td>
+      <td>0.282814</td>
+      <td>0.065713</td>
+      <td>0.128120</td>
+      <td>0.440553</td>
+      <td>0.366600</td>
+      <td>0.538065</td>
+      <td>0.565669</td>
+      <td>0.131436</td>
+      <td>0.256263</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>There you go! We now have learnt latent factors that conform to our constraints.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+
+
+  </div><!-- from https://github.com/utterance/utterances -->
+<script src="https://utteranc.es/client.js"
+        repo="nipunbatra/blog3"
+        issue-term="title"
+        label="blogpost-comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script><a class="u-url" href="/blog3/ml/2017/04/21/constrained-nmf-cvx.html" hidden></a>
+</article>
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/blog3/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/blog3/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/blog3/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>An easy to use blogging platform with support for Jupyter Notebooks.</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/fastai" title="fastai"><svg class="svg-icon grey"><use xlink:href="/blog3/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/fastdotai" title="fastdotai"><svg class="svg-icon grey"><use xlink:href="/blog3/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

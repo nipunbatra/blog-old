@@ -1,0 +1,1326 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Neural Networks for Collaborative Filtering | fastpages</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="Neural Networks for Collaborative Filtering" />
+<meta name="author" content="Nipun Batra" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Neural networks to learn the embeddings! and how to combine them" />
+<meta property="og:description" content="Neural networks to learn the embeddings! and how to combine them" />
+<link rel="canonical" href="https://nipunbatra.github.io/blog3/ml/2017/12/29/neural-collaborative-filtering.html" />
+<meta property="og:url" content="https://nipunbatra.github.io/blog3/ml/2017/12/29/neural-collaborative-filtering.html" />
+<meta property="og:site_name" content="fastpages" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2017-12-29T00:00:00-06:00" />
+<script type="application/ld+json">
+{"author":{"@type":"Person","name":"Nipun Batra"},"description":"Neural networks to learn the embeddings! and how to combine them","mainEntityOfPage":{"@type":"WebPage","@id":"https://nipunbatra.github.io/blog3/ml/2017/12/29/neural-collaborative-filtering.html"},"@type":"BlogPosting","url":"https://nipunbatra.github.io/blog3/ml/2017/12/29/neural-collaborative-filtering.html","headline":"Neural Networks for Collaborative Filtering","dateModified":"2017-12-29T00:00:00-06:00","datePublished":"2017-12-29T00:00:00-06:00","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/blog3/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://nipunbatra.github.io/blog3/feed.xml" title="fastpages" /><link rel="shortcut icon" type="image/x-icon" href="/blog3/images/favicon.ico"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Neural Networks for Collaborative Filtering | fastpages</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="Neural Networks for Collaborative Filtering" />
+<meta name="author" content="Nipun Batra" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Neural networks to learn the embeddings! and how to combine them" />
+<meta property="og:description" content="Neural networks to learn the embeddings! and how to combine them" />
+<link rel="canonical" href="https://nipunbatra.github.io/blog3/ml/2017/12/29/neural-collaborative-filtering.html" />
+<meta property="og:url" content="https://nipunbatra.github.io/blog3/ml/2017/12/29/neural-collaborative-filtering.html" />
+<meta property="og:site_name" content="fastpages" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2017-12-29T00:00:00-06:00" />
+<script type="application/ld+json">
+{"author":{"@type":"Person","name":"Nipun Batra"},"description":"Neural networks to learn the embeddings! and how to combine them","mainEntityOfPage":{"@type":"WebPage","@id":"https://nipunbatra.github.io/blog3/ml/2017/12/29/neural-collaborative-filtering.html"},"@type":"BlogPosting","url":"https://nipunbatra.github.io/blog3/ml/2017/12/29/neural-collaborative-filtering.html","headline":"Neural Networks for Collaborative Filtering","dateModified":"2017-12-29T00:00:00-06:00","datePublished":"2017-12-29T00:00:00-06:00","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+<link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
+<link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css"><link type="application/atom+xml" rel="alternate" href="https://nipunbatra.github.io/blog3/feed.xml" title="fastpages" />
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head><body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/blog3/">fastpages</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/blog3/about/">About Me</a><a class="page-link" href="/blog3/search/">Search</a><a class="page-link" href="/blog3/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Neural Networks for Collaborative Filtering</h1><p class="page-description">Neural networks to learn the embeddings! and how to combine them</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2017-12-29T00:00:00-06:00" itemprop="datePublished">
+        Dec 29, 2017
+      </time>• 
+          <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="p-author h-card" itemprop="name">Nipun Batra</span></span>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      6 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/blog3/categories/#ML">ML</a>
+        
+      
+      </p>
+    
+
+    
+      
+        <div class="pb-5 d-flex flex-wrap flex-justify-end">
+          <div class="px-2">
+
+    <a href="https://github.com/nipunbatra/blog3/tree/master/_notebooks/2017-12-29-neural-collaborative-filtering.ipynb" role="button" target="_blank">
+<img class="notebook-badge-image" src="/blog3/assets/badges/github.svg" alt="View On GitHub">
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://mybinder.org/v2/gh/nipunbatra/blog3/master?filepath=_notebooks%2F2017-12-29-neural-collaborative-filtering.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/blog3/assets/badges/binder.svg" alt="Open In Binder"/>
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://colab.research.google.com/github/nipunbatra/blog3/blob/master/_notebooks/2017-12-29-neural-collaborative-filtering.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/blog3/assets/badges/colab.svg" alt="Open In Colab"/>
+    </a>
+</div>
+        </div>
+      </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul class="section-nav">
+<li class="toc-entry toc-h3"><a href="#Peak-into-the-dataset">Peak into the dataset </a></li>
+<li class="toc-entry toc-h3"><a href="#Train-test-split">Train test split </a></li>
+<li class="toc-entry toc-h3"><a href="#Creating-the-model">Creating the model </a></li>
+<li class="toc-entry toc-h3"><a href="#Prediction-performance-of-Neural-Network-based-recommender-system">Prediction performance of Neural Network based recommender system </a></li>
+</ul><!--
+#################################################
+### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
+#################################################
+# file to edit: _notebooks/2017-12-29-neural-collaborative-filtering.ipynb
+-->
+
+<div class="container" id="notebook-container">
+        
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Recently, I had a chance to read an interesting WWW 2017 paper entitled: <a href="https://www.comp.nus.edu.sg/~xiangnan/papers/ncf.pdf">Neural Collaborative Filtering</a>. The first paragraph of the abstract reads as follows:</p>
+<blockquote>
+<p>In recent years, deep neural networks have yielded immense success on speech recognition, computer vision and natural language processing. However, the exploration of deep neural networks on recommender systems has received relatively less scrutiny. In this work, we strive to develop techniques based on neural networks to tackle the key problem in recommendation — collaborative filtering — on the basis of implicit feedback.</p>
+</blockquote>
+<p>I'd recently written a <a href="../recommend-keras.html">blog post</a> on using Keras (deep learning library) for implementing traditional matrix factorization based collaborative filtering. So, I thought to get my hands dirty with building a prototype for the paper mentioned above. The authors have already provided their <a href="https://github.com/hexiangnan/neural_collaborative_filtering">code on Github</a>, which should serve as a reference for the paper and not my post, whose purpose is merely educational!</p>
+<p>Here's how the proposed network architecture looks in the paper:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="https://nipunbatra.github.io/blog/images/neumf.png" alt=""></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>There are a few terms that we need to understand:</p>
+<ol>
+<li>User (u) and Item (i) are used to create embeddings (low-dimensional) for user and item</li>
+<li>Generalized Matrix Factorisation (GMF) combines the two embeddings using the dot product. This is our regular matrix factorisation.</li>
+<li>Multi-layer perceptron can also create embeddings for user and items. However, instead of taking a dot product of these to obtain the rating, we can concatenate them to create a feature vector which can be passed on to the further layers.</li>
+<li>Neural MF can then combine the predictions from MLP and GMF to obtain the following prediction.</li>
+</ol>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>As done in my previous post, I'll use the MovieLens-100k dataset for illustration. Please refer to my <a href="../recommend-keras.html">previous post</a> for more details.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Peak-into-the-dataset">
+<a class="anchor" href="#Peak-into-the-dataset" aria-hidden="true"><span class="octicon octicon-link"></span></a>Peak into the dataset<a class="anchor-link" href="#Peak-into-the-dataset"> </a>
+</h3>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">'ignore'</span><span class="p">)</span>
+
+<span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dataset</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"/Users/nipun/Downloads/ml-100k/u.data"</span><span class="p">,</span><span class="n">sep</span><span class="o">=</span><span class="s1">'</span><span class="se">\t</span><span class="s1">'</span><span class="p">,</span><span class="n">names</span><span class="o">=</span><span class="s2">"user_id,item_id,rating,timestamp"</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">","</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dataset</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>user_id</th>
+      <th>item_id</th>
+      <th>rating</th>
+      <th>timestamp</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>196</td>
+      <td>242</td>
+      <td>3</td>
+      <td>881250949</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>186</td>
+      <td>302</td>
+      <td>3</td>
+      <td>891717742</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>22</td>
+      <td>377</td>
+      <td>1</td>
+      <td>878887116</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>244</td>
+      <td>51</td>
+      <td>2</td>
+      <td>880606923</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>166</td>
+      <td>346</td>
+      <td>1</td>
+      <td>886397596</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>So, each record (row) shows the rating for a user, item (movie) pair. It should be noted that I use  item and movie interchangeably in this post.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">user_id</span><span class="o">.</span><span class="n">unique</span><span class="p">()),</span> <span class="nb">len</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">item_id</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(943, 1682)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We assign a unique number between (0, #users) to each user and do the same for movies.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dataset</span><span class="o">.</span><span class="n">user_id</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">user_id</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">'category'</span><span class="p">)</span><span class="o">.</span><span class="n">cat</span><span class="o">.</span><span class="n">codes</span><span class="o">.</span><span class="n">values</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">item_id</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">item_id</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">'category'</span><span class="p">)</span><span class="o">.</span><span class="n">cat</span><span class="o">.</span><span class="n">codes</span><span class="o">.</span><span class="n">values</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dataset</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>user_id</th>
+      <th>item_id</th>
+      <th>rating</th>
+      <th>timestamp</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>195</td>
+      <td>241</td>
+      <td>3</td>
+      <td>881250949</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>185</td>
+      <td>301</td>
+      <td>3</td>
+      <td>891717742</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>21</td>
+      <td>376</td>
+      <td>1</td>
+      <td>878887116</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>243</td>
+      <td>50</td>
+      <td>2</td>
+      <td>880606923</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>165</td>
+      <td>345</td>
+      <td>1</td>
+      <td>886397596</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Train-test-split">
+<a class="anchor" href="#Train-test-split" aria-hidden="true"><span class="octicon octicon-link"></span></a>Train test split<a class="anchor-link" href="#Train-test-split"> </a>
+</h3>
+<p>We'll now split our dataset of 100k ratings into train (containing 80k ratings) and test (containing 20k ratings). Given the train set, we'd like to accurately estimate the ratings in the test set.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="n">train</span><span class="p">,</span> <span class="n">test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">train</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>user_id</th>
+      <th>item_id</th>
+      <th>rating</th>
+      <th>timestamp</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>13185</th>
+      <td>71</td>
+      <td>95</td>
+      <td>5</td>
+      <td>880037203</td>
+    </tr>
+    <tr>
+      <th>23391</th>
+      <td>144</td>
+      <td>509</td>
+      <td>4</td>
+      <td>882181859</td>
+    </tr>
+    <tr>
+      <th>90744</th>
+      <td>895</td>
+      <td>50</td>
+      <td>2</td>
+      <td>887159951</td>
+    </tr>
+    <tr>
+      <th>3043</th>
+      <td>255</td>
+      <td>279</td>
+      <td>5</td>
+      <td>882151167</td>
+    </tr>
+    <tr>
+      <th>8932</th>
+      <td>55</td>
+      <td>94</td>
+      <td>4</td>
+      <td>892683274</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">test</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="n">y_true</span> <span class="o">=</span> <span class="n">test</span><span class="o">.</span><span class="n">rating</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Creating-the-model">
+<a class="anchor" href="#Creating-the-model" aria-hidden="true"><span class="octicon octicon-link"></span></a>Creating the model<a class="anchor-link" href="#Creating-the-model"> </a>
+</h3>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">keras</span>
+<span class="n">n_latent_factors_user</span> <span class="o">=</span> <span class="mi">8</span>
+<span class="n">n_latent_factors_movie</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">n_latent_factors_mf</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">n_users</span><span class="p">,</span> <span class="n">n_movies</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">user_id</span><span class="o">.</span><span class="n">unique</span><span class="p">()),</span> <span class="nb">len</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">item_id</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
+
+<span class="n">movie_input</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">name</span><span class="o">=</span><span class="s1">'Item'</span><span class="p">)</span>
+<span class="n">movie_embedding_mlp</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Embedding</span><span class="p">(</span><span class="n">n_movies</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n_latent_factors_movie</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">'Movie-Embedding-MLP'</span><span class="p">)(</span><span class="n">movie_input</span><span class="p">)</span>
+<span class="n">movie_vec_mlp</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Flatten</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">'FlattenMovies-MLP'</span><span class="p">)(</span><span class="n">movie_embedding_mlp</span><span class="p">)</span>
+<span class="n">movie_vec_mlp</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="mf">0.2</span><span class="p">)(</span><span class="n">movie_vec_mlp</span><span class="p">)</span>
+
+<span class="n">movie_embedding_mf</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Embedding</span><span class="p">(</span><span class="n">n_movies</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n_latent_factors_mf</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">'Movie-Embedding-MF'</span><span class="p">)(</span><span class="n">movie_input</span><span class="p">)</span>
+<span class="n">movie_vec_mf</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Flatten</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">'FlattenMovies-MF'</span><span class="p">)(</span><span class="n">movie_embedding_mf</span><span class="p">)</span>
+<span class="n">movie_vec_mf</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="mf">0.2</span><span class="p">)(</span><span class="n">movie_vec_mf</span><span class="p">)</span>
+
+
+<span class="n">user_input</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">name</span><span class="o">=</span><span class="s1">'User'</span><span class="p">)</span>
+<span class="n">user_vec_mlp</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Flatten</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">'FlattenUsers-MLP'</span><span class="p">)(</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Embedding</span><span class="p">(</span><span class="n">n_users</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n_latent_factors_user</span><span class="p">,</span><span class="n">name</span><span class="o">=</span><span class="s1">'User-Embedding-MLP'</span><span class="p">)(</span><span class="n">user_input</span><span class="p">))</span>
+<span class="n">user_vec_mlp</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="mf">0.2</span><span class="p">)(</span><span class="n">user_vec_mlp</span><span class="p">)</span>
+
+<span class="n">user_vec_mf</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Flatten</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">'FlattenUsers-MF'</span><span class="p">)(</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Embedding</span><span class="p">(</span><span class="n">n_users</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n_latent_factors_mf</span><span class="p">,</span><span class="n">name</span><span class="o">=</span><span class="s1">'User-Embedding-MF'</span><span class="p">)(</span><span class="n">user_input</span><span class="p">))</span>
+<span class="n">user_vec_mf</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="mf">0.2</span><span class="p">)(</span><span class="n">user_vec_mf</span><span class="p">)</span>
+
+
+<span class="n">concat</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">merge</span><span class="p">([</span><span class="n">movie_vec_mlp</span><span class="p">,</span> <span class="n">user_vec_mlp</span><span class="p">],</span> <span class="n">mode</span><span class="o">=</span><span class="s1">'concat'</span><span class="p">,</span><span class="n">name</span><span class="o">=</span><span class="s1">'Concat'</span><span class="p">)</span>
+<span class="n">concat_dropout</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="mf">0.2</span><span class="p">)(</span><span class="n">concat</span><span class="p">)</span>
+<span class="n">dense</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span><span class="n">name</span><span class="o">=</span><span class="s1">'FullyConnected'</span><span class="p">)(</span><span class="n">concat_dropout</span><span class="p">)</span>
+<span class="n">dense_batch</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">BatchNormalization</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">'Batch'</span><span class="p">)(</span><span class="n">dense</span><span class="p">)</span>
+<span class="n">dropout_1</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="mf">0.2</span><span class="p">,</span><span class="n">name</span><span class="o">=</span><span class="s1">'Dropout-1'</span><span class="p">)(</span><span class="n">dense_batch</span><span class="p">)</span>
+<span class="n">dense_2</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="n">name</span><span class="o">=</span><span class="s1">'FullyConnected-1'</span><span class="p">)(</span><span class="n">dropout_1</span><span class="p">)</span>
+<span class="n">dense_batch_2</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">BatchNormalization</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">'Batch-2'</span><span class="p">)(</span><span class="n">dense_2</span><span class="p">)</span>
+
+
+<span class="n">dropout_2</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="mf">0.2</span><span class="p">,</span><span class="n">name</span><span class="o">=</span><span class="s1">'Dropout-2'</span><span class="p">)(</span><span class="n">dense_batch_2</span><span class="p">)</span>
+<span class="n">dense_3</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span><span class="n">name</span><span class="o">=</span><span class="s1">'FullyConnected-2'</span><span class="p">)(</span><span class="n">dropout_2</span><span class="p">)</span>
+<span class="n">dense_4</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="n">name</span><span class="o">=</span><span class="s1">'FullyConnected-3'</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">'relu'</span><span class="p">)(</span><span class="n">dense_3</span><span class="p">)</span>
+
+<span class="n">pred_mf</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">merge</span><span class="p">([</span><span class="n">movie_vec_mf</span><span class="p">,</span> <span class="n">user_vec_mf</span><span class="p">],</span> <span class="n">mode</span><span class="o">=</span><span class="s1">'dot'</span><span class="p">,</span><span class="n">name</span><span class="o">=</span><span class="s1">'Dot'</span><span class="p">)</span>
+
+
+<span class="n">pred_mlp</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">'relu'</span><span class="p">,</span><span class="n">name</span><span class="o">=</span><span class="s1">'Activation'</span><span class="p">)(</span><span class="n">dense_4</span><span class="p">)</span>
+
+<span class="n">combine_mlp_mf</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">merge</span><span class="p">([</span><span class="n">pred_mf</span><span class="p">,</span> <span class="n">pred_mlp</span><span class="p">],</span> <span class="n">mode</span><span class="o">=</span><span class="s1">'concat'</span><span class="p">,</span><span class="n">name</span><span class="o">=</span><span class="s1">'Concat-MF-MLP'</span><span class="p">)</span>
+<span class="n">result_combine</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="n">name</span><span class="o">=</span><span class="s1">'Combine-MF-MLP'</span><span class="p">)(</span><span class="n">combine_mlp_mf</span><span class="p">)</span>
+<span class="n">deep_combine</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="n">name</span><span class="o">=</span><span class="s1">'FullyConnected-4'</span><span class="p">)(</span><span class="n">result_combine</span><span class="p">)</span>
+
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">name</span><span class="o">=</span><span class="s1">'Prediction'</span><span class="p">)(</span><span class="n">deep_combine</span><span class="p">)</span>
+
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">Model</span><span class="p">([</span><span class="n">user_input</span><span class="p">,</span> <span class="n">movie_input</span><span class="p">],</span> <span class="n">result</span><span class="p">)</span>
+<span class="n">opt</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">optimizers</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">lr</span> <span class="o">=</span><span class="mf">0.01</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s1">'adam'</span><span class="p">,</span><span class="n">loss</span><span class="o">=</span> <span class="s1">'mean_absolute_error'</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>Using TensorFlow backend.
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Let's now see how our model looks like:</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">SVG</span>
+<span class="kn">from</span> <span class="nn">keras.utils.vis_utils</span> <span class="kn">import</span> <span class="n">model_to_dot</span>
+<span class="n">SVG</span><span class="p">(</span><span class="n">model_to_dot</span><span class="p">(</span><span class="n">model</span><span class="p">,</span>  <span class="n">show_shapes</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">show_layer_names</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">rankdir</span><span class="o">=</span><span class="s1">'HB'</span><span class="p">)</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">prog</span><span class="o">=</span><span class="s1">'dot'</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">'svg'</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_svg output_subarea output_execute_result">
+<svg height="1359pt" viewbox="0.00 0.00 932.67 1359.00" width="933pt" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g class="graph" id="graph0" transform="scale(1 1) rotate(0) translate(4 1355)">
+<title>G</title>
+<polygon fill="white" points="-4,4 -4,-1355 928.67,-1355 928.67,4 -4,4" stroke="none"></polygon>
+<!-- 4515113056 -->
+<g class="node" id="node1"><title>4515113056</title>
+<polygon fill="none" points="174.676,-1314.5 174.676,-1350.5 285.914,-1350.5 285.914,-1314.5 174.676,-1314.5" stroke="black"></polygon>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="230.295" y="-1328.3">Item: InputLayer</text>
+</g>
+<!-- 4515113392 -->
+<g class="node" id="node3"><title>4515113392</title>
+<polygon fill="none" points="236.724,-1241.5 236.724,-1277.5 463.866,-1277.5 463.866,-1241.5 236.724,-1241.5" stroke="black"></polygon>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="350.295" y="-1255.3">Movie-Embedding-MLP: Embedding</text>
+</g>
+<!-- 4515113056&#45;&gt;4515113392 -->
+<g class="edge" id="edge1"><title>4515113056-&gt;4515113392</title>
+<path d="M259.038,-1314.49C275.098,-1304.99 295.304,-1293.04 312.618,-1282.79" fill="none" stroke="black"></path>
+<polygon fill="black" points="314.546,-1285.72 321.371,-1277.61 310.982,-1279.69 314.546,-1285.72" stroke="black"></polygon>
+</g>
+<!-- 112084624776 -->
+<g class="node" id="node16"><title>112084624776</title>
+<polygon fill="none" points="0,-1241.5 0,-1277.5 218.59,-1277.5 218.59,-1241.5 0,-1241.5" stroke="black"></polygon>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="109.295" y="-1255.3">Movie-Embedding-MF: Embedding</text>
+</g>
+<!-- 4515113056&#45;&gt;112084624776 -->
+<g class="edge" id="edge15"><title>4515113056-&gt;112084624776</title>
+<path d="M201.312,-1314.49C185.118,-1304.99 164.744,-1293.04 147.286,-1282.79" fill="none" stroke="black"></path>
+<polygon fill="black" points="148.856,-1279.66 138.46,-1277.61 145.314,-1285.69 148.856,-1279.66" stroke="black"></polygon>
+</g>
+<!-- 4408641744 -->
+<g class="node" id="node2"><title>4408641744</title>
+<polygon fill="none" points="645.286,-1314.5 645.286,-1350.5 757.304,-1350.5 757.304,-1314.5 645.286,-1314.5" stroke="black"></polygon>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="701.295" y="-1328.3">User: InputLayer</text>
+</g>
+<!-- 112085071184 -->
+<g class="node" id="node4"><title>112085071184</title>
+<polygon fill="none" points="707.919,-1241.5 707.919,-1277.5 924.67,-1277.5 924.67,-1241.5 707.919,-1241.5" stroke="black"></polygon>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="816.295" y="-1255.3">User-Embedding-MLP: Embedding</text>
+</g>
+<!-- 4408641744&#45;&gt;112085071184 -->
+<g class="edge" id="edge2"><title>4408641744-&gt;112085071184</title>
+<path d="M728.84,-1314.49C744.09,-1305.08 763.24,-1293.26 779.73,-1283.07" fill="none" stroke="black"></path>
+<polygon fill="black" points="781.905,-1285.85 788.576,-1277.61 778.228,-1279.89 781.905,-1285.85" stroke="black"></polygon>
+</g>
+<!-- 112085982960 -->
+<g class="node" id="node17"><title>112085982960</title>
+<polygon fill="none" points="482.195,-1241.5 482.195,-1277.5 690.395,-1277.5 690.395,-1241.5 482.195,-1241.5" stroke="black"></polygon>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="586.295" y="-1255.3">User-Embedding-MF: Embedding</text>
+</g>
+<!-- 4408641744&#45;&gt;112085982960 -->
+<g class="edge" id="edge16"><title>4408641744-&gt;112085982960</title>
+<path d="M673.75,-1314.49C658.5,-1305.08 639.349,-1293.26 622.86,-1283.07" fill="none" stroke="black"></path>
+<polygon fill="black" points="624.362,-1279.89 614.014,-1277.61 620.684,-1285.85 624.362,-1279.89" stroke="black"></polygon>
+</g>
+<!-- 112084623992 -->
+<g class="node" id="node5"><title>112084623992</title>
+<polygon fill="none" points="274.993,-1168.5 274.993,-1204.5 451.597,-1204.5 451.597,-1168.5 274.993,-1168.5" stroke="black"></polygon>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="363.295" y="-1182.3">FlattenMovies-MLP: Flatten</text>
+</g>
+<!-- 4515113392&#45;&gt;112084623992 -->
+<g class="edge" id="edge3"><title>4515113392-&gt;112084623992</title>
+<path d="M353.442,-1241.31C354.911,-1233.29 356.695,-1223.55 358.339,-1214.57" fill="none" stroke="black"></path>
+<polygon fill="black" points="361.819,-1215 360.177,-1204.53 354.933,-1213.73 361.819,-1215" stroke="black"></polygon>
+</g>
+<!-- 4378375728 -->
+<g class="node" id="node6"><title>4378375728</title>
+<polygon fill="none" points="708.052,-1168.5 708.052,-1204.5 874.538,-1204.5 874.538,-1168.5 708.052,-1168.5" stroke="black"></polygon>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="791.295" y="-1182.3">FlattenUsers-MLP: Flatten</text>
+</g>
+<!-- 112085071184&#45;&gt;4378375728 -->
+<g class="edge" id="edge4"><title>112085071184-&gt;4378375728</title>
+<path d="M810.243,-1241.31C807.357,-1233.12 803.838,-1223.12 800.621,-1213.98" fill="none" stroke="black"></path>
+<polygon fill="black" points="803.914,-1212.8 797.291,-1204.53 797.311,-1215.12 803.914,-1212.8" stroke="black"></polygon>
+</g>
+<!-- 4515113224 -->
+<g class="node" id="node7"><title>4515113224</title>
+<polygon fill="none" points="309.493,-1095.5 309.493,-1131.5 437.097,-1131.5 437.097,-1095.5 309.493,-1095.5" stroke="black"></polygon>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="373.295" y="-1109.3">dropout_1: Dropout</text>
+</g>
+<!-- 112084623992&#45;&gt;4515113224 -->
+<g class="edge" id="edge5"><title>112084623992-&gt;4515113224</title>
+<path d="M365.716,-1168.31C366.846,-1160.29 368.218,-1150.55 369.482,-1141.57" fill="none" stroke="black"></path>
+<polygon fill="black" points="372.968,-1141.92 370.896,-1131.53 366.036,-1140.94 372.968,-1141.92" stroke="black"></polygon>
+</g>
+<!-- 112085499184 -->
+<g class="node" id="node8"><title>112085499184</title>
+<polygon fill="none" points="647.493,-1095.5 647.493,-1131.5 775.097,-1131.5 775.097,-1095.5 647.493,-1095.5" stroke="black"></polygon>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="711.295" y="-1109.3">dropout_3: Dropout</text>
+</g>
+<!-- 4378375728&#45;&gt;112085499184 -->
+<g class="edge" id="edge6"><title>4378375728-&gt;112085499184</title>
+<path d="M771.929,-1168.31C761.808,-1159.33 749.259,-1148.19 738.208,-1138.39" fill="none" stroke="black"></path>
+<polygon fill="black" points="740.285,-1135.55 730.482,-1131.53 735.638,-1140.78 740.285,-1135.55" stroke="black"></polygon>
+</g>
+<!-- 112085917424 -->
+<g class="node" id="node9"><title>112085917424</title>
+<polygon fill="none" points="465.626,-1022.5 465.626,-1058.5 564.963,-1058.5 564.963,-1022.5 465.626,-1022.5" stroke="black"></polygon>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="515.295" y="-1036.3">Concat: Merge</text>
+</g>
+<!-- 4515113224&#45;&gt;112085917424 -->
+<g class="edge" id="edge7"><title>4515113224-&gt;112085917424</title>
+<path d="M407.307,-1095.49C426.748,-1085.77 451.322,-1073.49 472.114,-1063.09" fill="none" stroke="black"></path>
+<polygon fill="black" points="473.689,-1066.22 481.068,-1058.61 470.558,-1059.96 473.689,-1066.22" stroke="black"></polygon>
+</g>
+<!-- 112085499184&#45;&gt;112085917424 -->
+<g class="edge" id="edge8"><title>112085499184-&gt;112085917424</title>
+<path d="M664.348,-1095.49C636.672,-1085.47 601.46,-1072.71 572.21,-1062.12" fill="none" stroke="black"></path>
+<polygon fill="black" points="573.132,-1058.73 562.538,-1058.61 570.748,-1065.31 573.132,-1058.73" stroke="black"></polygon>
+</g>
+<!-- 112085764920 -->
+<g class="node" id="node10"><title>112085764920</title>
+<polygon fill="none" points="451.493,-949.5 451.493,-985.5 579.097,-985.5 579.097,-949.5 451.493,-949.5" stroke="black"></polygon>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="515.295" y="-963.3">dropout_5: Dropout</text>
+</g>
+<!-- 112085917424&#45;&gt;112085764920 -->
+<g class="edge" id="edge9"><title>112085917424-&gt;112085764920</title>
+<path d="M515.295,-1022.31C515.295,-1014.29 515.295,-1004.55 515.295,-995.569" fill="none" stroke="black"></path>
+<polygon fill="black" points="518.795,-995.529 515.295,-985.529 511.795,-995.529 518.795,-995.529" stroke="black"></polygon>
+</g>
+<!-- 112086436832 -->
+<g class="node" id="node11"><title>112086436832</title>
+<polygon fill="none" points="441.39,-876.5 441.39,-912.5 589.2,-912.5 589.2,-876.5 441.39,-876.5" stroke="black"></polygon>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="515.295" y="-890.3">FullyConnected: Dense</text>
+</g>
+<!-- 112085764920&#45;&gt;112086436832 -->
+<g class="edge" id="edge10"><title>112085764920-&gt;112086436832</title>
+<path d="M515.295,-949.313C515.295,-941.289 515.295,-931.547 515.295,-922.569" fill="none" stroke="black"></path>
+<polygon fill="black" points="518.795,-922.529 515.295,-912.529 511.795,-922.529 518.795,-922.529" stroke="black"></polygon>
+</g>
+<!-- 112086434816 -->
+<g class="node" id="node12"><title>112086434816</title>
+<polygon fill="none" points="430.514,-803.5 430.514,-839.5 600.076,-839.5 600.076,-803.5 430.514,-803.5" stroke="black"></polygon>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="515.295" y="-817.3">Batch: BatchNormalization</text>
+</g>
+<!-- 112086436832&#45;&gt;112086434816 -->
+<g class="edge" id="edge11"><title>112086436832-&gt;112086434816</title>
+<path d="M515.295,-876.313C515.295,-868.289 515.295,-858.547 515.295,-849.569" fill="none" stroke="black"></path>
+<polygon fill="black" points="518.795,-849.529 515.295,-839.529 511.795,-849.529 518.795,-849.529" stroke="black"></polygon>
+</g>
+<!-- 112086597360 -->
+<g class="node" id="node13"><title>112086597360</title>
+<polygon fill="none" points="451.107,-730.5 451.107,-766.5 579.483,-766.5 579.483,-730.5 451.107,-730.5" stroke="black"></polygon>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="515.295" y="-744.3">Dropout-1: Dropout</text>
+</g>
+<!-- 112086434816&#45;&gt;112086597360 -->
+<g class="edge" id="edge12"><title>112086434816-&gt;112086597360</title>
+<path d="M515.295,-803.313C515.295,-795.289 515.295,-785.547 515.295,-776.569" fill="none" stroke="black"></path>
+<polygon fill="black" points="518.795,-776.529 515.295,-766.529 511.795,-776.529 518.795,-776.529" stroke="black"></polygon>
+</g>
+<!-- 112086994000 -->
+<g class="node" id="node14"><title>112086994000</title>
+<polygon fill="none" points="435.559,-657.5 435.559,-693.5 595.031,-693.5 595.031,-657.5 435.559,-657.5" stroke="black"></polygon>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="515.295" y="-671.3">FullyConnected-1: Dense</text>
+</g>
+<!-- 112086597360&#45;&gt;112086994000 -->
+<g class="edge" id="edge13"><title>112086597360-&gt;112086994000</title>
+<path d="M515.295,-730.313C515.295,-722.289 515.295,-712.547 515.295,-703.569" fill="none" stroke="black"></path>
+<polygon fill="black" points="518.795,-703.529 515.295,-693.529 511.795,-703.529 518.795,-703.529" stroke="black"></polygon>
+</g>
+<!-- 112086761144 -->
+<g class="node" id="node15"><title>112086761144</title>
+<polygon fill="none" points="424.683,-584.5 424.683,-620.5 605.907,-620.5 605.907,-584.5 424.683,-584.5" stroke="black"></polygon>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="515.295" y="-598.3">Batch-2: BatchNormalization</text>
+</g>
+<!-- 112086994000&#45;&gt;112086761144 -->
+<g class="edge" id="edge14"><title>112086994000-&gt;112086761144</title>
+<path d="M515.295,-657.313C515.295,-649.289 515.295,-639.547 515.295,-630.569" fill="none" stroke="black"></path>
+<polygon fill="black" points="518.795,-630.529 515.295,-620.529 511.795,-630.529 518.795,-630.529" stroke="black"></polygon>
+</g>
+<!-- 112087744464 -->
+<g class="node" id="node18"><title>112087744464</title>
+<polygon fill="none" points="449.107,-511.5 449.107,-547.5 577.483,-547.5 577.483,-511.5 449.107,-511.5" stroke="black"></polygon>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="513.295" y="-525.3">Dropout-2: Dropout</text>
+</g>
+<!-- 112086761144&#45;&gt;112087744464 -->
+<g class="edge" id="edge17"><title>112086761144-&gt;112087744464</title>
+<path d="M514.811,-584.313C514.585,-576.289 514.31,-566.547 514.057,-557.569" fill="none" stroke="black"></path>
+<polygon fill="black" points="517.555,-557.426 513.775,-547.529 510.558,-557.623 517.555,-557.426" stroke="black"></polygon>
+</g>
+<!-- 4399310888 -->
+<g class="node" id="node19"><title>4399310888</title>
+<polygon fill="none" points="57.269,-1168.5 57.269,-1204.5 225.321,-1204.5 225.321,-1168.5 57.269,-1168.5" stroke="black"></polygon>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="141.295" y="-1182.3">FlattenMovies-MF: Flatten</text>
+</g>
+<!-- 112084624776&#45;&gt;4399310888 -->
+<g class="edge" id="edge18"><title>112084624776-&gt;4399310888</title>
+<path d="M117.041,-1241.31C120.775,-1233.03 125.335,-1222.91 129.489,-1213.69" fill="none" stroke="black"></path>
+<polygon fill="black" points="132.702,-1215.08 133.62,-1204.53 126.32,-1212.21 132.702,-1215.08" stroke="black"></polygon>
+</g>
+<!-- 4407942728 -->
+<g class="node" id="node20"><title>4407942728</title>
+<polygon fill="none" points="494.328,-1168.5 494.328,-1204.5 652.262,-1204.5 652.262,-1168.5 494.328,-1168.5" stroke="black"></polygon>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="573.295" y="-1182.3">FlattenUsers-MF: Flatten</text>
+</g>
+<!-- 112085982960&#45;&gt;4407942728 -->
+<g class="edge" id="edge19"><title>112085982960-&gt;4407942728</title>
+<path d="M583.148,-1241.31C581.679,-1233.29 579.895,-1223.55 578.251,-1214.57" fill="none" stroke="black"></path>
+<polygon fill="black" points="581.657,-1213.73 576.413,-1204.53 574.771,-1215 581.657,-1213.73" stroke="black"></polygon>
+</g>
+<!-- 112087744128 -->
+<g class="node" id="node21"><title>112087744128</title>
+<polygon fill="none" points="428.559,-438.5 428.559,-474.5 588.031,-474.5 588.031,-438.5 428.559,-438.5" stroke="black"></polygon>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="508.295" y="-452.3">FullyConnected-2: Dense</text>
+</g>
+<!-- 112087744464&#45;&gt;112087744128 -->
+<g class="edge" id="edge20"><title>112087744464-&gt;112087744128</title>
+<path d="M512.085,-511.313C511.52,-503.289 510.833,-493.547 510.201,-484.569" fill="none" stroke="black"></path>
+<polygon fill="black" points="513.688,-484.258 509.494,-474.529 506.705,-484.75 513.688,-484.258" stroke="black"></polygon>
+</g>
+<!-- 112084624160 -->
+<g class="node" id="node22"><title>112084624160</title>
+<polygon fill="none" points="129.493,-1095.5 129.493,-1131.5 257.097,-1131.5 257.097,-1095.5 129.493,-1095.5" stroke="black"></polygon>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="193.295" y="-1109.3">dropout_2: Dropout</text>
+</g>
+<!-- 4399310888&#45;&gt;112084624160 -->
+<g class="edge" id="edge21"><title>4399310888-&gt;112084624160</title>
+<path d="M153.883,-1168.31C160.142,-1159.77 167.83,-1149.27 174.749,-1139.82" fill="none" stroke="black"></path>
+<polygon fill="black" points="177.738,-1141.66 180.823,-1131.53 172.091,-1137.53 177.738,-1141.66" stroke="black"></polygon>
+</g>
+<!-- 112085423664 -->
+<g class="node" id="node23"><title>112085423664</title>
+<polygon fill="none" points="474.493,-1095.5 474.493,-1131.5 602.097,-1131.5 602.097,-1095.5 474.493,-1095.5" stroke="black"></polygon>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="538.295" y="-1109.3">dropout_4: Dropout</text>
+</g>
+<!-- 4407942728&#45;&gt;112085423664 -->
+<g class="edge" id="edge22"><title>4407942728-&gt;112085423664</title>
+<path d="M564.822,-1168.31C560.738,-1160.03 555.751,-1149.91 551.207,-1140.69" fill="none" stroke="black"></path>
+<polygon fill="black" points="554.25,-1138.95 546.689,-1131.53 547.972,-1142.05 554.25,-1138.95" stroke="black"></polygon>
+</g>
+<!-- 112087225176 -->
+<g class="node" id="node24"><title>112087225176</title>
+<polygon fill="none" points="425.559,-365.5 425.559,-401.5 585.031,-401.5 585.031,-365.5 425.559,-365.5" stroke="black"></polygon>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="505.295" y="-379.3">FullyConnected-3: Dense</text>
+</g>
+<!-- 112087744128&#45;&gt;112087225176 -->
+<g class="edge" id="edge23"><title>112087744128-&gt;112087225176</title>
+<path d="M507.569,-438.313C507.23,-430.289 506.818,-420.547 506.439,-411.569" fill="none" stroke="black"></path>
+<polygon fill="black" points="509.934,-411.372 506.014,-401.529 502.94,-411.668 509.934,-411.372" stroke="black"></polygon>
+</g>
+<!-- 112088890336 -->
+<g class="node" id="node25"><title>112088890336</title>
+<polygon fill="none" points="355.954,-1022.5 355.954,-1058.5 436.636,-1058.5 436.636,-1022.5 355.954,-1022.5" stroke="black"></polygon>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="396.295" y="-1036.3">Dot: Merge</text>
+</g>
+<!-- 112084624160&#45;&gt;112088890336 -->
+<g class="edge" id="edge24"><title>112084624160-&gt;112088890336</title>
+<path d="M241.918,-1095.49C273.49,-1084.45 314.53,-1070.1 346.359,-1058.97" fill="none" stroke="black"></path>
+<polygon fill="black" points="347.637,-1062.23 355.92,-1055.62 345.325,-1055.62 347.637,-1062.23" stroke="black"></polygon>
+</g>
+<!-- 112085423664&#45;&gt;112088890336 -->
+<g class="edge" id="edge25"><title>112085423664-&gt;112088890336</title>
+<path d="M504.282,-1095.49C484.842,-1085.77 460.268,-1073.49 439.476,-1063.09" fill="none" stroke="black"></path>
+<polygon fill="black" points="441.032,-1059.96 430.522,-1058.61 437.901,-1066.22 441.032,-1059.96" stroke="black"></polygon>
+</g>
+<!-- 112089386176 -->
+<g class="node" id="node26"><title>112089386176</title>
+<polygon fill="none" points="435.559,-292.5 435.559,-328.5 553.031,-328.5 553.031,-292.5 435.559,-292.5" stroke="black"></polygon>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="494.295" y="-306.3">Activation: Dense</text>
+</g>
+<!-- 112087225176&#45;&gt;112089386176 -->
+<g class="edge" id="edge26"><title>112087225176-&gt;112089386176</title>
+<path d="M502.632,-365.313C501.389,-357.289 499.88,-347.547 498.489,-338.569" fill="none" stroke="black"></path>
+<polygon fill="black" points="501.923,-337.875 496.933,-328.529 495.006,-338.947 501.923,-337.875" stroke="black"></polygon>
+</g>
+<!-- 112089474160 -->
+<g class="node" id="node27"><title>112089474160</title>
+<polygon fill="none" points="366.454,-219.5 366.454,-255.5 524.136,-255.5 524.136,-219.5 366.454,-219.5" stroke="black"></polygon>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="445.295" y="-233.3">Concat-MF-MLP: Merge</text>
+</g>
+<!-- 112088890336&#45;&gt;112089474160 -->
+<g class="edge" id="edge27"><title>112088890336-&gt;112089474160</title>
+<path d="M396.295,-1022.21C396.295,-995.176 396.295,-941.25 396.295,-895.5 396.295,-895.5 396.295,-895.5 396.295,-382.5 396.295,-339.507 416.112,-292.958 430.541,-264.764" fill="none" stroke="black"></path>
+<polygon fill="black" points="433.809,-266.071 435.379,-255.593 427.618,-262.805 433.809,-266.071" stroke="black"></polygon>
+</g>
+<!-- 112089386176&#45;&gt;112089474160 -->
+<g class="edge" id="edge28"><title>112089386176-&gt;112089474160</title>
+<path d="M482.433,-292.313C476.535,-283.766 469.291,-273.269 462.771,-263.823" fill="none" stroke="black"></path>
+<polygon fill="black" points="465.608,-261.771 457.047,-255.529 459.847,-265.747 465.608,-261.771" stroke="black"></polygon>
+</g>
+<!-- 112089888696 -->
+<g class="node" id="node28"><title>112089888696</title>
+<polygon fill="none" points="361.269,-146.5 361.269,-182.5 529.321,-182.5 529.321,-146.5 361.269,-146.5" stroke="black"></polygon>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="445.295" y="-160.3">Combine-MF-MLP: Dense</text>
+</g>
+<!-- 112089474160&#45;&gt;112089888696 -->
+<g class="edge" id="edge29"><title>112089474160-&gt;112089888696</title>
+<path d="M445.295,-219.313C445.295,-211.289 445.295,-201.547 445.295,-192.569" fill="none" stroke="black"></path>
+<polygon fill="black" points="448.795,-192.529 445.295,-182.529 441.795,-192.529 448.795,-192.529" stroke="black"></polygon>
+</g>
+<!-- 112089888752 -->
+<g class="node" id="node29"><title>112089888752</title>
+<polygon fill="none" points="365.559,-73.5 365.559,-109.5 525.031,-109.5 525.031,-73.5 365.559,-73.5" stroke="black"></polygon>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="445.295" y="-87.3">FullyConnected-4: Dense</text>
+</g>
+<!-- 112089888696&#45;&gt;112089888752 -->
+<g class="edge" id="edge30"><title>112089888696-&gt;112089888752</title>
+<path d="M445.295,-146.313C445.295,-138.289 445.295,-128.547 445.295,-119.569" fill="none" stroke="black"></path>
+<polygon fill="black" points="448.795,-119.529 445.295,-109.529 441.795,-119.529 448.795,-119.529" stroke="black"></polygon>
+</g>
+<!-- 112089753920 -->
+<g class="node" id="node30"><title>112089753920</title>
+<polygon fill="none" points="387.334,-0.5 387.334,-36.5 503.255,-36.5 503.255,-0.5 387.334,-0.5" stroke="black"></polygon>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="445.295" y="-14.3">Prediction: Dense</text>
+</g>
+<!-- 112089888752&#45;&gt;112089753920 -->
+<g class="edge" id="edge31"><title>112089888752-&gt;112089753920</title>
+<path d="M445.295,-73.3129C445.295,-65.2895 445.295,-55.5475 445.295,-46.5691" fill="none" stroke="black"></path>
+<polygon fill="black" points="448.795,-46.5288 445.295,-36.5288 441.795,-46.5289 448.795,-46.5288" stroke="black"></polygon>
+</g>
+</g>
+</svg>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>So, it wasn't very complicated to set up. Courtesy Keras, we can do even more complex stuff!</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>__________________________________________________________________________________________________
+Layer (type)                    Output Shape         Param #     Connected to                     
+==================================================================================================
+Item (InputLayer)               (None, 1)            0                                            
+__________________________________________________________________________________________________
+User (InputLayer)               (None, 1)            0                                            
+__________________________________________________________________________________________________
+Movie-Embedding-MLP (Embedding) (None, 1, 10)        16830       Item[0][0]                       
+__________________________________________________________________________________________________
+User-Embedding-MLP (Embedding)  (None, 1, 8)         7552        User[0][0]                       
+__________________________________________________________________________________________________
+FlattenMovies-MLP (Flatten)     (None, 10)           0           Movie-Embedding-MLP[0][0]        
+__________________________________________________________________________________________________
+FlattenUsers-MLP (Flatten)      (None, 8)            0           User-Embedding-MLP[0][0]         
+__________________________________________________________________________________________________
+dropout_1 (Dropout)             (None, 10)           0           FlattenMovies-MLP[0][0]          
+__________________________________________________________________________________________________
+dropout_3 (Dropout)             (None, 8)            0           FlattenUsers-MLP[0][0]           
+__________________________________________________________________________________________________
+Concat (Merge)                  (None, 18)           0           dropout_1[0][0]                  
+                                                                 dropout_3[0][0]                  
+__________________________________________________________________________________________________
+dropout_5 (Dropout)             (None, 18)           0           Concat[0][0]                     
+__________________________________________________________________________________________________
+FullyConnected (Dense)          (None, 200)          3800        dropout_5[0][0]                  
+__________________________________________________________________________________________________
+Batch (BatchNormalization)      (None, 200)          800         FullyConnected[0][0]             
+__________________________________________________________________________________________________
+Dropout-1 (Dropout)             (None, 200)          0           Batch[0][0]                      
+__________________________________________________________________________________________________
+FullyConnected-1 (Dense)        (None, 100)          20100       Dropout-1[0][0]                  
+__________________________________________________________________________________________________
+Batch-2 (BatchNormalization)    (None, 100)          400         FullyConnected-1[0][0]           
+__________________________________________________________________________________________________
+Movie-Embedding-MF (Embedding)  (None, 1, 3)         5049        Item[0][0]                       
+__________________________________________________________________________________________________
+User-Embedding-MF (Embedding)   (None, 1, 3)         2832        User[0][0]                       
+__________________________________________________________________________________________________
+Dropout-2 (Dropout)             (None, 100)          0           Batch-2[0][0]                    
+__________________________________________________________________________________________________
+FlattenMovies-MF (Flatten)      (None, 3)            0           Movie-Embedding-MF[0][0]         
+__________________________________________________________________________________________________
+FlattenUsers-MF (Flatten)       (None, 3)            0           User-Embedding-MF[0][0]          
+__________________________________________________________________________________________________
+FullyConnected-2 (Dense)        (None, 50)           5050        Dropout-2[0][0]                  
+__________________________________________________________________________________________________
+dropout_2 (Dropout)             (None, 3)            0           FlattenMovies-MF[0][0]           
+__________________________________________________________________________________________________
+dropout_4 (Dropout)             (None, 3)            0           FlattenUsers-MF[0][0]            
+__________________________________________________________________________________________________
+FullyConnected-3 (Dense)        (None, 20)           1020        FullyConnected-2[0][0]           
+__________________________________________________________________________________________________
+Dot (Merge)                     (None, 1)            0           dropout_2[0][0]                  
+                                                                 dropout_4[0][0]                  
+__________________________________________________________________________________________________
+Activation (Dense)              (None, 1)            21          FullyConnected-3[0][0]           
+__________________________________________________________________________________________________
+Concat-MF-MLP (Merge)           (None, 2)            0           Dot[0][0]                        
+                                                                 Activation[0][0]                 
+__________________________________________________________________________________________________
+Combine-MF-MLP (Dense)          (None, 100)          300         Concat-MF-MLP[0][0]              
+__________________________________________________________________________________________________
+FullyConnected-4 (Dense)        (None, 100)          10100       Combine-MF-MLP[0][0]             
+__________________________________________________________________________________________________
+Prediction (Dense)              (None, 1)            101         FullyConnected-4[0][0]           
+==================================================================================================
+Total params: 73,955
+Trainable params: 73,355
+Non-trainable params: 600
+__________________________________________________________________________________________________
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We can see that the number of parameters is more than what we had in the Matrix Factorisation case. Let's see how this model works. I'll run it for more epochs given that we have more parameters.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">history</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">([</span><span class="n">train</span><span class="o">.</span><span class="n">user_id</span><span class="p">,</span> <span class="n">train</span><span class="o">.</span><span class="n">item_id</span><span class="p">],</span> <span class="n">train</span><span class="o">.</span><span class="n">rating</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">validation_split</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Prediction-performance-of-Neural-Network-based-recommender-system">
+<a class="anchor" href="#Prediction-performance-of-Neural-Network-based-recommender-system" aria-hidden="true"><span class="octicon octicon-link"></span></a>Prediction performance of Neural Network based recommender system<a class="anchor-link" href="#Prediction-performance-of-Neural-Network-based-recommender-system"> </a>
+</h3>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_absolute_error</span>
+<span class="n">y_hat_2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">([</span><span class="n">test</span><span class="o">.</span><span class="n">user_id</span><span class="p">,</span> <span class="n">test</span><span class="o">.</span><span class="n">item_id</span><span class="p">]),</span><span class="mi">0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_hat_2</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">([</span><span class="n">test</span><span class="o">.</span><span class="n">user_id</span><span class="p">,</span> <span class="n">test</span><span class="o">.</span><span class="n">item_id</span><span class="p">])))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>0.716
+0.737380115688
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Pretty similar to the result we got using matrix factorisation. This isn't very optimised, and I am sure doing so, we can make this approach perform much better than GMF!</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Thanks for reading. This post has been a good learning experience for me. Hope you enjoyed too!</p>
+
+</div>
+</div>
+</div>
+</div>
+
+
+
+  </div><!-- from https://github.com/utterance/utterances -->
+<script src="https://utteranc.es/client.js"
+        repo="nipunbatra/blog3"
+        issue-term="title"
+        label="blogpost-comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script><a class="u-url" href="/blog3/ml/2017/12/29/neural-collaborative-filtering.html" hidden></a>
+</article>
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/blog3/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/blog3/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/blog3/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>An easy to use blogging platform with support for Jupyter Notebooks.</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/fastai" title="fastai"><svg class="svg-icon grey"><use xlink:href="/blog3/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/fastdotai" title="fastdotai"><svg class="svg-icon grey"><use xlink:href="/blog3/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

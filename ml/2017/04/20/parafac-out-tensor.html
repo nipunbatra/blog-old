@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Out of Tensor factorisation | fastpages</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="Out of Tensor factorisation" />
+<meta name="author" content="Nipun Batra" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Out of tensor factorisation" />
+<meta property="og:description" content="Out of tensor factorisation" />
+<link rel="canonical" href="https://nipunbatra.github.io/blog3/ml/2017/04/20/parafac-out-tensor.html" />
+<meta property="og:url" content="https://nipunbatra.github.io/blog3/ml/2017/04/20/parafac-out-tensor.html" />
+<meta property="og:site_name" content="fastpages" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2017-04-20T00:00:00-05:00" />
+<script type="application/ld+json">
+{"author":{"@type":"Person","name":"Nipun Batra"},"description":"Out of tensor factorisation","mainEntityOfPage":{"@type":"WebPage","@id":"https://nipunbatra.github.io/blog3/ml/2017/04/20/parafac-out-tensor.html"},"@type":"BlogPosting","url":"https://nipunbatra.github.io/blog3/ml/2017/04/20/parafac-out-tensor.html","headline":"Out of Tensor factorisation","dateModified":"2017-04-20T00:00:00-05:00","datePublished":"2017-04-20T00:00:00-05:00","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/blog3/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://nipunbatra.github.io/blog3/feed.xml" title="fastpages" /><link rel="shortcut icon" type="image/x-icon" href="/blog3/images/favicon.ico"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Out of Tensor factorisation | fastpages</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="Out of Tensor factorisation" />
+<meta name="author" content="Nipun Batra" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Out of tensor factorisation" />
+<meta property="og:description" content="Out of tensor factorisation" />
+<link rel="canonical" href="https://nipunbatra.github.io/blog3/ml/2017/04/20/parafac-out-tensor.html" />
+<meta property="og:url" content="https://nipunbatra.github.io/blog3/ml/2017/04/20/parafac-out-tensor.html" />
+<meta property="og:site_name" content="fastpages" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2017-04-20T00:00:00-05:00" />
+<script type="application/ld+json">
+{"author":{"@type":"Person","name":"Nipun Batra"},"description":"Out of tensor factorisation","mainEntityOfPage":{"@type":"WebPage","@id":"https://nipunbatra.github.io/blog3/ml/2017/04/20/parafac-out-tensor.html"},"@type":"BlogPosting","url":"https://nipunbatra.github.io/blog3/ml/2017/04/20/parafac-out-tensor.html","headline":"Out of Tensor factorisation","dateModified":"2017-04-20T00:00:00-05:00","datePublished":"2017-04-20T00:00:00-05:00","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+<link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
+<link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css"><link type="application/atom+xml" rel="alternate" href="https://nipunbatra.github.io/blog3/feed.xml" title="fastpages" />
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head><body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/blog3/">fastpages</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/blog3/about/">About Me</a><a class="page-link" href="/blog3/search/">Search</a><a class="page-link" href="/blog3/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Out of Tensor factorisation</h1><p class="page-description">Out of tensor factorisation</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2017-04-20T00:00:00-05:00" itemprop="datePublished">
+        Apr 20, 2017
+      </time>• 
+          <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="p-author h-card" itemprop="name">Nipun Batra</span></span>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      4 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/blog3/categories/#ML">ML</a>
+        
+      
+      </p>
+    
+
+    
+      
+        <div class="pb-5 d-flex flex-wrap flex-justify-end">
+          <div class="px-2">
+
+    <a href="https://github.com/nipunbatra/blog3/tree/master/_notebooks/2017-04-20-parafac-out-tensor.ipynb" role="button" target="_blank">
+<img class="notebook-badge-image" src="/blog3/assets/badges/github.svg" alt="View On GitHub">
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://mybinder.org/v2/gh/nipunbatra/blog3/master?filepath=_notebooks%2F2017-04-20-parafac-out-tensor.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/blog3/assets/badges/binder.svg" alt="Open In Binder"/>
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://colab.research.google.com/github/nipunbatra/blog3/blob/master/_notebooks/2017-04-20-parafac-out-tensor.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/blog3/assets/badges/colab.svg" alt="Open In Colab"/>
+    </a>
+</div>
+        </div>
+      </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul class="section-nav">
+<li class="toc-entry toc-h3"><a href="#General-Tensor-Factorisation">General Tensor Factorisation </a></li>
+<li class="toc-entry toc-h3"><a href="#Learning-$X_M$-factor">Learning $X_M$ factor </a></li>
+<li class="toc-entry toc-h3"><a href="#Code-example">Code example </a>
+<ul>
+<li class="toc-entry toc-h4"><a href="#Creating-the-tensor-to-be-decomposed">Creating the tensor to be decomposed </a></li>
+<li class="toc-entry toc-h4"><a href="#Setting-a-few-entries-of-the-last-user-to-be-unavailable/unknown">Setting a few entries of the last user to be unavailable/unknown </a></li>
+<li class="toc-entry toc-h4"><a href="#Standard-Non-negative-PARAFAC-decomposition">Standard Non-negative PARAFAC decomposition </a></li>
+<li class="toc-entry toc-h4"><a href="#Creating-$\alpha$-by-element-wise-multiplication-of-Y,-Z-and-reshaping">Creating $\alpha$ by element-wise multiplication of Y, Z and reshaping </a></li>
+<li class="toc-entry toc-h4"><a href="#Creating-$\beta$">Creating $\beta$ </a></li>
+<li class="toc-entry toc-h4"><a href="#Learning-$X_M$">Learning $X_M$ </a></li>
+<li class="toc-entry toc-h4"><a href="#Comparing-X_M-with-other-entries-from-X">Comparing X_M with other entries from X </a></li>
+<li class="toc-entry toc-h4"><a href="#Predicting-missing-entries-using-tensor-multiplication">Predicting missing entries using tensor multiplication </a></li>
+<li class="toc-entry toc-h4"><a href="#Actual-entries">Actual entries </a></li>
+</ul>
+</li>
+</ul><!--
+#################################################
+### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
+#################################################
+# file to edit: _notebooks/2017-04-20-parafac-out-tensor.ipynb
+-->
+
+<div class="container" id="notebook-container">
+        
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In a <a href="./nmf-out-matrix.html">previous post</a>, we had looked at predicting for users who weren't a part of the original matrix factorisation. In this post, we'll look at the same for 3-d tensors. In case you want to learn more about tensor factorisations, look at my earlier <a href="./tensor-decomposition-autograd.html">post</a>.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="General-Tensor-Factorisation">
+<a class="anchor" href="#General-Tensor-Factorisation" aria-hidden="true"><span class="octicon octicon-link"></span></a>General Tensor Factorisation<a class="anchor-link" href="#General-Tensor-Factorisation"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="https://nipunbatra.github.io/blog/images/tf.png" alt=""></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>General tensor factorisation for a 3d tensor A (M X N X O) would produce 3 factors- X (M X K), Y (N X K) and Z (O X K). The $A_{ijl}$ entry can be found as (Khatri product) :</p>
+<p>
+$$ A_{ijl} = \sum_k{X_{ik}Y_{jk}Z_{lk}}$$
+</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Learning-$X_M$-factor">
+<a class="anchor" href="#Learning-%24X_M%24-factor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Learning $X_M$ factor<a class="anchor-link" href="#Learning-%24X_M%24-factor"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>However, we'd assume that the $M^{th}$ entry isn't a part of this decomposition. So, how do we obtain the X factors correspondonding to $M^{th}$ entry? We learn the Y and Z factors from the tensor A (excluding the $M^{th}$ row entries). We assume the Y and Z learnt to be shared across the entries across rows of A (1 through M).</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="https://nipunbatra.github.io/blog/images/tf-last-row.png" alt=""></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The above figure shows the <strong>latent factor for X ($X_{M}$) corresponding to the $M^{th}$ entry of X that we wish to learn</strong>. On the LHS, we see the matrix corresponding to $A_{M}$. The highlighted entry of $A_{M}$ is created by element-wise multiplication of $X_M, Y_0, Z_0$ and then summing. Thus, each of the N X O entries of $A_M$ are created by multiplying $X_M$ with a row from Y and a row from Z. In general,</p>
+<p>
+$$A_{M, n, o}  = \sum_k{X_{M, k} \times Y_{n, k} \times Z_{o, k}}$$
+</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now, to learn $X_M$, we plan to use least squares. For that, we need to reduce the problem into $\alpha x = \beta$ We do this as follows:</p>
+<ol>
+<li>We flatten out the A_M matrix into a vector containing N X O entries and call it $\beta$</li>
+<li>We create a matrix by element-wise multiplication of each row of Y with each row of Z to create $\alpha$ of shape (N X O, K)</li>
+</ol>
+<p>We can now write,</p>
+<p>
+$$ \alpha X_M^T \approx \beta $$
+
+Thus, X_M^T = Least Squares ($\alpha, \beta$)</p>
+<p>Ofcourse, $\beta$ can have missing entries, which we mask out. Thus, we can write:</p>
+<p>$X_M^T$ = Least Squares ($\alpha [Mask], \beta [Mask]$)</p>
+<p>In case we're doing a non-negative tensor factorisation, we can instead learn $X_M^T$ as follows:
+$X_M^T$ = Non-negative Least Squares ($\alpha [Mask], \beta [Mask]$)</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Code-example">
+<a class="anchor" href="#Code-example" aria-hidden="true"><span class="octicon octicon-link"></span></a>Code example<a class="anchor-link" href="#Code-example"> </a>
+</h3>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">tensorly</span>
+<span class="kn">from</span> <span class="nn">tensorly.decomposition</span> <span class="kn">import</span> <span class="n">parafac</span><span class="p">,</span> <span class="n">non_negative_parafac</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Creating-the-tensor-to-be-decomposed">
+<a class="anchor" href="#Creating-the-tensor-to-be-decomposed" aria-hidden="true"><span class="octicon octicon-link"></span></a>Creating the tensor to be decomposed<a class="anchor-link" href="#Creating-the-tensor-to-be-decomposed"> </a>
+</h4>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">M</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">O</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span> <span class="c1">#user, movie, feature</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">M</span><span class="o">*</span><span class="n">N</span><span class="o">*</span><span class="n">O</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">M</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">O</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">'float32'</span><span class="p">)</span>
+<span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1">#First entry</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[  0.,   1.,   2.],
+       [  3.,   4.,   5.],
+       [  6.,   7.,   8.],
+       [  9.,  10.,  11.]], dtype=float32)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Setting-a-few-entries-of-the-last-user-to-be-unavailable/unknown">
+<a class="anchor" href="#Setting-a-few-entries-of-the-last-user-to-be-unavailable/unknown" aria-hidden="true"><span class="octicon octicon-link"></span></a>Setting a few entries of the last user to be unavailable/unknown<a class="anchor-link" href="#Setting-a-few-entries-of-the-last-user-to-be-unavailable/unknown"> </a>
+</h4>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">t_orig</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span> <span class="c1"># creating a copy</span>
+<span class="n">t</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,:,:][</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">NAN</span>
+<span class="n">t</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,:,:][</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">NAN</span>
+<span class="n">t</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,:,:]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[  nan,  109.,  110.],
+       [ 111.,  112.,  113.],
+       [ 114.,  115.,   nan],
+       [ 117.,  118.,  119.]], dtype=float32)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Standard-Non-negative-PARAFAC-decomposition">
+<a class="anchor" href="#Standard-Non-negative-PARAFAC-decomposition" aria-hidden="true"><span class="octicon octicon-link"></span></a>Standard Non-negative PARAFAC decomposition<a class="anchor-link" href="#Standard-Non-negative-PARAFAC-decomposition"> </a>
+</h4>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">K</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="c1"># Notice, we factorise a tensor with one less user. thus, t[:-1, :, :]</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">Z</span> <span class="o">=</span> <span class="n">non_negative_parafac</span><span class="p">(</span><span class="n">t</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">,:,:],</span> <span class="n">rank</span><span class="o">=</span><span class="n">K</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">Y</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">Z</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>((9, 2), (4, 2), (3, 2))</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Y</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[ 0.48012616,  1.13542261],
+       [ 0.49409014,  2.98947262],
+       [ 0.5072998 ,  5.03375154],
+       [ 0.52051081,  7.07682331]])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Z</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[ 0.57589198,  1.55655956],
+       [ 0.58183329,  1.7695134 ],
+       [ 0.58778163,  1.98182137]])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Creating-$\alpha$-by-element-wise-multiplication-of-Y,-Z-and-reshaping">
+<a class="anchor" href="#Creating-%24%5Calpha%24-by-element-wise-multiplication-of-Y,-Z-and-reshaping" aria-hidden="true"><span class="octicon octicon-link"></span></a>Creating $\alpha$ by element-wise multiplication of Y, Z and reshaping<a class="anchor-link" href="#Creating-%24%5Calpha%24-by-element-wise-multiplication-of-Y,-Z-and-reshaping"> </a>
+</h4>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">alpha</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">einsum</span><span class="p">(</span><span class="s1">'nk, ok -&gt; nok'</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">Z</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="n">N</span><span class="o">*</span><span class="n">O</span><span class="p">,</span> <span class="n">K</span><span class="p">))</span>
+<span class="nb">print</span> <span class="n">alpha</span>
+
+<span class="nb">print</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">Shape of alpha = "</span><span class="p">,</span> <span class="n">alpha</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[[  0.27650081   1.76735291]
+ [  0.27935339   2.00914552]
+ [  0.28220934   2.25020479]
+ [  0.28454255   4.65329218]
+ [  0.28747809   5.28991186]
+ [  0.29041711   5.92460074]
+ [  0.29214989   7.83533407]
+ [  0.29516391   8.9072908 ]
+ [  0.29818151   9.9759964 ]
+ [  0.299758    11.01549695]
+ [  0.30285052  12.52253365]
+ [  0.30594669  14.02499969]]
+
+Shape of alpha =  (12, 2)
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">nnls</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Creating-$\beta$">
+<a class="anchor" href="#Creating-%24%5Cbeta%24" aria-hidden="true"><span class="octicon octicon-link"></span></a>Creating $\beta$<a class="anchor-link" href="#Creating-%24%5Cbeta%24"> </a>
+</h4>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">beta</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,:,:]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">N</span><span class="o">*</span><span class="n">O</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">mask</span> <span class="o">=</span> <span class="o">~</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">beta</span><span class="p">)</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+<span class="n">beta</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[ 109.],
+       [ 110.],
+       [ 111.],
+       [ 112.],
+       [ 113.],
+       [ 114.],
+       [ 115.],
+       [ 117.],
+       [ 118.],
+       [ 119.]], dtype=float32)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Learning-$X_M$">
+<a class="anchor" href="#Learning-%24X_M%24" aria-hidden="true"><span class="octicon octicon-link"></span></a>Learning $X_M$<a class="anchor-link" href="#Learning-%24X_M%24"> </a>
+</h4>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">X_M</span> <span class="o">=</span> <span class="n">nnls</span><span class="p">(</span><span class="n">alpha</span><span class="p">[</span><span class="n">mask</span><span class="p">],</span> <span class="n">beta</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">))[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="n">K</span><span class="p">))</span>
+<span class="n">X_M</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[ 389.73825036,    0.        ]])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Comparing-X_M-with-other-entries-from-X">
+<a class="anchor" href="#Comparing-X_M-with-other-entries-from-X" aria-hidden="true"><span class="octicon octicon-link"></span></a>Comparing X_M with other entries from X<a class="anchor-link" href="#Comparing-X_M-with-other-entries-from-X"> </a>
+</h4>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">X</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[  7.40340055e-01,   7.62705972e-01],
+       [  4.14288653e+01,   7.57249713e-01],
+       [  8.51282259e+01,   6.56239315e-01],
+       [  1.29063811e+02,   5.46019997e-01],
+       [  1.73739412e+02,   4.06496594e-01],
+       [  2.19798887e+02,   2.11453297e-01],
+       [  2.64609697e+02,   6.54705290e-02],
+       [  3.01392149e+02,   2.39700484e-01],
+       [  3.39963876e+02,   3.41824756e-01]])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>It seems that the first column captures the increasing trend of values in the tensor</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Predicting-missing-entries-using-tensor-multiplication">
+<a class="anchor" href="#Predicting-missing-entries-using-tensor-multiplication" aria-hidden="true"><span class="octicon octicon-link"></span></a>Predicting missing entries using tensor multiplication<a class="anchor-link" href="#Predicting-missing-entries-using-tensor-multiplication"> </a>
+</h4>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">einsum</span><span class="p">(</span><span class="s1">'ir, jr, kr -&gt; ijk'</span><span class="p">,</span> <span class="n">X_M</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">Z</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[[ 108.,  109.,  110.],
+        [ 111.,  112.,  113.],
+        [ 114.,  115.,  116.],
+        [ 117.,  118.,  119.]]])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Actual-entries">
+<a class="anchor" href="#Actual-entries" aria-hidden="true"><span class="octicon octicon-link"></span></a>Actual entries<a class="anchor-link" href="#Actual-entries"> </a>
+</h4>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">t_orig</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[ 108.,  109.,  110.],
+       [ 111.,  112.,  113.],
+       [ 114.,  115.,  116.],
+       [ 117.,  118.,  119.]], dtype=float32)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Not bad! We're exactly there!</p>
+
+</div>
+</div>
+</div>
+</div>
+
+
+
+  </div><!-- from https://github.com/utterance/utterances -->
+<script src="https://utteranc.es/client.js"
+        repo="nipunbatra/blog3"
+        issue-term="title"
+        label="blogpost-comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script><a class="u-url" href="/blog3/ml/2017/04/20/parafac-out-tensor.html" hidden></a>
+</article>
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/blog3/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/blog3/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/blog3/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>An easy to use blogging platform with support for Jupyter Notebooks.</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/fastai" title="fastai"><svg class="svg-icon grey"><use xlink:href="/blog3/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/fastdotai" title="fastdotai"><svg class="svg-icon grey"><use xlink:href="/blog3/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
