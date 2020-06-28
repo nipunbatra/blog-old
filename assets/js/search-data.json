@@ -2,7 +2,7 @@
   
     
         "post0": {
-            "title": "Software",
+            "title": "Collection of my software configuration",
             "content": "These are just some notes for myself. . Academic writing . Overleaf for online editing. | TexStudio for local preferred editor. | TexLive as my LaTeX installation | VSCode as an alternate beautiful editor and use LaTeX workshop package. With LaTeX workshop package you get Overleaf like setup which works well on widescreen monitors. I still find TexStudio and its feature for locating text in .tex from preview pdf very useful. I believe this feature is missing from LaTeX workshop as of now? I like to use solarized dark as my theme of choice. I typically 15 font size with default of fonts. | When I use Google docs, I like to use PaperPile for managing my citations. | While I usually make TikZ figures from scratch, I sometimes use Matcha: https://www.mathcha.io/editor I think the code is not super readable or maintainable or editable, but, suffices for the quick and dirty stuff. |",
             "url": "https://nipunbatra.github.io/blog/software/2020/06/28/software.html",
             "relUrl": "/software/2020/06/28/software.html",
