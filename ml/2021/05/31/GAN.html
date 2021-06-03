@@ -392,7 +392,7 @@ window.onload = wrap_img;
         <span class="sa">f</span><span class="s1">'Image=</span><span class="si">{</span><span class="n">im</span><span class="si">}</span><span class="s1">'</span><span class="p">:</span> <span class="n">faces</span><span class="p">[</span><span class="n">im</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">im</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">faces</span><span class="p">))[::</span><span class="n">subset</span><span class="p">]</span>
     <span class="p">}</span>
-    <span class="n">media</span><span class="o">.</span><span class="n">show_images</span><span class="p">(</span><span class="n">images</span><span class="p">,</span> <span class="n">border</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">'Greys'</span><span class="p">)</span>
+    <span class="n">media</span><span class="o">.</span><span class="n">show_images</span><span class="p">(</span><span class="n">images</span><span class="p">,</span> <span class="n">border</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">'Greys'</span><span class="p">)</span>
 
 <span class="n">plot_faces</span><span class="p">(</span><span class="n">faces</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="mi">700</span><span class="p">)</span>
 </pre></div>
@@ -412,49 +412,49 @@ window.onload = wrap_img;
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>Image=0</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgYGD49esXw////3l4eAAppQYQDAt6PgAAAABJRU5ErkJggg=="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgYGD49esXw////3l4eAAppQYQDAt6PgAAAABJRU5ErkJggg=="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>Image=700</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGPQ09P78+cPw////xkYGAAwCwZ8YqkpwgAAAABJRU5ErkJggg=="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGPQ09P78+cPw////xkYGAAwCwZ8YqkpwgAAAABJRU5ErkJggg=="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>Image=1400</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgZGT8//8/w////xkYGAAqCAX+rdWO7AAAAABJRU5ErkJggg=="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgZGT8//8/w////xkYGAAqCAX+rdWO7AAAAABJRU5ErkJggg=="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>Image=2100</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgYGD4//8/w8+fP5WUlAAqVgZPkzdpVQAAAABJRU5ErkJggg=="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgYGD4//8/w8+fP5WUlAAqVgZPkzdpVQAAAABJRU5ErkJggg=="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>Image=2800</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgYGD4//8/w9+/f9XV1QEqsAZqeOCZRQAAAABJRU5ErkJggg=="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgYGD4//8/w9+/f9XV1QEqsAZqeOCZRQAAAABJRU5ErkJggg=="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>Image=3500</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgYmL68+cPw////xkYGAAp2wX4NHILpgAAAABJRU5ErkJggg=="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgYmL68+cPw////xkYGAAp2wX4NHILpgAAAABJRU5ErkJggg=="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>Image=4200</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgYGD4//8/w58/fwQFBQEqHQYlDCRycQAAAABJRU5ErkJggg=="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgYGD4//8/w58/fwQFBQEqHQYlDCRycQAAAABJRU5ErkJggg=="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>Image=4900</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgYGD4+/cvw////0VFRQEqLAY0rkUlGwAAAABJRU5ErkJggg=="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgYGD4+/cvw////0VFRQEqLAY0rkUlGwAAAABJRU5ErkJggg=="></div>
 </div>
 </div></td>
 </tr></table>
@@ -521,49 +521,49 @@ window.onload = wrap_img;
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>Image=0</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAF0lEQVR4nGP48eMHAwMD4////3/+/AkAN7wI0pywQt8AAAAASUVORK5CYII="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAF0lEQVR4nGP48eMHAwMD4////3/+/AkAN7wI0pywQt8AAAAASUVORK5CYII="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>Image=1</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGMoLy9/+fIlAwMDw////wEvVwceThTtKAAAAABJRU5ErkJggg=="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGMoLy9/+fIlAwMDw////wEvVwceThTtKAAAAABJRU5ErkJggg=="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>Image=2</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAF0lEQVR4nGM4evTo////mVatWsXIyAgAQLEHUCGWXXkAAAAASUVORK5CYII="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAF0lEQVR4nGM4evTo////mVatWsXIyAgAQLEHUCGWXXkAAAAASUVORK5CYII="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>Image=3</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGP4+fMnAwMDw////yMiIgA0EwbxaKiMEgAAAABJRU5ErkJggg=="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGP4+fMnAwMDw////yMiIgA0EwbxaKiMEgAAAABJRU5ErkJggg=="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>Image=4</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAF0lEQVR4nGP8////jx8/GJ48ecLAwAAAS3wIk3r0+GAAAAAASUVORK5CYII="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAF0lEQVR4nGP8////jx8/GJ48ecLAwAAAS3wIk3r0+GAAAAAASUVORK5CYII="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>Image=5</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAF0lEQVR4nGNYunTp9+/fGf7//8/AwAAAQEAH0pWnKE0AAAAASUVORK5CYII="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAF0lEQVR4nGNYunTp9+/fGf7//8/AwAAAQEAH0pWnKE0AAAAASUVORK5CYII="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>Image=6</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAF0lEQVR4nGN8+fLlhg0bGBgYGP7//w8AOWoHyk/l43sAAAAASUVORK5CYII="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAF0lEQVR4nGN8+fLlhg0bGBgYGP7//w8AOWoHyk/l43sAAAAASUVORK5CYII="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>Image=7</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGM4efLk////GRgYGPLy8gA5ywajt+fgowAAAABJRU5ErkJggg=="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGM4efLk////GRgYGPLy8gA5ywajt+fgowAAAABJRU5ErkJggg=="></div>
 </div>
 </div></td>
 </tr></table>
@@ -571,49 +571,49 @@ window.onload = wrap_img;
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>Image=8</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAF0lEQVR4nGP8////t2/fmBgZGc+dOwcAQtsIUB/zmOcAAAAASUVORK5CYII="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAF0lEQVR4nGP8////t2/fmBgZGc+dOwcAQtsIUB/zmOcAAAAASUVORK5CYII="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>Image=9</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGP4//8/AwMDo4ODw8uXLwEtJwZ6SX1otwAAAABJRU5ErkJggg=="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGP4//8/AwMDo4ODw8uXLwEtJwZ6SX1otwAAAABJRU5ErkJggg=="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>Image=10</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGM0NTUVFBRk+P//PwMDAwAYTAPRhJBepAAAAABJRU5ErkJggg=="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGM0NTUVFBRk+P//PwMDAwAYTAPRhJBepAAAAABJRU5ErkJggg=="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>Image=11</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGOor69nYGBgunLlyv///wEkXgb5Ml0r/wAAAABJRU5ErkJggg=="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGOor69nYGBgunLlyv///wEkXgb5Ml0r/wAAAABJRU5ErkJggg=="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>Image=12</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNsbW3V1NRk+P//PwMDAwAmFAUJZD8gQQAAAABJRU5ErkJggg=="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNsbW3V1NRk+P//PwMDAwAmFAUJZD8gQQAAAABJRU5ErkJggg=="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>Image=13</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAF0lEQVR4nGNgYGA4deoUw8WLF////w8AJ5UHz3PIC2IAAAAASUVORK5CYII="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAF0lEQVR4nGNgYGA4deoUw8WLF////w8AJ5UHz3PIC2IAAAAASUVORK5CYII="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>Image=14</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGOoqKj4//8/AwMDQ01NDQAuuwXaLS8r3gAAAABJRU5ErkJggg=="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGOoqKj4//8/AwMDQ01NDQAuuwXaLS8r3gAAAABJRU5ErkJggg=="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>Image=15</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGP49euXjo4OAwMDw////wEt1AZw0/mIBwAAAABJRU5ErkJggg=="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGP49euXjo4OAwMDw////wEt1AZw0/mIBwAAAABJRU5ErkJggg=="></div>
 </div>
 </div></td>
 </tr></table>
@@ -621,49 +621,49 @@ window.onload = wrap_img;
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>Image=16</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGMoLy////8/AwMDAy8vLwAr/QSKtDRseAAAAABJRU5ErkJggg=="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGMoLy////8/AwMDAy8vLwAr/QSKtDRseAAAAABJRU5ErkJggg=="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>Image=17</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAF0lEQVR4nGP49+/f////mQ4fPszIyAgASiwIRri0li4AAAAASUVORK5CYII="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAF0lEQVR4nGP49+/f////mQ4fPszIyAgASiwIRri0li4AAAAASUVORK5CYII="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>Image=18</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgYGD4//8/k6mp6YYNGwAiPAWveYzRZgAAAABJRU5ErkJggg=="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgYGD4//8/k6mp6YYNGwAiPAWveYzRZgAAAABJRU5ErkJggg=="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>Image=19</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGMoLi7W19dnYGBg+P//PwAbKQTkOlzmtwAAAABJRU5ErkJggg=="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGMoLi7W19dnYGBg+P//PwAbKQTkOlzmtwAAAABJRU5ErkJggg=="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>Image=20</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGP4//8/AwMD47x589TV1QEuHQVOGAWpaQAAAABJRU5ErkJggg=="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGP4//8/AwMD47x589TV1QEuHQVOGAWpaQAAAABJRU5ErkJggg=="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>Image=21</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGPcv3+/rKwsw////xkYGAAs+AWT7tvmzQAAAABJRU5ErkJggg=="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGPcv3+/rKwsw////xkYGAAs+AWT7tvmzQAAAABJRU5ErkJggg=="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>Image=22</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAF0lEQVR4nGNgYGDYsGEDw58/f/7//w8AJ1wIAjERcdMAAAAASUVORK5CYII="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAF0lEQVR4nGNgYGDYsGEDw58/f/7//w8AJ1wIAjERcdMAAAAASUVORK5CYII="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>Image=23</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGP49u1bTk4OAwMDw////wE0BAck2Nkw9wAAAABJRU5ErkJggg=="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGP49u1bTk4OAwMDw////wE0BAck2Nkw9wAAAABJRU5ErkJggg=="></div>
 </div>
 </div></td>
 </tr></table>
@@ -671,49 +671,49 @@ window.onload = wrap_img;
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>Image=24</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGP4//8/Pz8/EyMjY2xsLAAnygRHzXzc8gAAAABJRU5ErkJggg=="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGP4//8/Pz8/EyMjY2xsLAAnygRHzXzc8gAAAABJRU5ErkJggg=="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>Image=25</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAF0lEQVR4nGO4ePEiAwMD4//////9+wcAMl4IbLp2fIwAAAAASUVORK5CYII="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAF0lEQVR4nGO4ePEiAwMD4//////9+wcAMl4IbLp2fIwAAAAASUVORK5CYII="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>Image=26</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgYGD4//8/k7Cw8MePHwEhxAYM5jALOQAAAABJRU5ErkJggg=="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgYGD4//8/k7Cw8MePHwEhxAYM5jALOQAAAABJRU5ErkJggg=="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>Image=27</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGMwNjb+//8/AwMDQ3h4OAAkKQSc/x+mGgAAAABJRU5ErkJggg=="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGMwNjb+//8/AwMDQ3h4OAAkKQSc/x+mGgAAAABJRU5ErkJggg=="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>Image=28</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAF0lEQVR4nGNcsGDB2bNnGf7//8/AwAAAOywHRqZbGf4AAAAASUVORK5CYII="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAF0lEQVR4nGNcsGDB2bNnGf7//8/AwAAAOywHRqZbGf4AAAAASUVORK5CYII="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>Image=29</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAF0lEQVR4nGNgYGA4cOAAw5cvX/7//w8AKJQIGjLyBq4AAAAASUVORK5CYII="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAF0lEQVR4nGNgYGA4cOAAw5cvX/7//w8AKJQIGjLyBq4AAAAASUVORK5CYII="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>Image=30</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNwd3f///8/AwMDw9KlSwEozQXCxa/2sgAAAABJRU5ErkJggg=="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNwd3f///8/AwMDw9KlSwEozQXCxa/2sgAAAABJRU5ErkJggg=="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>Image=31</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGP4//8/AwMD44oVK9TU1AAurQVpjMGVMwAAAABJRU5ErkJggg=="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGP4//8/AwMD44oVK9TU1AAurQVpjMGVMwAAAABJRU5ErkJggg=="></div>
 </div>
 </div></td>
 </tr></table>
@@ -721,49 +721,49 @@ window.onload = wrap_img;
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>Image=32</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGMQFxf///8/AwMDQ1xcHAAgYwRdqB3tkwAAAABJRU5ErkJggg=="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGMQFxf///8/AwMDQ1xcHAAgYwRdqB3tkwAAAABJRU5ErkJggg=="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>Image=33</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGP8////7NmzGRgYGExNTQE1jwVvh0rvNAAAAABJRU5ErkJggg=="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGP8////7NmzGRgYGExNTQE1jwVvh0rvNAAAAABJRU5ErkJggg=="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>Image=34</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGMMCAjQ1NRkYGBg+P//PwAVqQRqp7CUGgAAAABJRU5ErkJggg=="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGMMCAjQ1NRkYGBg+P//PwAVqQRqp7CUGgAAAABJRU5ErkJggg=="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>Image=35</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAF0lEQVR4nGNgYGD4//8/46tXr968eQMALjgIgTdEaLkAAAAASUVORK5CYII="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAF0lEQVR4nGNgYGD4//8/46tXr968eQMALjgIgTdEaLkAAAAASUVORK5CYII="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>Image=36</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAF0lEQVR4nGP8////58+fmRgZGbdu3QoAQfQH/BLqH3oAAAAASUVORK5CYII="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAF0lEQVR4nGP8////58+fmRgZGbdu3QoAQfQH/BLqH3oAAAAASUVORK5CYII="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>Image=37</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAF0lEQVR4nGP4//8/AwMD07Vr116/fg0ANgQIQw1AYE8AAAAASUVORK5CYII="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAF0lEQVR4nGP4//8/AwMD07Vr116/fg0ANgQIQw1AYE8AAAAASUVORK5CYII="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>Image=38</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAF0lEQVR4nGP8////hg0bGN69e8fAwAAARHoH2RqyP9sAAAAASUVORK5CYII="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAF0lEQVR4nGP8////hg0bGN69e8fAwAAARHoH2RqyP9sAAAAASUVORK5CYII="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>Image=39</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgYGAICAhg+Pbt2////wEc4gbQoslpZgAAAABJRU5ErkJggg=="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgYGAICAhg+Pbt2////wEc4gbQoslpZgAAAABJRU5ErkJggg=="></div>
 </div>
 </div></td>
 </tr></table>
@@ -1122,49 +1122,49 @@ _________________________________________________________________
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>Image=0</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAF0lEQVR4nGNYtWrV////GRgYGP7//w8AONUH+fjktD4AAAAASUVORK5CYII="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAF0lEQVR4nGNYtWrV////GRgYGP7//w8AONUH+fjktD4AAAAASUVORK5CYII="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>Image=1</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAF0lEQVR4nGP8////jx8/GP7//8/AwAAATREI5Nu8ozgAAAAASUVORK5CYII="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAF0lEQVR4nGP8////jx8/GP7//8/AwAAATREI5Nu8ozgAAAAASUVORK5CYII="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>Image=2</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAF0lEQVR4nGP8////jx8/GP7//8/AwAAATREI5Nu8ozgAAAAASUVORK5CYII="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAF0lEQVR4nGP8////jx8/GP7//8/AwAAATREI5Nu8ozgAAAAASUVORK5CYII="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>Image=3</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAF0lEQVR4nGP8////t2/fGP7//8/AwAAATNsI3rLNbrIAAAAASUVORK5CYII="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAF0lEQVR4nGP8////t2/fGP7//8/AwAAATNsI3rLNbrIAAAAASUVORK5CYII="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>Image=4</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAF0lEQVR4nGP8////jx8/GP7//8/AwAAATREI5Nu8ozgAAAAASUVORK5CYII="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAF0lEQVR4nGP8////jx8/GP7//8/AwAAATREI5Nu8ozgAAAAASUVORK5CYII="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>Image=5</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAF0lEQVR4nGOYP3/+////GRgYGP7//w8AN0kH2PCazaMAAAAASUVORK5CYII="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAF0lEQVR4nGOYP3/+////GRgYGP7//w8AN0kH2PCazaMAAAAASUVORK5CYII="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>Image=6</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAF0lEQVR4nGNYtWrV////GRgYGP7//w8AONUH+fjktD4AAAAASUVORK5CYII="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAF0lEQVR4nGNYtWrV////GRgYGP7//w8AONUH+fjktD4AAAAASUVORK5CYII="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>Image=7</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAF0lEQVR4nGNYtWrV////GRgYGP7//w8AONUH+fjktD4AAAAASUVORK5CYII="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAF0lEQVR4nGNYtWrV////GRgYGP7//w8AONUH+fjktD4AAAAASUVORK5CYII="></div>
 </div>
 </div></td>
 </tr></table>
@@ -1172,49 +1172,49 @@ _________________________________________________________________
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>Image=8</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAF0lEQVR4nGNYtWrV////GRgYGP7//w8AONUH+fjktD4AAAAASUVORK5CYII="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAF0lEQVR4nGNYtWrV////GRgYGP7//w8AONUH+fjktD4AAAAASUVORK5CYII="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>Image=9</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAF0lEQVR4nGP8////jx8/GP7//8/AwAAATREI5Nu8ozgAAAAASUVORK5CYII="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAF0lEQVR4nGP8////jx8/GP7//8/AwAAATREI5Nu8ozgAAAAASUVORK5CYII="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>Image=10</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAF0lEQVR4nGP8////jx8/GP7//8/AwAAATREI5Nu8ozgAAAAASUVORK5CYII="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAF0lEQVR4nGP8////jx8/GP7//8/AwAAATREI5Nu8ozgAAAAASUVORK5CYII="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>Image=11</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAF0lEQVR4nGP8////jx8/GP7//8/AwAAATREI5Nu8ozgAAAAASUVORK5CYII="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAF0lEQVR4nGP8////jx8/GP7//8/AwAAATREI5Nu8ozgAAAAASUVORK5CYII="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>Image=12</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAF0lEQVR4nGNYtWrV////GRgYGP7//w8AONUH+fjktD4AAAAASUVORK5CYII="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAF0lEQVR4nGNYtWrV////GRgYGP7//w8AONUH+fjktD4AAAAASUVORK5CYII="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>Image=13</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAF0lEQVR4nGP8////jx8/GP7//8/AwAAATREI5Nu8ozgAAAAASUVORK5CYII="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAF0lEQVR4nGP8////jx8/GP7//8/AwAAATREI5Nu8ozgAAAAASUVORK5CYII="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>Image=14</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAF0lEQVR4nGP8////jx8/GP7//8/AwAAATREI5Nu8ozgAAAAASUVORK5CYII="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAF0lEQVR4nGP8////jx8/GP7//8/AwAAATREI5Nu8ozgAAAAASUVORK5CYII="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>Image=15</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAF0lEQVR4nGNYtWrV////GRgYGP7//w8AONUH+fjktD4AAAAASUVORK5CYII="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAF0lEQVR4nGNYtWrV////GRgYGP7//w8AONUH+fjktD4AAAAASUVORK5CYII="></div>
 </div>
 </div></td>
 </tr></table>
@@ -1222,25 +1222,25 @@ _________________________________________________________________
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>Image=16</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGOQkpL6//8/AwMDw////wEklQZJw0UPUgAAAABJRU5ErkJggg=="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGOQkpL6//8/AwMDw////wEklQZJw0UPUgAAAABJRU5ErkJggg=="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>Image=17</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAF0lEQVR4nGP8////169fGf7//8/AwAAATMAI2zEM5ooAAAAASUVORK5CYII="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAF0lEQVR4nGP8////169fGf7//8/AwAAATMAI2zEM5ooAAAAASUVORK5CYII="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>Image=18</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAF0lEQVR4nGNYtWrV////GRgYGP7//w8AONUH+fjktD4AAAAASUVORK5CYII="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAF0lEQVR4nGNYtWrV////GRgYGP7//w8AONUH+fjktD4AAAAASUVORK5CYII="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>Image=19</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAF0lEQVR4nGP8////jx8/GP7//8/AwAAATREI5Nu8ozgAAAAASUVORK5CYII="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAF0lEQVR4nGP8////jx8/GP7//8/AwAAATREI5Nu8ozgAAAAASUVORK5CYII="></div>
 </div>
 </div></td>
 </tr></table>
@@ -1309,49 +1309,49 @@ _________________________________________________________________
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>Image=0</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgYGD4//8/w79//5iYmAAp4QX+jLgd4wAAAABJRU5ErkJggg=="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgYGD4//8/w79//5iYmAAp4QX+jLgd4wAAAABJRU5ErkJggg=="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>Image=1</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgYGD4//8/w69fv5SUlAAqZQZSVIjGDQAAAABJRU5ErkJggg=="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgYGD4//8/w69fv5SUlAAqZQZSVIjGDQAAAABJRU5ErkJggg=="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>Image=2</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgYGD4/fs3w////zU1NQEqbgZq/Jl8VAAAAABJRU5ErkJggg=="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgYGD4/fs3w////zU1NQEqbgZq/Jl8VAAAAABJRU5ErkJggg=="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>Image=3</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgZmb+//8/w////xkYGAAqUAYE73dnAgAAAABJRU5ErkJggg=="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgZmb+//8/w////xkYGAAqUAYE73dnAgAAAABJRU5ErkJggg=="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>Image=4</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGOQlpb+//8/w+/fvxkYGAAtdAZAWIj+JgAAAABJRU5ErkJggg=="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGOQlpb+//8/w+/fvxkYGAAtdAZAWIj+JgAAAABJRU5ErkJggg=="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>Image=5</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgYGD4//8/w69fv8zMzAAq3QaOZoQyYwAAAABJRU5ErkJggg=="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgYGD4//8/w69fv8zMzAAq3QaOZoQyYwAAAABJRU5ErkJggg=="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>Image=6</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgYGD4//8/w/////n4+AAqOAYliTcXWQAAAABJRU5ErkJggg=="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgYGD4//8/w/////n4+AAqOAYliTcXWQAAAABJRU5ErkJggg=="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>Image=7</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGPg4eH5//8/w+/fvxkYGAArWAYTV4FrZwAAAABJRU5ErkJggg=="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGPg4eH5//8/w+/fvxkYGAArWAYTV4FrZwAAAABJRU5ErkJggg=="></div>
 </div>
 </div></td>
 </tr></table>
@@ -1359,49 +1359,49 @@ _________________________________________________________________
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>Image=8</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGMQFBT8//8/w9+/fxkYGAAsKgYoXIsUqQAAAABJRU5ErkJggg=="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGMQFBT8//8/w9+/fxkYGAAsKgYoXIsUqQAAAABJRU5ErkJggg=="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>Image=9</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgYGD49esXw////6WlpQEp/wY9IJmqugAAAABJRU5ErkJggg=="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgYGD49esXw////6WlpQEp/wY9IJmqugAAAABJRU5ErkJggg=="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>Image=10</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgYGD4//8/w////3l5eQEqMgYijxKNfQAAAABJRU5ErkJggg=="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgYGD4//8/w////3l5eQEqMgYijxKNfQAAAABJRU5ErkJggg=="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>Image=11</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGPg4OD4//8/w79//xgYGAAq9QYQotar1AAAAABJRU5ErkJggg=="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGPg4OD4//8/w79//xgYGAAq9QYQotar1AAAAABJRU5ErkJggg=="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>Image=12</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGOQkpL6//8/w79//xgYGAAtfQZG0XUIvgAAAABJRU5ErkJggg=="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGOQkpL6//8/w79//xgYGAAtfQZG0XUIvgAAAABJRU5ErkJggg=="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>Image=13</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgY2P7//8/w58/fxgYGAAqjwYEgTvdOgAAAABJRU5ErkJggg=="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgY2P7//8/w58/fxgYGAAqjwYEgTvdOgAAAABJRU5ErkJggg=="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>Image=14</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgYGD48+cPw////3l5eQEp4QYZtAQmTwAAAABJRU5ErkJggg=="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgYGD48+cPw////3l5eQEp4QYZtAQmTwAAAABJRU5ErkJggg=="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>Image=15</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgYGD4/fs3w////6WkpAAqFAY93ZVwqgAAAABJRU5ErkJggg=="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgYGD4/fs3w////6WkpAAqFAY93ZVwqgAAAABJRU5ErkJggg=="></div>
 </div>
 </div></td>
 </tr></table>
@@ -1409,25 +1409,25 @@ _________________________________________________________________
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>Image=16</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgYGD49+8fw////42MjAAq9QaO64/3sQAAAABJRU5ErkJggg=="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgYGD49+8fw////42MjAAq9QaO64/3sQAAAABJRU5ErkJggg=="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>Image=17</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGPg5OT89u0bw////xkYGAAqNQX7/ZM3VAAAAABJRU5ErkJggg=="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGPg5OT89u0bw////xkYGAAqNQX7/ZM3VAAAAABJRU5ErkJggg=="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>Image=18</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGOQkZH5+vUrw////xkYGAAsxgYxl54QjQAAAABJRU5ErkJggg=="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGOQkZH5+vUrw////xkYGAAsxgYxl54QjQAAAABJRU5ErkJggg=="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>Image=19</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgZGT8//8/w/fv3xkYGAApkAXmQJCyEgAAAABJRU5ErkJggg=="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgZGT8//8/w/fv3xkYGAApkAXmQJCyEgAAAABJRU5ErkJggg=="></div>
 </div>
 </div></td>
 </tr></table>
@@ -1573,7 +1573,7 @@ _________________________________________________________________
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stderr output_text">
-<pre>WARNING:absl:Found untraced functions such as re_lu_layer_call_fn, re_lu_layer_call_and_return_conditional_losses, re_lu_layer_call_fn, re_lu_layer_call_and_return_conditional_losses, re_lu_layer_call_and_return_conditional_losses while saving (showing 5 of 5). These functions will not be directly callable after loading.
+<pre>WARNING:absl:Found untraced functions such as re_lu_layer_call_and_return_conditional_losses, re_lu_layer_call_fn, re_lu_layer_call_fn, re_lu_layer_call_and_return_conditional_losses, re_lu_layer_call_and_return_conditional_losses while saving (showing 5 of 5). These functions will not be directly callable after loading.
 </pre>
 </div>
 </div>
@@ -1592,7 +1592,7 @@ Generator loss: 0.72
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stderr output_text">
-<pre>WARNING:absl:Found untraced functions such as re_lu_layer_call_fn, re_lu_layer_call_and_return_conditional_losses, re_lu_layer_call_fn, re_lu_layer_call_and_return_conditional_losses, re_lu_layer_call_and_return_conditional_losses while saving (showing 5 of 5). These functions will not be directly callable after loading.
+<pre>WARNING:absl:Found untraced functions such as re_lu_layer_call_and_return_conditional_losses, re_lu_layer_call_fn, re_lu_layer_call_fn, re_lu_layer_call_and_return_conditional_losses, re_lu_layer_call_and_return_conditional_losses while saving (showing 5 of 5). These functions will not be directly callable after loading.
 </pre>
 </div>
 </div>
@@ -1611,7 +1611,7 @@ Generator loss: 0.75
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stderr output_text">
-<pre>WARNING:absl:Found untraced functions such as re_lu_layer_call_fn, re_lu_layer_call_and_return_conditional_losses, re_lu_layer_call_fn, re_lu_layer_call_and_return_conditional_losses, re_lu_layer_call_and_return_conditional_losses while saving (showing 5 of 5). These functions will not be directly callable after loading.
+<pre>WARNING:absl:Found untraced functions such as re_lu_layer_call_and_return_conditional_losses, re_lu_layer_call_fn, re_lu_layer_call_fn, re_lu_layer_call_and_return_conditional_losses, re_lu_layer_call_and_return_conditional_losses while saving (showing 5 of 5). These functions will not be directly callable after loading.
 </pre>
 </div>
 </div>
@@ -1630,7 +1630,7 @@ Generator loss: 0.76
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stderr output_text">
-<pre>WARNING:absl:Found untraced functions such as re_lu_layer_call_fn, re_lu_layer_call_and_return_conditional_losses, re_lu_layer_call_fn, re_lu_layer_call_and_return_conditional_losses, re_lu_layer_call_and_return_conditional_losses while saving (showing 5 of 5). These functions will not be directly callable after loading.
+<pre>WARNING:absl:Found untraced functions such as re_lu_layer_call_and_return_conditional_losses, re_lu_layer_call_fn, re_lu_layer_call_fn, re_lu_layer_call_and_return_conditional_losses, re_lu_layer_call_and_return_conditional_losses while saving (showing 5 of 5). These functions will not be directly callable after loading.
 </pre>
 </div>
 </div>
@@ -1649,7 +1649,7 @@ Generator loss: 0.72
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stderr output_text">
-<pre>WARNING:absl:Found untraced functions such as re_lu_layer_call_fn, re_lu_layer_call_and_return_conditional_losses, re_lu_layer_call_fn, re_lu_layer_call_and_return_conditional_losses, re_lu_layer_call_and_return_conditional_losses while saving (showing 5 of 5). These functions will not be directly callable after loading.
+<pre>WARNING:absl:Found untraced functions such as re_lu_layer_call_and_return_conditional_losses, re_lu_layer_call_fn, re_lu_layer_call_fn, re_lu_layer_call_and_return_conditional_losses, re_lu_layer_call_and_return_conditional_losses while saving (showing 5 of 5). These functions will not be directly callable after loading.
 </pre>
 </div>
 </div>
@@ -1668,7 +1668,7 @@ Generator loss: 0.77
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stderr output_text">
-<pre>WARNING:absl:Found untraced functions such as re_lu_layer_call_fn, re_lu_layer_call_and_return_conditional_losses, re_lu_layer_call_fn, re_lu_layer_call_and_return_conditional_losses, re_lu_layer_call_and_return_conditional_losses while saving (showing 5 of 5). These functions will not be directly callable after loading.
+<pre>WARNING:absl:Found untraced functions such as re_lu_layer_call_and_return_conditional_losses, re_lu_layer_call_fn, re_lu_layer_call_fn, re_lu_layer_call_and_return_conditional_losses, re_lu_layer_call_and_return_conditional_losses while saving (showing 5 of 5). These functions will not be directly callable after loading.
 </pre>
 </div>
 </div>
@@ -1687,7 +1687,7 @@ Generator loss: 0.68
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stderr output_text">
-<pre>WARNING:absl:Found untraced functions such as re_lu_layer_call_fn, re_lu_layer_call_and_return_conditional_losses, re_lu_layer_call_fn, re_lu_layer_call_and_return_conditional_losses, re_lu_layer_call_and_return_conditional_losses while saving (showing 5 of 5). These functions will not be directly callable after loading.
+<pre>WARNING:absl:Found untraced functions such as re_lu_layer_call_and_return_conditional_losses, re_lu_layer_call_fn, re_lu_layer_call_fn, re_lu_layer_call_and_return_conditional_losses, re_lu_layer_call_and_return_conditional_losses while saving (showing 5 of 5). These functions will not be directly callable after loading.
 </pre>
 </div>
 </div>
@@ -1706,7 +1706,7 @@ Generator loss: 0.66
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stderr output_text">
-<pre>WARNING:absl:Found untraced functions such as re_lu_layer_call_fn, re_lu_layer_call_and_return_conditional_losses, re_lu_layer_call_fn, re_lu_layer_call_and_return_conditional_losses, re_lu_layer_call_and_return_conditional_losses while saving (showing 5 of 5). These functions will not be directly callable after loading.
+<pre>WARNING:absl:Found untraced functions such as re_lu_layer_call_and_return_conditional_losses, re_lu_layer_call_fn, re_lu_layer_call_fn, re_lu_layer_call_and_return_conditional_losses, re_lu_layer_call_and_return_conditional_losses while saving (showing 5 of 5). These functions will not be directly callable after loading.
 </pre>
 </div>
 </div>
@@ -1725,7 +1725,7 @@ Generator loss: 0.71
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stderr output_text">
-<pre>WARNING:absl:Found untraced functions such as re_lu_layer_call_fn, re_lu_layer_call_and_return_conditional_losses, re_lu_layer_call_fn, re_lu_layer_call_and_return_conditional_losses, re_lu_layer_call_and_return_conditional_losses while saving (showing 5 of 5). These functions will not be directly callable after loading.
+<pre>WARNING:absl:Found untraced functions such as re_lu_layer_call_and_return_conditional_losses, re_lu_layer_call_fn, re_lu_layer_call_fn, re_lu_layer_call_and_return_conditional_losses, re_lu_layer_call_and_return_conditional_losses while saving (showing 5 of 5). These functions will not be directly callable after loading.
 </pre>
 </div>
 </div>
@@ -1744,7 +1744,7 @@ Generator loss: 0.66
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stderr output_text">
-<pre>WARNING:absl:Found untraced functions such as re_lu_layer_call_fn, re_lu_layer_call_and_return_conditional_losses, re_lu_layer_call_fn, re_lu_layer_call_and_return_conditional_losses, re_lu_layer_call_and_return_conditional_losses while saving (showing 5 of 5). These functions will not be directly callable after loading.
+<pre>WARNING:absl:Found untraced functions such as re_lu_layer_call_and_return_conditional_losses, re_lu_layer_call_fn, re_lu_layer_call_fn, re_lu_layer_call_and_return_conditional_losses, re_lu_layer_call_and_return_conditional_losses while saving (showing 5 of 5). These functions will not be directly callable after loading.
 </pre>
 </div>
 </div>
@@ -1846,49 +1846,49 @@ Generator loss: 0.63
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>Image=0</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFUlEQVR4nAXBAQEAAACAEP9PF1CpMCnkBftM2nerAAAAAElFTkSuQmCC"></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFUlEQVR4nAXBAQEAAACAEP9PF1CpMCnkBftM2nerAAAAAElFTkSuQmCC"></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>Image=1</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFUlEQVR4nAXBAQEAAACAEP9PF1CpMCnkBftM2nerAAAAAElFTkSuQmCC"></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFUlEQVR4nAXBAQEAAACAEP9PF1CpMCnkBftM2nerAAAAAElFTkSuQmCC"></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>Image=2</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgYGD4//8/w////7W1tQEq5gZ8yd8VKgAAAABJRU5ErkJggg=="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgYGD4//8/w////7W1tQEq5gZ8yd8VKgAAAABJRU5ErkJggg=="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>Image=3</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgYGD4//8/w////zU0NAAq1AZz61mzFAAAAABJRU5ErkJggg=="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgYGD4//8/w////zU0NAAq1AZz61mzFAAAAABJRU5ErkJggg=="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>Image=4</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgYGD4//8/w////83MzAArKAadKldxjwAAAABJRU5ErkJggg=="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgYGD4//8/w////83MzAArKAadKldxjwAAAABJRU5ErkJggg=="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>Image=5</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgYGD4//8/w////xUVFQEqqgZekcUFZgAAAABJRU5ErkJggg=="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgYGD4//8/w////xUVFQEqqgZekcUFZgAAAABJRU5ErkJggg=="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>Image=6</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgYGD4//8/w////6WkpAAqgAZJm844RAAAAABJRU5ErkJggg=="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgYGD4//8/w////6WkpAAqgAZJm844RAAAAABJRU5ErkJggg=="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>Image=7</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGPg4OD4//8/w////xkYGAArBAYTy4KUnAAAAABJRU5ErkJggg=="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGPg4OD4//8/w////xkYGAArBAYTy4KUnAAAAABJRU5ErkJggg=="></div>
 </div>
 </div></td>
 </tr></table>
@@ -1896,49 +1896,49 @@ Generator loss: 0.63
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>Image=8</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGMIDg7+//8/w////xkYGAA1kAb0zF294gAAAABJRU5ErkJggg=="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGMIDg7+//8/w////xkYGAA1kAb0zF294gAAAABJRU5ErkJggg=="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>Image=9</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgYGD4//8/w/////n5+QEqPgYoo0Dm9wAAAABJRU5ErkJggg=="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgYGD4//8/w/////n5+QEqPgYoo0Dm9wAAAABJRU5ErkJggg=="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>Image=10</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFUlEQVR4nAXBAQEAAACAEP9PF1CpMCnkBftM2nerAAAAAElFTkSuQmCC"></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFUlEQVR4nAXBAQEAAACAEP9PF1CpMCnkBftM2nerAAAAAElFTkSuQmCC"></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>Image=11</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNwcXH5//8/w////xkYGAAzdAbH6bpyFAAAAABJRU5ErkJggg=="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNwcXH5//8/w////xkYGAAzdAbH6bpyFAAAAABJRU5ErkJggg=="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>Image=12</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFUlEQVR4nAXBAQEAAACAEP9PF1CpMCnkBftM2nerAAAAAElFTkSuQmCC"></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFUlEQVR4nAXBAQEAAACAEP9PF1CpMCnkBftM2nerAAAAAElFTkSuQmCC"></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>Image=13</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFUlEQVR4nAXBAQEAAACAEP9PF1CpMCnkBftM2nerAAAAAElFTkSuQmCC"></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFUlEQVR4nAXBAQEAAACAEP9PF1CpMCnkBftM2nerAAAAAElFTkSuQmCC"></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>Image=14</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFUlEQVR4nAXBAQEAAACAEP9PF1CpMCnkBftM2nerAAAAAElFTkSuQmCC"></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFUlEQVR4nAXBAQEAAACAEP9PF1CpMCnkBftM2nerAAAAAElFTkSuQmCC"></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>Image=15</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFUlEQVR4nAXBAQEAAACAEP9PF1CpMCnkBftM2nerAAAAAElFTkSuQmCC"></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFUlEQVR4nAXBAQEAAACAEP9PF1CpMCnkBftM2nerAAAAAElFTkSuQmCC"></div>
 </div>
 </div></td>
 </tr></table>
@@ -1946,25 +1946,25 @@ Generator loss: 0.63
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>Image=16</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNwc3P7//8/w////xkYGAAzvAbNwJuC1QAAAABJRU5ErkJggg=="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNwc3P7//8/w////xkYGAAzvAbNwJuC1QAAAABJRU5ErkJggg=="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>Image=17</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgYGD4//8/w////5WUlAAqsAZho8SErAAAAABJRU5ErkJggg=="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgYGD4//8/w////5WUlAAqsAZho8SErAAAAABJRU5ErkJggg=="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>Image=18</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgYGD4//8/w////0NCQgAr3Ab3j99RKgAAAABJRU5ErkJggg=="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgYGD4//8/w////0NCQgAr3Ab3j99RKgAAAABJRU5ErkJggg=="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>Image=19</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGOwtbX9//8/w////xkYGAAyeAay8NfZbQAAAABJRU5ErkJggg=="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGOwtbX9//8/w////xkYGAAyeAay8NfZbQAAAABJRU5ErkJggg=="></div>
 </div>
 </div></td>
 </tr></table>
@@ -2024,7 +2024,7 @@ Generator loss: 0.63
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">media</span><span class="o">.</span><span class="n">show_images</span><span class="p">(</span><span class="n">o</span><span class="p">,</span>  <span class="n">border</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">'Greys'</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">media</span><span class="o">.</span><span class="n">show_images</span><span class="p">(</span><span class="n">o</span><span class="p">,</span>  <span class="n">border</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">'Greys'</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -2042,31 +2042,31 @@ Generator loss: 0.63
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>It:0-Inp:0.0</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGP8//8/AwMDEwMDAwMDAwAkBgMB/DXemwAAAABJRU5ErkJggg=="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGP8//8/AwMDEwMDAwMDAwAkBgMB/DXemwAAAABJRU5ErkJggg=="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>It:0-Inp:0.2</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAF0lEQVR4nGNYtWrV////GRgYGP7//w8AONUH+fjktD4AAAAASUVORK5CYII="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAF0lEQVR4nGNYtWrV////GRgYGP7//w8AONUH+fjktD4AAAAASUVORK5CYII="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>It:0-Inp:0.4</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAF0lEQVR4nGNYtWrV////GRgYGP7//w8AONUH+fjktD4AAAAASUVORK5CYII="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAF0lEQVR4nGNYtWrV////GRgYGP7//w8AONUH+fjktD4AAAAASUVORK5CYII="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>It:0-Inp:0.6</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAF0lEQVR4nGNYtWrV////GRgYGP7//w8AONUH+fjktD4AAAAASUVORK5CYII="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAF0lEQVR4nGNYtWrV////GRgYGP7//w8AONUH+fjktD4AAAAASUVORK5CYII="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>It:0-Inp:1.0</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAF0lEQVR4nGNYtWrV////GRgYGP7//w8AONUH+fjktD4AAAAASUVORK5CYII="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAF0lEQVR4nGNYtWrV////GRgYGP7//w8AONUH+fjktD4AAAAASUVORK5CYII="></div>
 </div>
 </div></td>
 </tr></table>
@@ -2074,31 +2074,31 @@ Generator loss: 0.63
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>It:100-Inp:0.0</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgYGD4//8/0////xkYGAAp8gX9PrPXDAAAAABJRU5ErkJggg=="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgYGD4//8/0////xkYGAAp8gX9PrPXDAAAAABJRU5ErkJggg=="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>It:100-Inp:0.2</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgYGD4//8/07p16xgYGAAlMwUKrG/M+gAAAABJRU5ErkJggg=="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgYGD4//8/07p16xgYGAAlMwUKrG/M+gAAAABJRU5ErkJggg=="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>It:100-Inp:0.4</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgYGD4//8/k6qqKgMDAwAdLANvVyJtTQAAAABJRU5ErkJggg=="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgYGD4//8/k6qqKgMDAwAdLANvVyJtTQAAAABJRU5ErkJggg=="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>It:100-Inp:0.6</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGOQkpL6//8/AwMDw////wEklQZJw0UPUgAAAABJRU5ErkJggg=="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGOQkpL6//8/AwMDw////wEklQZJw0UPUgAAAABJRU5ErkJggg=="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>It:100-Inp:1.0</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGMICAj4//8/AwMDw////wEsLQbr/4pjtwAAAABJRU5ErkJggg=="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGMICAj4//8/AwMDw////wEsLQbr/4pjtwAAAABJRU5ErkJggg=="></div>
 </div>
 </div></td>
 </tr></table>
@@ -2106,31 +2106,31 @@ Generator loss: 0.63
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>It:200-Inp:0.0</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAF0lEQVR4nGNgYGD4//8/0////69evQoALvAIfJgqbyMAAAAASUVORK5CYII="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAF0lEQVR4nGNgYGD4//8/0////69evQoALvAIfJgqbyMAAAAASUVORK5CYII="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>It:200-Inp:0.2</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgYGD4//8/0////xkYGAAp8gX9PrPXDAAAAABJRU5ErkJggg=="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgYGD4//8/0////xkYGAAp8gX9PrPXDAAAAABJRU5ErkJggg=="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>It:200-Inp:0.4</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgYGD4//8/05kzZxgYGAAm9QVkjUmo0wAAAABJRU5ErkJggg=="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgYGD4//8/05kzZxgYGAAm9QVkjUmo0wAAAABJRU5ErkJggg=="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>It:200-Inp:0.6</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgYGD4//8/U09PDwMDAwAjNQSkCL0h8wAAAABJRU5ErkJggg=="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgYGD4//8/U09PDwMDAwAjNQSkCL0h8wAAAABJRU5ErkJggg=="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>It:200-Inp:1.0</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgYGD4//8/k5ubGwMDAwAfGwPSPkAwqQAAAABJRU5ErkJggg=="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgYGD4//8/k5ubGwMDAwAfGwPSPkAwqQAAAABJRU5ErkJggg=="></div>
 </div>
 </div></td>
 </tr></table>
@@ -2138,31 +2138,31 @@ Generator loss: 0.63
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>It:300-Inp:0.0</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgYGD4//8/w////xMTEwEsKgceSbruSwAAAABJRU5ErkJggg=="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgYGD4//8/w////xMTEwEsKgceSbruSwAAAABJRU5ErkJggg=="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>It:300-Inp:0.2</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAF0lEQVR4nGNgYGD4//8/0////1+9egUAL24Iu7FeOGcAAAAASUVORK5CYII="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAF0lEQVR4nGNgYGD4//8/0////1+9egUAL24Iu7FeOGcAAAAASUVORK5CYII="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>It:300-Inp:0.4</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgYGD4//8/0////xkYGAAp8gX9PrPXDAAAAABJRU5ErkJggg=="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgYGD4//8/0////xkYGAAp8gX9PrPXDAAAAABJRU5ErkJggg=="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>It:300-Inp:0.6</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgYGD4//8/05MnTxgYGAAoXQWs2oHAFwAAAABJRU5ErkJggg=="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgYGD4//8/05MnTxgYGAAoXQWs2oHAFwAAAABJRU5ErkJggg=="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>It:300-Inp:1.0</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgYGD4//8/07p16xgYGAAlMwUKrG/M+gAAAABJRU5ErkJggg=="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgYGD4//8/07p16xgYGAAlMwUKrG/M+gAAAABJRU5ErkJggg=="></div>
 </div>
 </div></td>
 </tr></table>
@@ -2170,31 +2170,31 @@ Generator loss: 0.63
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>It:400-Inp:0.0</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgYGD4//8/w////9XV1QEqzgZwpZ6tXQAAAABJRU5ErkJggg=="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgYGD4//8/w////9XV1QEqzgZwpZ6tXQAAAABJRU5ErkJggg=="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>It:400-Inp:0.2</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAF0lEQVR4nGNgYGD4//8/0/////ft2wcALmYIN0Wxa1IAAAAASUVORK5CYII="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAF0lEQVR4nGNgYGD4//8/0/////ft2wcALmYIN0Wxa1IAAAAASUVORK5CYII="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>It:400-Inp:0.4</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAF0lEQVR4nGNgYGD4//8/0////79//w4AL7wI4p+4xF4AAAAASUVORK5CYII="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAF0lEQVR4nGNgYGD4//8/0////79//w4AL7wI4p+4xF4AAAAASUVORK5CYII="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>It:400-Inp:0.6</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgYGD4//8/0////xkYGAAp8gX9PrPXDAAAAABJRU5ErkJggg=="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgYGD4//8/0////xkYGAAp8gX9PrPXDAAAAABJRU5ErkJggg=="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>It:400-Inp:1.0</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgYGD4//8/09OnTxkYGAAobAWvmsYOegAAAABJRU5ErkJggg=="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgYGD4//8/09OnTxkYGAAobAWvmsYOegAAAABJRU5ErkJggg=="></div>
 </div>
 </div></td>
 </tr></table>
@@ -2202,31 +2202,31 @@ Generator loss: 0.63
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>It:500-Inp:0.0</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgYGD4//8/w////3l5eQEqMgYijxKNfQAAAABJRU5ErkJggg=="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgYGD4//8/w////3l5eQEqMgYijxKNfQAAAABJRU5ErkJggg=="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>It:500-Inp:0.2</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAF0lEQVR4nGNgYGD4//8/0////ydNmgQALV4Hs8qTgbQAAAAASUVORK5CYII="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAF0lEQVR4nGNgYGD4//8/0////ydNmgQALV4Hs8qTgbQAAAAASUVORK5CYII="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>It:500-Inp:0.4</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAF0lEQVR4nGNgYGD4//8/0////+/duwcALyYIl0Ii3e4AAAAASUVORK5CYII="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAF0lEQVR4nGNgYGD4//8/0////+/duwcALyYIl0Ii3e4AAAAASUVORK5CYII="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>It:500-Inp:0.6</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAF0lEQVR4nGNgYGD4//8/0//////9+wcAL+YI94+Cf6gAAAAASUVORK5CYII="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAF0lEQVR4nGNgYGD4//8/0//////9+wcAL+YI94+Cf6gAAAAASUVORK5CYII="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>It:500-Inp:1.0</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgYGD4//8/08+fPxkYGAApmAXrzm1gjwAAAABJRU5ErkJggg=="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgYGD4//8/08+fPxkYGAApmAXrzm1gjwAAAABJRU5ErkJggg=="></div>
 </div>
 </div></td>
 </tr></table>
@@ -2234,31 +2234,31 @@ Generator loss: 0.63
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>It:600-Inp:0.0</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgYGD4//8/w////xkZGQEp6gX+6dxoIwAAAABJRU5ErkJggg=="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgYGD4//8/w////xkZGQEp6gX+6dxoIwAAAABJRU5ErkJggg=="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>It:600-Inp:0.2</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgYGD4//8/w////4uKigAskAdR5iw7HAAAAABJRU5ErkJggg=="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgYGD4//8/w////4uKigAskAdR5iw7HAAAAABJRU5ErkJggg=="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>It:600-Inp:0.4</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAF0lEQVR4nGNgYGD4//8/0////w8cOAAALnIIPY/pcIQAAAAASUVORK5CYII="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAF0lEQVR4nGNgYGD4//8/0////w8cOAAALnIIPY/pcIQAAAAASUVORK5CYII="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>It:600-Inp:0.6</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAF0lEQVR4nGNgYGD4//8/0////1++fAkAL2gIuLZH580AAAAASUVORK5CYII="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAF0lEQVR4nGNgYGD4//8/0////1++fAkAL2gIuLZH580AAAAASUVORK5CYII="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>It:600-Inp:1.0</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgYGD4//8/0////xkYGAAp8gX9PrPXDAAAAABJRU5ErkJggg=="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgYGD4//8/0////xkYGAAp8gX9PrPXDAAAAABJRU5ErkJggg=="></div>
 </div>
 </div></td>
 </tr></table>
@@ -2266,31 +2266,31 @@ Generator loss: 0.63
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>It:700-Inp:0.0</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgZWX9//8/w////xkYGAAqmAYKB6e/6QAAAABJRU5ErkJggg=="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgZWX9//8/w////xkYGAAqmAYKB6e/6QAAAABJRU5ErkJggg=="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>It:700-Inp:0.2</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgYGD4//8/w////8PDwwEr7gcAByS8ewAAAABJRU5ErkJggg=="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgYGD4//8/w////8PDwwEr7gcAByS8ewAAAABJRU5ErkJggg=="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>It:700-Inp:0.4</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAF0lEQVR4nGNgYGD4//8/0////6dNmwYALXYHv3iRcDcAAAAASUVORK5CYII="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAF0lEQVR4nGNgYGD4//8/0////6dNmwYALXYHv3iRcDcAAAAASUVORK5CYII="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>It:700-Inp:0.6</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAF0lEQVR4nGNgYGD4//8/0////w8fPgwALoQIRmPqJfAAAAAASUVORK5CYII="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAF0lEQVR4nGNgYGD4//8/0////w8fPgwALoQIRmPqJfAAAAAASUVORK5CYII="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>It:700-Inp:1.0</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAF0lEQVR4nGNgYGD4//8/0////79//w4AL7wI4p+4xF4AAAAASUVORK5CYII="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAF0lEQVR4nGNgYGD4//8/0////79//w4AL7wI4p+4xF4AAAAASUVORK5CYII="></div>
 </div>
 </div></td>
 </tr></table>
@@ -2298,31 +2298,31 @@ Generator loss: 0.63
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>It:800-Inp:0.0</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgZ2f///8/w////xkYGAAq4AYQ9m+hXAAAAABJRU5ErkJggg=="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgZ2f///8/w////xkYGAAq4AYQ9m+hXAAAAABJRU5ErkJggg=="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>It:800-Inp:0.2</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgYGD4//8/w////y0sLAArNAajaD6uxAAAAABJRU5ErkJggg=="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgYGD4//8/w////y0sLAArNAajaD6uxAAAAABJRU5ErkJggg=="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>It:800-Inp:0.4</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgYGD4//8/w////9PT0wEsTgcwfeFGcAAAAABJRU5ErkJggg=="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgYGD4//8/w////9PT0wEsTgcwfeFGcAAAAABJRU5ErkJggg=="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>It:800-Inp:0.6</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgYGD4//8/0////9va2gAtFgePrCY74gAAAABJRU5ErkJggg=="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgYGD4//8/0////9va2gAtFgePrCY74gAAAABJRU5ErkJggg=="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>It:800-Inp:1.0</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAF0lEQVR4nGNgYGD4//8/0////48ePQoALpAITNVePhMAAAAASUVORK5CYII="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAF0lEQVR4nGNgYGD4//8/0////48ePQoALpAITNVePhMAAAAASUVORK5CYII="></div>
 </div>
 </div></td>
 </tr></table>
@@ -2330,31 +2330,31 @@ Generator loss: 0.63
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>It:900-Inp:0.0</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGPg4OD4//8/w////xkYGAArBAYTy4KUnAAAAABJRU5ErkJggg=="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGPg4OD4//8/w////xkYGAArBAYTy4KUnAAAAABJRU5ErkJggg=="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>It:900-Inp:0.2</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgYGD4//8/w////4WFhQEqVgY0XVLTGgAAAABJRU5ErkJggg=="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgYGD4//8/w////4WFhQEqVgY0XVLTGgAAAABJRU5ErkJggg=="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>It:900-Inp:0.4</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgYGD4//8/w////zU1NQEq2gZ2weabMAAAAABJRU5ErkJggg=="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgYGD4//8/w////zU1NQEq2gZ2weabMAAAAABJRU5ErkJggg=="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>It:900-Inp:0.6</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgYGD4//8/w////52dnQErdgbEdPR4QgAAAABJRU5ErkJggg=="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgYGD4//8/w////52dnQErdgbEdPR4QgAAAABJRU5ErkJggg=="></div>
 </div>
 </div></td>
 <td><div style="display:flex; align-items:left;">
       <div style="display:flex; flex-direction:column; align-items:center;">
       <div>It:900-Inp:1.0</div>
-<div><img width="80" height="80" style="image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgYGD4//8/w////3NzcwEscgdCGmFvmAAAAABJRU5ErkJggg=="></div>
+<div><img width="80" height="80" style="border:1px solid black; image-rendering:pixelated; object-fit:cover;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGNgYGD4//8/w////3NzcwEscgdCGmFvmAAAAABJRU5ErkJggg=="></div>
 </div>
 </div></td>
 </tr></table>
