@@ -119,7 +119,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      2 min read
+      3 min read
     
 </span></p>
 
@@ -146,8 +146,11 @@ window.onload = wrap_img;
 <ul>
 <li class="toc-entry toc-h2"><a href="#using-the-workingcopy-app">Using the WorkingCopy App</a></li>
 <li class="toc-entry toc-h2"><a href="#setting-up-the-terminal-app-a-shell">Setting up the terminal app (a-Shell)</a></li>
+<li class="toc-entry toc-h2"><a href="#editors">Editors</a></li>
 </ul>
 </li>
+<li class="toc-entry toc-h1"><a href="#setting-linuxmac-machine-and-ipad-for-python-programming-via-jupyter-notebooks">Setting Linux/Mac machine and iPad for Python programming (via Jupyter notebooks)</a></li>
+<li class="toc-entry toc-h1"><a href="#vnc-connection">VNC connection</a></li>
 </ul><h1 id="setting-up-a-new-mac">
 <a class="anchor" href="#setting-up-a-new-mac" aria-hidden="true"><span class="octicon octicon-link"></span></a>Setting up a new Mac</h1>
 
@@ -331,6 +334,59 @@ writing <code class="highlighter-rouge">pickFolder</code> in a-Shell and setting
 <code class="highlighter-rouge">bookmark git</code> in the current location (set by pickFolder)</p>
 
 <p><img src="/blog/images/Bookmark-Git.png" alt="" title="Setting Bookmark location to WorkingApp -&gt; git"></p>
+
+<h2 id="editors">
+<a class="anchor" href="#editors" aria-hidden="true"><span class="octicon octicon-link"></span></a>Editors</h2>
+
+<p>I use one of the following for editing:</p>
+
+<ul>
+  <li>Koder App</li>
+  <li>WorkingCopy App</li>
+  <li>vim (in a-Shell)</li>
+</ul>
+
+<h1 id="setting-linuxmac-machine-and-ipad-for-python-programming-via-jupyter-notebooks">
+<a class="anchor" href="#setting-linuxmac-machine-and-ipad-for-python-programming-via-jupyter-notebooks" aria-hidden="true"><span class="octicon octicon-link"></span></a>Setting Linux/Mac machine and iPad for Python programming (via Jupyter notebooks)</h1>
+
+<p>On the Linux/Mac (remote server) machines I set up Jupyter notebooks as follows:</p>
+
+<p>First, I create the configuration file via: <code class="highlighter-rouge">jupyter notebook --generate-config</code></p>
+
+<p>Next, In <code class="highlighter-rouge">~/.jupyter/jupyter_notebook_config.py</code> change</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python
+c.NotebookApp.ip = '0.0.0.0'
+c.NotebookApp.allow_origin = '*'
+c.NotebookApp.port = SET YOUR PORT
+c.NotebookApp.open_browser = False
+</code></pre></div></div>
+
+<p>Set password using:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>jupyter notebook password 
+</code></pre></div></div>
+
+<p>Run notebook as:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">nohup </span>jupyter notebook&amp;
+</code></pre></div></div>
+
+<p>On the client end (iPad in this case), I use one of the following two ways to access remote Jupyter instances:</p>
+
+<ul>
+  <li>
+    <p>Using the Juno Connect app
+Juno connectly nicely saves all the configuration and can do the necessary port forwarding</p>
+  </li>
+  <li>
+    <p>Using a regular browser
+Just open the remote URL with the set port number. I use my workplace recommended VPN client to get into my workplace network and access non-public IP based servers.</p>
+  </li>
+</ul>
+
+<h1 id="vnc-connection">
+<a class="anchor" href="#vnc-connection" aria-hidden="true"><span class="octicon octicon-link"></span></a>VNC connection</h1>
+
+<p>I tried a few VNC</p>
 
 
   </div><a class="u-url" href="/blog/setup/2021/06/12/setup.html" hidden></a>
