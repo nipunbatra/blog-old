@@ -1,0 +1,14 @@
+boost
+cmake
+ffmpeg
+fish
+git
+graphviz
+ilmbase
+imagemagick
+pandoc
+r
+rtmpdump
+swig
+vim
+wget
