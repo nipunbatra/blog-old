@@ -119,7 +119,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      1 min read
+      2 min read
     
 </span></p>
 
@@ -145,7 +145,7 @@ window.onload = wrap_img;
 <li class="toc-entry toc-h1"><a href="#setting-up-an-ipad-for-programming">Setting up an iPad for programming</a>
 <ul>
 <li class="toc-entry toc-h2"><a href="#using-the-workingcopy-app">Using the WorkingCopy App</a></li>
-<li class="toc-entry toc-h2"><a href="#setting-up-the-terminal-app-a-shell">Setting up the terminal app (a-shell)</a></li>
+<li class="toc-entry toc-h2"><a href="#setting-up-the-terminal-app-a-shell">Setting up the terminal app (a-Shell)</a></li>
 </ul>
 </li>
 </ul><h1 id="setting-up-a-new-mac">
@@ -314,13 +314,23 @@ zoom
 <p><img src="/blog/images/Working-Copy-3.png" alt="" title="WorkingCopy App can nicely show the diffs"></p>
 
 <h2 id="setting-up-the-terminal-app-a-shell">
-<a class="anchor" href="#setting-up-the-terminal-app-a-shell" aria-hidden="true"><span class="octicon octicon-link"></span></a>Setting up the terminal app (a-shell)</h2>
+<a class="anchor" href="#setting-up-the-terminal-app-a-shell" aria-hidden="true"><span class="octicon octicon-link"></span></a>Setting up the terminal app (a-Shell)</h2>
 
-<p>First, after installing a-shell, I like to set the font size, terminal background and foreground color. Here is how the a-shell app looks like</p>
+<p>First, after installing a-Shell, I like to set the font size, terminal background and foreground color. Here is how the a-shell app looks like</p>
 
 <p><img src="/blog/images/setup.png" alt="" title="a-shell on the iPad is my favourite app!"></p>
 
 <p><code class="highlighter-rouge">config -b black -f white -s 20</code></p>
+
+<p>Sometimes I like using vim for editing documents and interfacing with WorkingCopy. a-Shell provides vim!</p>
+
+<p>I like to setup a <code class="highlighter-rouge">bookmark</code> to the WorkingCopy folder so that I can direcly edit files in that location.</p>
+
+<p>I do so by:
+writing <code class="highlighter-rouge">pickFolder</code> in a-Shell and setting it to WorkingCopy folder. Now I can set a bookmark to this location. I do so by: 
+<code class="highlighter-rouge">bookmark git</code> in the current location (set by pickFolder)</p>
+
+<p><img src="/blog/images/Bookmark-Git.png" alt="" title="Setting Bookmark location to WorkingApp -&gt; git"></p>
 
 
   </div><a class="u-url" href="/blog/setup/2021/06/12/setup.html" hidden></a>
