@@ -92,7 +92,7 @@ As a quickfix I renamed the branch on my Github repo as "master" and for now set
 Finally, I am able to pull and push to the repositories. The next image infact is showing commits and pushes made to the repository generating the blog post you are reading. 
 
 
-
+![]({{ site.baseurl }}/images/libgit-2.png "libgit2 push and commiting")
 
 
 ## Editors
