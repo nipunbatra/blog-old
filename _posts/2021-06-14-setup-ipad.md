@@ -47,6 +47,54 @@ writing `pickFolder` in a-Shell and setting it to WorkingCopy folder. Now I can 
 
 ![]({{ site.baseurl }}/images/Bookmark-Git.png "Setting Bookmark location to WorkingApp -> git")
 
+Interestingly, the latest testflight version of a-shell also provides a "Git-like" interface called `libgit2`. Configuring it requires specific steps that I'm writing below. Some of these steps are borrowed from this [nice tutorial](https://devmarketer.io/learn/set-ssh-key-github/) and some are specific to a-shell that I was able to get working courtesy a Twitter discussion with the creator of a-shell. 
+
+![]({{ site.baseurl }}/images/Twitter.png "Twitter discussion with the creator of a-shell")
+
+Now, the steps.
+
+First, we need to create a new ssh key.
+
+We do so by 
+```bash
+ssh-keygen -t rsa -b 4096 -C "email@domain.com"
+
+```
+
+While configuring I did not setup the passphrase.
+
+The private and public keys are stored in `.ssh` with the name id_rsa 
+
+```bash
+$ ls -lah .ssh|grep "id"
+-rw-------   1 mobile  mobile   3.3K Jun 14 15:43 id_rsa
+-rw-------   1 mobile  mobile   747B Jun 14 15:43 id_rsa.pub
+```
+
+Next, I copied the public key in a newly generated ssh key in Github and gave it a name.
+
+Next, I modified `.gitconfig` as follows
+
+```bash
+$ cat .gitconfig 
+[user]
+        email = MY EMAIL ID
+        name = MY NAME
+        identityFile =  id_rsa 
+```
+
+Now, I was almost done!
+
+I was able to push and pull from some old Github repositories but the same did not work with the newer repositories. Again, after a discussion with the creator of a-shell, I figured, this was due to the fact that Github changed the name of the default branch as "main" instead of the earlier "master" whereas libgit2 implementation was expecting "master".
+
+As a quickfix I renamed the branch on my Github repo as "master" and for now set the default branch to be named "master".
+
+Finally, I am able to pull and push to the repositories. The next image infact is showing commits and pushes made to the repository generating the blog post you are reading. 
+
+
+
+
+
 ## Editors
 
 I use one of the following for editing:
