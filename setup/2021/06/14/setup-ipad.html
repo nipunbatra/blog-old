@@ -119,7 +119,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      2 min read
+      4 min read
     
 </span></p>
 
@@ -189,6 +189,47 @@ writing <code class="highlighter-rouge">pickFolder</code> in a-Shell and setting
 <code class="highlighter-rouge">bookmark git</code> in the current location (set by pickFolder)</p>
 
 <p><img src="/blog/images/Bookmark-Git.png" alt="" title="Setting Bookmark location to WorkingApp -&gt; git"></p>
+
+<p>Interestingly, the latest testflight version of a-shell also provides a “Git-like” interface called <code class="highlighter-rouge">libgit2</code>. Configuring it requires specific steps that I’m writing below. Some of these steps are borrowed from this <a href="https://devmarketer.io/learn/set-ssh-key-github/">nice tutorial</a> and some are specific to a-shell that I was able to get working courtesy a Twitter discussion with the creator of a-shell.</p>
+
+<p><img src="/blog/images/Twitter.png" alt="" title="Twitter discussion with the creator of a-shell"></p>
+
+<p>Now, the steps.</p>
+
+<p>First, we need to create a new ssh key.</p>
+
+<p>We do so by</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ssh-keygen <span class="nt">-t</span> rsa <span class="nt">-b</span> 4096 <span class="nt">-C</span> <span class="s2">"email@domain.com"</span>
+
+</code></pre></div></div>
+
+<p>While configuring I did not setup the passphrase.</p>
+
+<p>The private and public keys are stored in <code class="highlighter-rouge">.ssh</code> with the name id_rsa</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">ls</span> <span class="nt">-lah</span> .ssh|grep <span class="s2">"id"</span>
+<span class="nt">-rw-------</span>   1 mobile  mobile   3.3K Jun 14 15:43 id_rsa
+<span class="nt">-rw-------</span>   1 mobile  mobile   747B Jun 14 15:43 id_rsa.pub
+</code></pre></div></div>
+
+<p>Next, I copied the public key in a newly generated ssh key in Github and gave it a name.</p>
+
+<p>Next, I modified <code class="highlighter-rouge">.gitconfig</code> as follows</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">cat</span> .gitconfig 
+<span class="o">[</span>user]
+        email <span class="o">=</span> MY EMAIL ID
+        name <span class="o">=</span> MY NAME
+        identityFile <span class="o">=</span>  id_rsa 
+</code></pre></div></div>
+
+<p>Now, I was almost done!</p>
+
+<p>I was able to push and pull from some old Github repositories but the same did not work with the newer repositories. Again, after a discussion with the creator of a-shell, I figured, this was due to the fact that Github changed the name of the default branch as “main” instead of the earlier “master” whereas libgit2 implementation was expecting “master”.</p>
+
+<p>As a quickfix I renamed the branch on my Github repo as “master” and for now set the default branch to be named “master”.</p>
+
+<p>Finally, I am able to pull and push to the repositories. The next image infact is showing commits and pushes made to the repository generating the blog post you are reading.</p>
 
 <h2 id="editors">
 <a class="anchor" href="#editors" aria-hidden="true"><span class="octicon octicon-link"></span></a>Editors</h2>
