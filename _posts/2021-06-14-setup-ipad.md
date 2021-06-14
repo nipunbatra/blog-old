@@ -3,7 +3,7 @@ toc: true
 layout: post
 description: My iPad computing setup
 categories: [setup]
-title: My Computing Setup
+title: My iPad Setup
 ---
 
 # The Hardware
@@ -14,19 +14,6 @@ The magic keyboard and the magic trackpad greatly increase the iPad experience a
 
 
 # Setting up an iPad for programming
-
-## Using the WorkingCopy App
-
-WorkingCopy is a very nicely made Git app on the iPad. 
-
-I'll let the pictures do the talking.
-
-![]({{ site.baseurl }}/images/Working-Copy-1.png "WorkingCopy App interface")
-
-![]({{ site.baseurl }}/images/Working-Copy-2.png "WorkingCopy App interfaces nicely with the Files app!")
-
-![]({{ site.baseurl }}/images/Working-Copy-3.png "WorkingCopy App can nicely show the diffs")
-
 
 ## Setting up the terminal app (a-Shell)
 
@@ -93,6 +80,21 @@ Finally, I am able to pull and push to the repositories. The next image infact i
 
 
 ![]({{ site.baseurl }}/images/libgit-2.png "libgit2 push and commiting")
+
+
+## Using the WorkingCopy App
+
+WorkingCopy is a very nicely made Git app on the iPad. It is one of the best made apps I have used!
+
+I'll let the pictures do the talking.
+
+![]({{ site.baseurl }}/images/Working-Copy-1.png "WorkingCopy App interface")
+
+![]({{ site.baseurl }}/images/Working-Copy-2.png "WorkingCopy App interfaces nicely with the Files app!")
+
+![]({{ site.baseurl }}/images/Working-Copy-3.png "WorkingCopy App can nicely show the diffs")
+
+
 
 
 ## Editors
