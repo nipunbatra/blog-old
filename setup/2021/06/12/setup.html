@@ -119,7 +119,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      3 min read
+      4 min read
     
 </span></p>
 
@@ -406,9 +406,15 @@ Just open the remote URL with the set port number. I use my workplace recommende
 
 <p>For instance, merging multiple PDFs is easier (for me) than doing the same on Mac. One just needs to select multiple files and then “right” click to “Create PDF”</p>
 
-<p><img src="/blog/images/Combine-PDF.gif" alt="" title="Combining PDFs is trivial on the iPad using Files app"></p>
+<p><img src="/blog/images/CombinePDF.gif" alt="" title="Combining PDFs is trivial on the iPad using Files app"></p>
 
-<p>Aside - I use the <a href="https://www.icloud.com/shortcuts/f9a9c2cc6e61476abf2e35f654869553&amp;xcust=1-1-232739-0-0-0&amp;">following shortcut</a> to convert the screen recorded video into a GIF</p>
+<p>I use the following ffmpeg command (inside a-Shell) to create this GIF.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ffmpeg <span class="nt">-i</span> Video.MP4  <span class="nt">-filter_complex</span> <span class="s2">"[0:v]  fps=12,scale=720:-1,split [a][b];[a] palettegen [p];[b][p] palette
+use"</span> CombinePDF.gif
+</code></pre></div></div>
+
+<p>Another alternative is to use the <a href="https://www.icloud.com/shortcuts/f9a9c2cc6e61476abf2e35f654869553&amp;xcust=1-1-232739-0-0-0&amp;">following shortcut</a> to convert the screen recorded video into a GIF</p>
 
 
   </div><a class="u-url" href="/blog/setup/2021/06/12/setup.html" hidden></a>
