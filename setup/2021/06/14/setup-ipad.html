@@ -140,7 +140,14 @@ window.onload = wrap_img;
 <li class="toc-entry toc-h1"><a href="#the-hardware">The Hardware</a></li>
 <li class="toc-entry toc-h1"><a href="#setting-up-an-ipad-for-programming">Setting up an iPad for programming</a>
 <ul>
-<li class="toc-entry toc-h2"><a href="#setting-up-the-terminal-app-a-shell">Setting up the terminal app (a-Shell)</a></li>
+<li class="toc-entry toc-h2"><a href="#setting-up-the-terminal-app-a-shell">Setting up the terminal app (a-Shell)</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#configuration">Configuration</a></li>
+<li class="toc-entry toc-h3"><a href="#text-editing-and-bookmarks">Text editing and bookmarks</a></li>
+<li class="toc-entry toc-h3"><a href="#git">Git</a></li>
+<li class="toc-entry toc-h3"><a href="#some-other-amazing-tools">Some other amazing tools</a></li>
+</ul>
+</li>
 <li class="toc-entry toc-h2"><a href="#using-the-workingcopy-app">Using the WorkingCopy App</a></li>
 <li class="toc-entry toc-h2"><a href="#editors">Editors</a></li>
 </ul>
@@ -168,12 +175,17 @@ window.onload = wrap_img;
 <h2 id="setting-up-the-terminal-app-a-shell">
 <a class="anchor" href="#setting-up-the-terminal-app-a-shell" aria-hidden="true"><span class="octicon octicon-link"></span></a>Setting up the terminal app (a-Shell)</h2>
 
+<h3 id="configuration">
+<a class="anchor" href="#configuration" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configuration</h3>
+
 <p>First, after installing a-Shell, I like to set the font size, terminal background and foreground color. Here is how the a-shell app looks like</p>
 
 <p><img src="/blog/images/A-shell-initial.png" alt="" title="a-shell on the iPad is my favourite app!"></p>
 
 <p><code class="highlighter-rouge">config -b black -f white -s 20</code></p>
 
+<h3 id="text-editing-and-bookmarks">
+<a class="anchor" href="#text-editing-and-bookmarks" aria-hidden="true"><span class="octicon octicon-link"></span></a>Text editing and bookmarks</h3>
 <p>Sometimes I like using vim for editing documents and interfacing with WorkingCopy. a-Shell provides vim!</p>
 
 <p>I like to setup a <code class="highlighter-rouge">bookmark</code> to the WorkingCopy folder so that I can direcly edit files in that location.</p>
@@ -184,6 +196,8 @@ writing <code class="highlighter-rouge">pickFolder</code> in a-Shell and setting
 
 <p><img src="/blog/images/Bookmark-Git.png" alt="" title="Setting Bookmark location to WorkingApp -&gt; git"></p>
 
+<h3 id="git">
+<a class="anchor" href="#git" aria-hidden="true"><span class="octicon octicon-link"></span></a>Git</h3>
 <p>Interestingly, the latest testflight version of a-shell also provides a “Git-like” interface called <code class="highlighter-rouge">libgit2</code>. Configuring it requires specific steps that I’m writing below. Some of these steps are borrowed from this <a href="https://devmarketer.io/learn/set-ssh-key-github/">nice tutorial</a> and some are specific to a-shell that I was able to get working courtesy a Twitter discussion with the creator of a-shell.</p>
 
 <p><img src="/blog/images/Twitter.png" alt="" title="Twitter discussion with the creator of a-shell"></p>
@@ -226,6 +240,13 @@ writing <code class="highlighter-rouge">pickFolder</code> in a-Shell and setting
 <p>Finally, I am able to pull and push to the repositories. The next image infact is showing commits and pushes made to the repository generating the blog post you are reading.</p>
 
 <p><img src="/blog/images/libgit-2.png" alt="" title="libgit2 push and commiting"></p>
+
+<h3 id="some-other-amazing-tools">
+<a class="anchor" href="#some-other-amazing-tools" aria-hidden="true"><span class="octicon octicon-link"></span></a>Some other amazing tools</h3>
+
+<p>I like the “view” utility in a-shell a lot. It can quickly help you preview various filetypes.</p>
+
+<p><img src="/blog/images/view.gif" alt="" title="The view utility in a-shell"></p>
 
 <h2 id="using-the-workingcopy-app">
 <a class="anchor" href="#using-the-workingcopy-app" aria-hidden="true"><span class="octicon octicon-link"></span></a>Using the WorkingCopy App</h2>
