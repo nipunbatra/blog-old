@@ -129,6 +129,10 @@ The following is an image of the shortcut.
 
 ![]({{ site.baseurl }}/images/Shortcut-Working.png "Using shortcuts in a-shell with Python!")
 
+Based on the suggestion [here](https://github.com/holzschu/a-shell/issues/74#issuecomment-861416673), I used pbcopy to copy the content to the clipboard and use it directly. It reduces the number of lines! 
+
+![]({{ site.baseurl }}/images/Shortcut-2.png "More efficient version using clipboard")
+
 ## Using the WorkingCopy App
 
 WorkingCopy is a very nicely made Git app on the iPad. It is one of the best made apps I have used!
@@ -151,6 +155,7 @@ I use one of the following for editing:
 * Koder App
 * WorkingCopy App
 * vim (in a-Shell)
+* Textastic
 
 # Setting Linux/Mac machine and iPad for Python programming (via Jupyter notebooks)
 
