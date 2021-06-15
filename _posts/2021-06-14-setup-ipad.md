@@ -242,6 +242,7 @@ There are many things I'm missing:
 - Powerpoint does not have features like audio recording (though can play)
 - Keynote, Pages, Numbers require additional clicks than their Mac counterparts
 - When I connect to an external display, I get thick black bars and moreover, if the monitor does not give me an HDMI out, I can not hear audio as the audio is also routed. As good as the iPad's display is, it is not huge and strains my eyes after a while. 
+- Copy pasting using the keyboard is a hit and miss. For instance, it fails several times for me when copying from a pdf. Right clicking and copy seems to always work, but, it is more steps than Command C, Command V.
 
 
 Some of the above may be resolved over the next updates and the major iPadOS15 updates. Though, I do not expect most of them to be resolved anytime soon. 
