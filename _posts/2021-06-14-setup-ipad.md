@@ -6,6 +6,10 @@ categories: [setup]
 title: My iPad Setup
 ---
 
+# Caveats and Story
+My laptop is broken. I am away from office. I have an iPad Pro 2020. I got my office desktop's magic keyboard and trackpad. In this post I am discussing if iPad can help given that I do not have access to my main computers. Would I recommend this over a main computer - No! But, can you do some things on the iPad reasonably well enough given keyboard and trackpad - Yes! 
+
+
 # The Hardware
 
 The magic keyboard and the magic trackpad greatly increase the iPad experience and make it programmer friendly.
@@ -172,6 +176,24 @@ use" CombinePDF.gif
 
 Another alternative is to use the [following shortcut](https://www.icloud.com/shortcuts/f9a9c2cc6e61476abf2e35f654869553&xcust=1-1-232739-0-0-0&
 ) to convert the screen recorded video into a GIF 
+
+
+# Conclusions (and rants)
+
+For the long run, ofcourse, I would not recommend this kind of a setup. There is some learning and fun in getting a "resticted" device to function well, but as a main machine, probably no, at least not for the next few months. A comparably priced laptop (say M1 Macbook Air) would offer a lot more.
+
+There are many things I'm missing
+
+- Projection to a projector and screen recording do not work at the same time. 
+- No proper dev environment like VSCode
+- A lot of screen size is "wasted" due to the OS
+- A lot of the apps are not as good as I'd like. For instance, perhaps a minor thing, but the Youtube app doesn't have a keyboard shortcut for full screen. One can ofcourse do the same on Safari.
+- Safari though much improved over the years is not as functional as Safari on the Mac
+- While quicklook/Files is good, the functionality of something like Preview is hard to beat
+
+
+Some of the above may be resolved over the next updates and the major iPadOS15 updates. Though, I do not expect most of them to be resolved anytime soon. 
+
 
 
 
