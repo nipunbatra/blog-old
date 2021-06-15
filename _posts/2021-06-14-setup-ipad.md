@@ -21,6 +21,9 @@ The magic keyboard and the magic trackpad greatly increase the iPad experience a
 
 ## Setting up the terminal app (a-Shell)
 
+
+### Configuration
+
 First, after installing a-Shell, I like to set the font size, terminal background and foreground color. Here is how the a-shell app looks like
 
 
@@ -28,6 +31,7 @@ First, after installing a-Shell, I like to set the font size, terminal backgroun
 
 `config -b black -f white -s 20`
 
+### Text editing and bookmarks
 Sometimes I like using vim for editing documents and interfacing with WorkingCopy. a-Shell provides vim!
 
 I like to setup a `bookmark` to the WorkingCopy folder so that I can direcly edit files in that location.
@@ -38,6 +42,7 @@ writing `pickFolder` in a-Shell and setting it to WorkingCopy folder. Now I can 
 
 ![]({{ site.baseurl }}/images/Bookmark-Git.png "Setting Bookmark location to WorkingApp -> git")
 
+### Git
 Interestingly, the latest testflight version of a-shell also provides a "Git-like" interface called `libgit2`. Configuring it requires specific steps that I'm writing below. Some of these steps are borrowed from this [nice tutorial](https://devmarketer.io/learn/set-ssh-key-github/) and some are specific to a-shell that I was able to get working courtesy a Twitter discussion with the creator of a-shell. 
 
 ![]({{ site.baseurl }}/images/Twitter.png "Twitter discussion with the creator of a-shell")
@@ -84,6 +89,12 @@ Finally, I am able to pull and push to the repositories. The next image infact i
 
 
 ![]({{ site.baseurl }}/images/libgit-2.png "libgit2 push and commiting")
+
+### Some other amazing tools
+
+I like the "view" utility in a-shell a lot. It can quickly help you preview various filetypes.
+
+![]({{ site.baseurl }}/images/view.gif "The view utility in a-shell")
 
 
 ## Using the WorkingCopy App
