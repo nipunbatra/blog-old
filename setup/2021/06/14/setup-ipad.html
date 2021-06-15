@@ -119,7 +119,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      6 min read
+      7 min read
     
 </span></p>
 
@@ -146,6 +146,7 @@ window.onload = wrap_img;
 <li class="toc-entry toc-h3"><a href="#text-editing-and-bookmarks">Text editing and bookmarks</a></li>
 <li class="toc-entry toc-h3"><a href="#git">Git</a></li>
 <li class="toc-entry toc-h3"><a href="#some-other-amazing-tools">Some other amazing tools</a></li>
+<li class="toc-entry toc-h3"><a href="#shortcuts">Shortcuts</a></li>
 </ul>
 </li>
 <li class="toc-entry toc-h2"><a href="#using-the-workingcopy-app">Using the WorkingCopy App</a></li>
@@ -248,6 +249,32 @@ writing <code class="highlighter-rouge">pickFolder</code> in a-Shell and setting
 
 <p><img src="/blog/images/view.gif" alt="" title="The view utility in a-shell"></p>
 
+<p>Also, as a quick tip, one can use Command + W to quickly exit the preview and use the back and forward keys to cycle through the files. This is very useful!</p>
+
+<p>I also like the fact that the <code class="highlighter-rouge">convert</code> tool now comes in inbuilt. It can convert between a variety of formats easily.</p>
+
+<h3 id="shortcuts">
+<a class="anchor" href="#shortcuts" aria-hidden="true"><span class="octicon octicon-link"></span></a>Shortcuts</h3>
+
+<p>a-Shell interfaces nicely with Shortcuts. The following gif shows an interface where I take an input from Shortcuts app -&gt; Pass it to a Python script and execute it inside a-shell -&gt; Store the results in a text file -&gt; View the content of the text file in Shortcuts.</p>
+
+<p><img src="/blog/images/shortcuts.gif" alt="" title="Using shortcuts in a-shell with Python!"></p>
+
+<p>The link to this shortcut is <a href="https://www.icloud.com/shortcuts/a04946a553df4e9790b2c352c5663b0a">here</a></p>
+
+<p>The following is the simple Python script I used called factorial.py</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="n">num</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s">"The factorial of {num} is {math.factorial(num)}"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>The following is an image of the shortcut.</p>
+
+<p><img src="/blog/images/Shortcut-Working.png" alt="" title="Using shortcuts in a-shell with Python!"></p>
+
 <h2 id="using-the-workingcopy-app">
 <a class="anchor" href="#using-the-workingcopy-app" aria-hidden="true"><span class="octicon octicon-link"></span></a>Using the WorkingCopy App</h2>
 
@@ -281,11 +308,11 @@ writing <code class="highlighter-rouge">pickFolder</code> in a-Shell and setting
 
 <p>Next, In <code class="highlighter-rouge">~/.jupyter/jupyter_notebook_config.py</code> change</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python
-c.NotebookApp.ip = '0.0.0.0'
-c.NotebookApp.allow_origin = '*'
-c.NotebookApp.port = SET YOUR PORT
-c.NotebookApp.open_browser = False
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">c</span><span class="o">.</span><span class="n">NotebookApp</span><span class="o">.</span><span class="n">ip</span> <span class="o">=</span> <span class="s">'0.0.0.0'</span>
+<span class="n">c</span><span class="o">.</span><span class="n">NotebookApp</span><span class="o">.</span><span class="n">allow_origin</span> <span class="o">=</span> <span class="s">'*'</span>
+<span class="n">c</span><span class="o">.</span><span class="n">NotebookApp</span><span class="o">.</span><span class="n">port</span> <span class="o">=</span> <span class="n">SET</span> <span class="n">YOUR</span> <span class="n">PORT</span>
+<span class="n">c</span><span class="o">.</span><span class="n">NotebookApp</span><span class="o">.</span><span class="n">open_browser</span> <span class="o">=</span> <span class="bp">False</span>
 </code></pre></div></div>
 
 <p>Set password using:</p>
