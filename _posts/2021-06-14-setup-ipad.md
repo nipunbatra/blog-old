@@ -226,7 +226,7 @@ Another alternative is to use the [following shortcut](https://www.icloud.com/sh
 ) to convert the screen recorded video into a GIF 
 
 
-# Some Safari shortcuts
+# Some Safari keyboard shortcuts
 - Command + W for closing a tab
 - Command + L for going to the address bar (sometimes on tabs I am not automatically on the address bar)
 
