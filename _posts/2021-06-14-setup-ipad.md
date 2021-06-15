@@ -7,7 +7,7 @@ title: My iPad Setup
 ---
 
 # Caveats and Story
-My laptop is broken. I am away from office. I have an iPad Pro 2020. I got my office desktop's magic keyboard and trackpad. In this post I am discussing if iPad can help given that I do not have access to my main computers. Would I recommend this over a main computer - No! But, can you do some things on the iPad reasonably well enough given keyboard and trackpad - Yes! 
+My laptop is broken. I am away from office. I have an iPad Pro 2020. I got my office desktop's magic keyboard and trackpad. In this post I am discussing if iPad can help given that I do not have (physical) access to my main computers. Would I recommend this over a main computer - No! But, can you do some things on the iPad reasonably well enough given keyboard and trackpad - Yes! 
 
 
 # The Hardware
@@ -176,6 +176,11 @@ use" CombinePDF.gif
 
 Another alternative is to use the [following shortcut](https://www.icloud.com/shortcuts/f9a9c2cc6e61476abf2e35f654869553&xcust=1-1-232739-0-0-0&
 ) to convert the screen recorded video into a GIF 
+
+
+# Some Safari shortcuts
+- Command + W for closing a tab
+- Command + L for going to the address bar (sometimes on tabs I am not automatically on the address bar)
 
 
 # Conclusions (and rants)
