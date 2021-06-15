@@ -96,6 +96,32 @@ I like the "view" utility in a-shell a lot. It can quickly help you preview vari
 
 ![]({{ site.baseurl }}/images/view.gif "The view utility in a-shell")
 
+Also, as a quick tip, one can use Command + W to quickly exit the preview and use the back and forward keys to cycle through the files. This is very useful!
+
+I also like the fact that the `convert` tool now comes in inbuilt. It can convert between a variety of formats easily. 
+
+### Shortcuts
+
+a-Shell interfaces nicely with Shortcuts. The following gif shows an interface where I take an input from Shortcuts app -> Pass it to a Python script and execute it inside a-shell -> Store the results in a text file -> View the content of the text file in Shortcuts.
+
+
+![]({{ site.baseurl }}/images/shortcuts.gif "Using shortcuts in a-shell with Python!")
+
+The link to this shortcut is [here](https://www.icloud.com/shortcuts/a04946a553df4e9790b2c352c5663b0a)
+
+The following is the simple Python script I used called factorial.py
+
+```python
+import math
+import sys
+
+num = int(sys.argv[1])
+print(f"The factorial of {num} is {math.factorial(num)}")
+```
+
+The following is an image of the shortcut. 
+
+![]({{ site.baseurl }}/images/Shortcut-Working.png "Using shortcuts in a-shell with Python!")
 
 ## Using the WorkingCopy App
 
@@ -128,8 +154,8 @@ First, I create the configuration file via: `jupyter notebook --generate-config`
 
 Next, In `~/.jupyter/jupyter_notebook_config.py` change
 
-```
-python
+```python
+
 c.NotebookApp.ip = '0.0.0.0'
 c.NotebookApp.allow_origin = '*'
 c.NotebookApp.port = SET YOUR PORT
