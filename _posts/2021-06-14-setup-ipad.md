@@ -230,7 +230,7 @@ Another alternative is to use the [following shortcut](https://www.icloud.com/sh
 
 For the long run, ofcourse, I would not recommend this kind of a setup. There is some learning and fun in getting a "resticted" device to function well, but as a main machine, probably no, at least not for the next few months. A comparably priced laptop (say M1 Macbook Air) would offer a lot more.
 
-There are many things I'm missing
+There are many things I'm missing:
 
 - Projection to a projector and screen recording do not work at the same time. 
 - No proper dev environment like VSCode
@@ -241,7 +241,7 @@ There are many things I'm missing
 - The files app can not show hidden files and folders
 - Powerpoint does not have features like audio recording (though can play)
 - Keynote, Pages, Numbers require additional clicks than their Mac counterparts
-- When I connect to an external display, I get thick black bars and moreover, if the monitor does not give me an HDMI out, I can not hear audio as the audio is also routed. 
+- When I connect to an external display, I get thick black bars and moreover, if the monitor does not give me an HDMI out, I can not hear audio as the audio is also routed. As good as the iPad's display is, it is not huge and strains my eyes after a while. 
 
 
 Some of the above may be resolved over the next updates and the major iPadOS15 updates. Though, I do not expect most of them to be resolved anytime soon. 
