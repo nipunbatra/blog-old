@@ -239,6 +239,8 @@ There are many things I'm missing
 - Safari though much improved over the years is not as functional as Safari on the Mac
 - While quicklook/Files is good, the functionality of something like Preview is hard to beat
 - The files app can not show hidden files and folders
+- Powerpoint does not have features like audio recording (though can play)
+- Keynote, Pages, Numbers require additional clicks than their Mac counterparts
 
 
 Some of the above may be resolved over the next updates and the major iPadOS15 updates. Though, I do not expect most of them to be resolved anytime soon. 
