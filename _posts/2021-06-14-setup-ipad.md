@@ -100,6 +100,12 @@ Also, as a quick tip, one can use Command + W to quickly exit the preview and us
 
 I also like the fact that the `convert` tool now comes in inbuilt. It can convert between a variety of formats easily. 
 
+`pbcopy` and `pbpaste` are very convenient utilities to copy to and from the clipboard. Here is how I copied the content of factorial.py into the clipboard.
+
+```bash
+pbcopy < factorial.py  
+```
+
 ### Shortcuts
 
 a-Shell interfaces nicely with Shortcuts. The following gif shows an interface where I take an input from Shortcuts app -> Pass it to a Python script and execute it inside a-shell -> Store the results in a text file -> View the content of the text file in Shortcuts.
