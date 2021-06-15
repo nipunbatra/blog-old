@@ -195,6 +195,7 @@ There are many things I'm missing
 - A lot of the apps are not as good as I'd like. For instance, perhaps a minor thing, but the Youtube app doesn't have a keyboard shortcut for full screen. One can ofcourse do the same on Safari.
 - Safari though much improved over the years is not as functional as Safari on the Mac
 - While quicklook/Files is good, the functionality of something like Preview is hard to beat
+- The files app can not show hidden files and folders
 
 
 Some of the above may be resolved over the next updates and the major iPadOS15 updates. Though, I do not expect most of them to be resolved anytime soon. 
