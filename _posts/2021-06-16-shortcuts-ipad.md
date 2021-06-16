@@ -9,7 +9,7 @@ title: Some of my shortcuts on the iPad
 
 ### Combine some random images from internet and display on a grid
 
-Shortcut link: https://www.icloud.com/shortcuts/9706f1ae082a46ac9e9c259bba614487
+[Combine Images GAN Shortcut link](https://www.icloud.com/shortcuts/9706f1ae082a46ac9e9c259bba614487)
 
 The end result
 
@@ -24,6 +24,11 @@ In this shortcut I mainly do the following:
 A screenshot of the shortcut is below
 
  ![]({{ site.baseurl }}/images/Shortcut-Combine.png "Screenshot of the shortcut")
+
+
+### Create a simple chart in Charty
+
+
 
 
 

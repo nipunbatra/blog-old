@@ -156,6 +156,7 @@ I use one of the following for editing:
 * WorkingCopy App
 * vim (in a-Shell)
 * Textastic
+* Typewriter for Markdown — is an editor only for markdown but gives a nice quick preview. The image below shows the screenshot from Typewriter for Markdown app. 
 
 # Setting Linux/Mac machine and iPad for Python programming (via Jupyter notebooks)
 
