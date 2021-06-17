@@ -90,6 +90,15 @@ Finally, I am able to pull and push to the repositories. The next image infact i
 
 ![]({{ site.baseurl }}/images/libgit-2.png "libgit2 push and commiting")
 
+### SSH/SFTP
+
+There are a couple of amazing apps: Termius and SecureShell. Both have very neat interfaces. I found the intergrations with the Files app very good!
+
+The GIF below shows the SecureShell app in action where I transfer a file from my local storage (iPad) to remote server, process that file, and quickly copy the processed file back to local storage. 
+
+![]({{ site.baseurl }}/images/SecureShell.gif "Working with SecureShell is amazing!")
+
+
 ### Some other amazing tools
 
 I like the "view" utility in a-shell a lot. It can quickly help you preview various filetypes.
