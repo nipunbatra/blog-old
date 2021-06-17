@@ -63,6 +63,11 @@ ftp_client.get(f_name_gif, f_name_gif)
 
 ```
 
+In another previous post, I had also mentioned about the amazing SSH/SFTP apps: Termius and ShellFish. I am again pasting the GIF showing a similar to above workflow initiated via ShellFish.
+
+
+
+![]({{ site.baseurl }}/images/SecureShell.gif "Working with SecureShell is amazing!")
 
 
 
