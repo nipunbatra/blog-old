@@ -3,7 +3,7 @@
     
         "post0": {
             "title": "Blurring an image selectively using Affinity Photo",
-            "content": "youtube: https://www.youtube.com/watch?v=5xbhfr4jy8U .",
+            "content": "In this post (video recording), I selectively blur an image using Affinity Photo on the iPad. I used the following command (borrowed from: https://stackoverflow.com/a/63575228/743775) . . convert -append Image-1.png blurred.jpg -resize x500x new_image_conbined.png .",
             "url": "https://nipunbatra.github.io/blog/setup/2021/06/19/blur-affinity.html",
             "relUrl": "/setup/2021/06/19/blur-affinity.html",
             "date": " • Jun 19, 2021"
