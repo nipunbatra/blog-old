@@ -98,6 +98,8 @@ The GIF below shows the SecureShell app in action where I transfer a file from m
 
 ![]({{ site.baseurl }}/images/SecureShell.gif "Working with SecureShell is amazing!")
 
+Another great functionality of the SecureShell is the "Offline" folder. 
+
 
 ### Some other amazing tools
 
