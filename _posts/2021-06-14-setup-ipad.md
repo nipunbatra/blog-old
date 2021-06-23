@@ -102,7 +102,7 @@ Another great functionality of the SecureShell is the "Offline" folder.
 
 Another setting that I use is the Powerline fonts on my remote systems. Using Fontcase, I installed the corresponding powerline fonts on the iPad so that my SecureShell session looks great.
 
-![]({{ site.baseurl }}/images/Powerline.png "Powerline fonts installed via Fontcase allow special characters on the remote terminal")
+![]({{ site.baseurl }}/images/powerline-combined.png "Powerline fonts installed via Fontcase allow special characters on the remote terminalls (above image without powerline font on iPad, below one with powerline font")
 
 
 ### Some other amazing tools
