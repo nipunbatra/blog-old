@@ -265,6 +265,9 @@ There are many things I'm missing:
 - When I connect to an external display, I get thick black bars and moreover, if the monitor does not give me an HDMI out, I can not hear audio as the audio is also routed. As good as the iPad's display is, it is not huge and strains my eyes after a while. 
 - Copy pasting using the keyboard is a hit and miss. For instance, it fails several times for me when copying from a pdf. Right clicking and copy seems to always work, but, it is more steps than Command C, Command V.
 - I miss some quality apps like OBS Studio, especially being an academic teaching remotely due to the pandemic.
+- While a-shell is amazing, it is limited by what webassembly can do. At the time of writing, it does not support multithreading and thus the performance of utilities like `ffmpeg` is severely limited. Also, a-shell programs can not be stopped intermediate in their execution. See the following two bugs on Github related to this: 
+    - https://github.com/holzschu/a-shell/issues/270
+    - https://github.com/holzschu/a-shell/issues/269
 
 
 Some of the above may be resolved over the next updates and the major iPadOS15 updates. Though, I do not expect most of them to be resolved anytime soon. 
