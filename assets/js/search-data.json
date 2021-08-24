@@ -3,10 +3,10 @@
     
         "post0": {
             "title": "Title",
-            "content": "using Plots theme(:default) using LinearAlgebra using LaTeXStrings . x = 1:20; y = 4*x + 8*(0.5.-rand(20)); plot(x, y, seriestype = :scatter, title = &quot;Dataset&quot;, xlabel = &quot;X&quot;, ylabel= &quot;Y&quot;, label=&quot;Noisy dataset&quot;, legend = :outertopright) plot!(x, 4*x, seriestype = :line, label=&quot;True relationship&quot;, lw=2 ) . function error(a, b) err = norm(y .- a[1] .- (b[1] .* x)) end . error (generic function with 1 method) . a = b = -5:0.1:7 . -5.0:0.1:7.0 . error.([1, 2]&#39;, [1, 4]) . 2×2 Matrix{Float64}: 155.749 151.827 9.55051 12.0391 . z = error.(a&#39;, b) argmin_b, argmin_a = Tuple(argmin(z)) . (89, 74) . surface(a, b, z , xlabel=L&quot; theta_0&quot;, ylabel=L&quot; theta_1&quot;, zlabel=L&quot;Cost~( theta_0, theta_1)&quot;) . a[argmin_a], b[argmin_b] . (3.8, 2.3) . contourf(a, b, error.(a&#39;, b), xlabel=L&quot; theta_0&quot;, ylabel=L&quot; theta_1&quot;) plot!([a[argmin_a]], [b[argmin_b]], seriestype=:scatter, label=&quot;MLE&quot;, markersize=10) .",
-            "url": "https://nipunbatra.github.io/blog/2021/08/20/Hello-Julia-Language.html",
-            "relUrl": "/2021/08/20/Hello-Julia-Language.html",
-            "date": " • Aug 20, 2021"
+            "content": "using Plots theme(:default) using LinearAlgebra using LaTeXStrings . x = 1:20; y = 4*x + 8*(0.5.-rand(20)); plot(x, y, seriestype = :scatter, title = &quot;Dataset&quot;, xlabel = &quot;X&quot;, ylabel= &quot;Y&quot;, label=&quot;Noisy dataset&quot;, legend = :outertopright) plot!(x, 4*x, seriestype = :line, label=&quot;True relationship&quot;, lw=2 ) . function error(a, b) err = norm(y .- a[1] .- (b[1] .* x)) end . error (generic function with 1 method) . a = b = -5:0.1:7 . -5.0:0.1:7.0 . error.([1, 2]&#39;, [1, 4]) . 2×2 Matrix{Float64}: 155.749 151.827 9.55051 12.0391 . z = error.(a&#39;, b) argmin_b, argmin_a = Tuple(argmin(z)) . (89, 74) . surface(a, b, z , xlabel=L&quot; theta_0&quot;, ylabel=L&quot; theta_1&quot;, zlabel=L&quot;Cost~( theta_0, theta_1)&quot;) . a[argmin_a], b[argmin_b] . (3.8, 2.3) . contourf(a, b, error.(a&#39;, b), xlabel=L&quot; theta_0&quot;, ylabel=L&quot; theta_1&quot;, title=&quot;Contour Plot&quot;) plot!([a[argmin_a]], [b[argmin_b]], seriestype=:scatter, label=&quot;MLE&quot;, markersize=10) .",
+            "url": "https://nipunbatra.github.io/blog/2021/08/23/Hello-Julia-Language.html",
+            "relUrl": "/2021/08/23/Hello-Julia-Language.html",
+            "date": " • Aug 23, 2021"
         }
         
     
