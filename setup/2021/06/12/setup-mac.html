@@ -154,7 +154,10 @@ window.onload = wrap_img;
 <h3 id="install-homebrew-and-some-pertinent-packages">
 <a class="anchor" href="#install-homebrew-and-some-pertinent-packages" aria-hidden="true"><span class="octicon octicon-link"></span></a>Install homebrew and some pertinent packages</h3>
 
-<p><code class="highlighter-rouge">/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"</code></p>
+<p><code class="highlighter-rouge">xcode-select --install</code></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+</code></pre></div></div>
 
 <p>Install fish shell</p>
 
@@ -162,13 +165,21 @@ window.onload = wrap_img;
 
 <p>Make fish default</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo bash -c 'echo /usr/local/bin/fish &gt;&gt; /etc/shells'
-chsh -s /usr/local/bin/fish
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo bash -c 'echo /opt/homebrew/bin/fish &gt;&gt; /etc/shells'
+chsh -s /opt/homebrew/bin/fish
 </code></pre></div></div>
+
+<p>Note: The above may be <code class="highlighter-rouge">/usr/local/bin</code> for you</p>
 
 <p>Install git</p>
 
 <p><code class="highlighter-rouge">brew install git</code></p>
+
+<p>Install Git-Credential-Manager</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>brew tap microsoft/git
+brew install --cask git-credential-manager-core
+</code></pre></div></div>
 
 <p>Install powerline fonts</p>
 
@@ -183,9 +194,19 @@ cd fonts
 Change font to powerline
 I am using Roboto Mono Light Powerline 18pt</p>
 
-<p>git clone git://github.com/stephenway/monokai.terminal.git
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone git://github.com/stephenway/monokai.terminal.git
+
+cd monokai.terminal
+
 open monokai.terminal
-(set this theme as default)</p>
+
+</code></pre></div></div>
+
+<p>(set this theme as default)</p>
+
+<p>Install oh-my-fish</p>
+
+<p><code class="highlighter-rouge">curl -L https://get.oh-my.fish | fish</code></p>
 
 <p>Install fish theme</p>
 
