@@ -1,0 +1,15 @@
+axes.titlesize: 10
+font.size: 10 
+legend.fontsize: 10
+xtick.labelsize: 10
+ytick.labelsize: 10
+text.usetex: True
+figure.figsize: 3.39 ,  2.1 # For single column
+# figure.figsize: 6.78 ,  4.2 # For single column
+font.family: serif
+axes.spines.right: False
+axes.spines.top: False
+figure.dpi: 300
+
+              
+    
