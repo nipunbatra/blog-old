@@ -123,7 +123,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      12 min read
+      16 min read
     
 </span></p>
 
@@ -1579,10 +1579,461 @@ $$q^*(\theta) = \underset{q(\theta) \in \mathcal{Q}}{\mathrm{argmin~}} D_{KL}[q(
 <p>
 $$q^*(\theta) = \underset{q(\theta) \in \mathcal{Q}}{\mathrm{argmax~}} \text{ELBO(q)}$$
 </p>
+<p>Now, given our linear regression problem setup, we want to maximize the ELBO.</p>
+<p>We can do so by the following. As a simple example, let us assume $\theta \in R^2$</p>
+<ul>
+<li>Assume some q. Say, a Normal distribution. So, $q\sim \mathcal{N}_2$</li>
+<li>Draw samples from q. Say N samples. </li>
+<li>Initilize ELBO = 0.0</li>
+<li>For each sample:<ul>
+<li>Let us assume drawn sample is $[\theta_1, \theta_2]^T$</li>
+<li>Compute log_prob of prior on $[\theta_1, \theta_2]^T$ or <code>lp = p.log_prob(θ1, θ2)</code>
+</li>
+<li>Compute log_prob of likelihood on $[\theta_1, \theta_2]^T$ or <code>ll = l.log_prob(θ1, θ2)</code>
+</li>
+<li>Compute log_prob of q on $[\theta_1, \theta_2]^T$ or <code>lq = q.log_prob(θ1, θ2)</code>
+</li>
+<li>ELBO = ELBO + (ll+lp-q)</li>
+</ul>
+</li>
+<li>Return ELBO/N</li>
+</ul>
 
 </div>
 </div>
 </div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">g</span> <span class="o">=</span> <span class="n">tfp</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">DistributionLambda</span><span class="p">(</span><span class="k">lambda</span> <span class="n">t</span><span class="p">:</span> <span class="n">tfd</span><span class="o">.</span><span class="n">MultivariateNormalDiag</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="n">t</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">prior</span> <span class="o">=</span> <span class="n">tfd</span><span class="o">.</span><span class="n">MultivariateNormalDiag</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="p">[</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">])</span>
+<span class="n">posterior</span> <span class="o">=</span> <span class="n">tfd</span><span class="o">.</span><span class="n">MultivariateNormalDiag</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="p">[</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">prior</span> <span class="o">=</span> <span class="n">tfd</span><span class="o">.</span><span class="n">MultivariateNormalDiag</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="p">[</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">])</span>
+<span class="n">posterior</span> <span class="o">=</span> <span class="n">tfd</span><span class="o">.</span><span class="n">MultivariateNormalDiag</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="p">[</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">])</span>
+<span class="n">e</span> <span class="o">=</span> <span class="mf">0.</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">500</span><span class="p">):</span>
+    <span class="n">theta_sample</span> <span class="o">=</span> <span class="n">prior</span><span class="o">.</span><span class="n">sample</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+    <span class="n">lp</span> <span class="o">=</span> <span class="n">prior</span><span class="o">.</span><span class="n">log_prob</span><span class="p">(</span><span class="n">theta_sample</span><span class="p">)</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+    <span class="n">lq</span> <span class="o">=</span> <span class="n">posterior</span><span class="o">.</span><span class="n">log_prob</span><span class="p">(</span><span class="n">theta_sample</span><span class="p">)</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+    <span class="n">t_p</span> <span class="o">=</span> <span class="n">x_values</span><span class="o">*</span><span class="n">theta_sample</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">theta_sample</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">ll</span> <span class="o">=</span> <span class="n">g</span><span class="p">(</span><span class="n">t_p</span><span class="p">)</span><span class="o">.</span><span class="n">log_prob</span><span class="p">(</span><span class="n">y_gt</span><span class="p">)</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+    <span class="n">e</span> <span class="o">=</span><span class="n">e</span> <span class="o">+</span><span class="n">ll</span><span class="o">+</span><span class="n">lp</span><span class="o">-</span><span class="n">lq</span>
+    <span class="k">if</span> <span class="n">i</span><span class="o">%</span><span class="k">20</span>==0:
+        <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">lp</span><span class="p">,</span> <span class="n">lq</span><span class="p">,</span> <span class="n">ll</span><span class="p">,</span> <span class="n">e</span><span class="p">,</span> <span class="n">e</span><span class="o">/</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+        
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>0 -2.165956 -2.165956 -29477.52 -29477.51953125 -29477.51953125
+20 -2.837582 -2.837582 -18965.133 -553347.3251953125 -26349.872628348214
+40 -2.7716324 -2.7716324 -37735.266 -1024670.9951171875 -24991.97549066311
+60 -4.1667824 -4.1667824 -25701.459 -1540404.9111328125 -25252.539526767418
+80 -3.8607616 -3.8607616 -26704.697 -2098430.8916015625 -25906.55421730324
+100 -4.1697965 -4.1697965 -43189.758 -2616859.80078125 -25909.50297803218
+120 -2.7709785 -2.7709785 -16820.014 -3186666.4482421875 -26336.086349108988
+140 -1.9871166 -1.9871166 -29606.652 -3748923.1162109375 -26588.10720716977
+160 -2.3436723 -2.3436723 -22162.477 -4239083.7275390625 -26329.712593410328
+180 -2.0590224 -2.0590224 -22197.31 -4799281.3984375 -26515.366842196134
+200 -2.204996 -2.204996 -20209.055 -5234601.761230469 -26042.79483199238
+220 -2.0783982 -2.0783982 -19877.012 -5732311.036621094 -25938.058989235717
+240 -3.0459387 -3.0459387 -15355.868 -6239408.387207031 -25889.661357705525
+260 -2.2679396 -2.2679396 -27429.957 -6744782.302246094 -25842.0777863835
+280 -6.019852 -6.019852 -10974.309 -7194104.181152344 -25601.794238976312
+300 -1.8918511 -1.8918511 -27501.086 -7718446.200683594 -25642.67840758669
+320 -2.0583313 -2.0583313 -27147.93 -8224778.963378906 -25622.364371896903
+340 -2.3218904 -2.3218904 -29906.375 -8731931.513183594 -25606.837282063323
+360 -2.0526853 -2.0526853 -30662.998 -9233808.457519531 -25578.416779832496
+380 -3.6906748 -3.6906748 -20882.64 -9763002.990722656 -25624.679765676265
+400 -1.9013393 -1.9013393 -27813.986 -10253238.631347656 -25569.173644258495
+420 -2.2930198 -2.2930198 -30697.996 -10736928.930175781 -25503.394133434158
+440 -1.9939203 -1.9939203 -24881.676 -11309818.675292969 -25645.847336265237
+460 -1.8528006 -1.8528006 -26302.633 -11852653.652832031 -25710.7454508287
+480 -2.7288353 -2.7288353 -37023.418 -12339991.668457031 -25654.8683335905
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">prior</span> <span class="o">=</span> <span class="n">tfd</span><span class="o">.</span><span class="n">MultivariateNormalDiag</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="p">[</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">])</span>
+<span class="n">posterior</span> <span class="o">=</span> <span class="n">tfd</span><span class="o">.</span><span class="n">MultivariateNormalDiag</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="p">[</span><span class="mf">4.</span><span class="p">,</span> <span class="mf">4.</span><span class="p">])</span>
+<span class="n">e</span> <span class="o">=</span> <span class="mf">0.</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">500</span><span class="p">):</span>
+    <span class="n">theta_sample</span> <span class="o">=</span> <span class="n">prior</span><span class="o">.</span><span class="n">sample</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+    <span class="n">lp</span> <span class="o">=</span> <span class="n">prior</span><span class="o">.</span><span class="n">log_prob</span><span class="p">(</span><span class="n">theta_sample</span><span class="p">)</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+    <span class="n">lq</span> <span class="o">=</span> <span class="n">posterior</span><span class="o">.</span><span class="n">log_prob</span><span class="p">(</span><span class="n">theta_sample</span><span class="p">)</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+    <span class="n">t_p</span> <span class="o">=</span> <span class="n">x_values</span><span class="o">*</span><span class="n">theta_sample</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">theta_sample</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">ll</span> <span class="o">=</span> <span class="n">g</span><span class="p">(</span><span class="n">t_p</span><span class="p">)</span><span class="o">.</span><span class="n">log_prob</span><span class="p">(</span><span class="n">y_gt</span><span class="p">)</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+    <span class="n">e</span> <span class="o">=</span><span class="n">e</span> <span class="o">+</span><span class="n">ll</span><span class="o">+</span><span class="n">lp</span><span class="o">-</span><span class="n">lq</span>
+    <span class="k">if</span> <span class="n">i</span><span class="o">%</span><span class="k">20</span>==0:
+        <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">lp</span><span class="p">,</span> <span class="n">lq</span><span class="p">,</span> <span class="n">ll</span><span class="p">,</span> <span class="n">e</span><span class="p">,</span> <span class="n">e</span><span class="o">/</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>0 -2.6073115 -12.175404 -20483.438 -20473.869407892227 -20473.869407892227
+20 -3.1684208 -22.7909 -21784.66 -499937.5953326225 -23806.55215869631
+40 -2.016939 -16.719784 -20832.916 -1028189.0875210762 -25077.782622465274
+60 -3.739799 -27.492802 -44130.195 -1518814.6976130009 -24898.60160021313
+80 -1.8424653 -17.659048 -24243.863 -2071621.441418767 -25575.573350848976
+100 -2.1325722 -22.211731 -31336.291 -2657071.3630102873 -26307.637257527596
+120 -2.159099 -18.783092 -21740.023 -3141709.072863221 -25964.537792258026
+140 -3.5263903 -10.105693 -18867.982 -3652567.033620119 -25904.730734894463
+160 -2.3526025 -23.959057 -33058.508 -4138632.4459656477 -25705.791589848744
+180 -3.635038 -14.687584 -28621.578 -4615504.173992753 -25500.02306073344
+200 -3.0932302 -18.88052 -17676.55 -5107436.451536536 -25410.13159968426
+220 -3.2313645 -13.909215 -13980.94 -5666139.695479989 -25638.64115601805
+240 -1.9163615 -19.003124 -24375.166 -6212183.852380872 -25776.69648290818
+260 -2.2316315 -18.379906 -20831.918 -6718751.853773832 -25742.34426733269
+280 -3.1448665 -26.279472 -40451.03 -7273586.276776433 -25884.648671802253
+300 -2.2195032 -21.327374 -32608.219 -7838406.6302114725 -26041.218040569674
+320 -2.3753295 -12.776871 -20432.736 -8328446.945447445 -25945.31758706369
+340 -2.064576 -18.664902 -22306.094 -8876767.292179227 -26031.57563688923
+360 -2.3818057 -17.773823 -30036.758 -9395807.067736268 -26027.166392621242
+380 -2.592384 -23.043076 -25236.39 -9918023.573979735 -26031.557936954687
+400 -2.4504874 -22.29084 -24878.104 -10431782.33796084 -26014.419795413563
+420 -2.1531506 -20.723858 -31731.992 -10974789.00778699 -26068.38244129926
+440 -2.8503141 -26.885506 -35532.016 -11452738.807436943 -25969.929268564498
+460 -3.9868336 -24.783922 -43398.89 -11990579.416146636 -26009.933657584894
+480 -2.5227623 -13.557142 -16400.475 -12536327.28207326 -26063.05048248079
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">theta_sample</span> <span class="o">=</span> <span class="n">prior</span><span class="o">.</span><span class="n">sample</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+<span class="n">theta_sample</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([-0.6797505, -1.0405   ], dtype=float32)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">lp</span> <span class="o">=</span> <span class="n">prior</span><span class="o">.</span><span class="n">log_prob</span><span class="p">(</span><span class="n">theta_sample</span><span class="p">)</span>
+<span class="n">lq</span> <span class="o">=</span> <span class="n">posterior</span><span class="o">.</span><span class="n">log_prob</span><span class="p">(</span><span class="n">theta_sample</span><span class="p">)</span>
+
+
+<span class="n">lp</span><span class="p">,</span> <span class="n">lq</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(&lt;tf.Tensor: shape=(), dtype=float32, numpy=-2.6102276&gt;,
+ &lt;tf.Tensor: shape=(), dtype=float32, numpy=-2.6102276&gt;)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">t_p</span> <span class="o">=</span> <span class="n">x_values</span><span class="o">*</span><span class="n">theta_sample</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">theta_sample</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">t_p</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;tf.Tensor: shape=(5,), dtype=float32, numpy=
+array([4.52275  , 4.4704633, 4.418177 , 4.36589  , 4.313604 ],
+      dtype=float32)&gt;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ll</span> <span class="o">=</span> <span class="n">g</span><span class="p">(</span><span class="n">t_p</span><span class="p">)</span><span class="o">.</span><span class="n">log_prob</span><span class="p">(</span><span class="n">y_gt</span><span class="p">)</span>
+<span class="n">ll</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;tf.Tensor: shape=(), dtype=float32, numpy=-35016.83&gt;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">theta_2</span> <span class="o">=</span> <span class="p">[</span><span class="mf">4.</span><span class="p">,</span> <span class="mf">5.</span><span class="p">]</span>
+<span class="n">t_p_2</span> <span class="o">=</span> <span class="n">x_values</span><span class="o">*</span><span class="n">theta_2</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">theta_2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">t_p_2</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;tf.Tensor: shape=(5,), dtype=float32, numpy=
+array([-21.      , -20.748743, -20.497488, -20.246231, -19.994976],
+      dtype=float32)&gt;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">g</span><span class="p">(</span><span class="n">t_p_2</span><span class="p">)</span><span class="o">.</span><span class="n">log_prob</span><span class="p">(</span><span class="n">y_gt</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;tf.Tensor: shape=(), dtype=float32, numpy=-2964.9949&gt;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">g</span><span class="p">([</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">2.</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;tf.Tensor: shape=(2, 2), dtype=float32, numpy=
+array([[1., 0.],
+       [0., 1.]], dtype=float32)&gt;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">likelihood</span> <span class="o">=</span> <span class="n">tfp</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">DistributionLambda</span><span class="p">(</span><span class="k">lambda</span> <span class="n">t</span><span class="p">:</span> <span class="n">tfd</span><span class="o">.</span><span class="n">Normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">scale</span><span class="o">=</span><span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
     
     
 <div class="cell border-box-sizing code_cell rendered">
