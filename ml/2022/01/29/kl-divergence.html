@@ -123,7 +123,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      16 min read
+      27 min read
     
 </span></p>
 
@@ -1762,6 +1762,868 @@ $$q^*(\theta) = \underset{q(\theta) \in \mathcal{Q}}{\mathrm{argmax~}} \text{ELB
 480 -2.5227623 -13.557142 -16400.475 -12536327.28207326 -26063.05048248079
 </pre>
 </div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="/blog/images/copied_from_nb/dag-lr.jpg" alt=""></p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">x_values_2</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">200</span><span class="p">),</span> <span class="n">x_values</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)],</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">'float32'</span><span class="p">)</span>
+<span class="n">x_values_2</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;tf.Tensor: shape=(5, 2), dtype=float32, numpy=
+array([[ 1.       , -5.       ],
+       [ 1.       , -4.9497485],
+       [ 1.       , -4.8994975],
+       [ 1.       , -4.849246 ],
+       [ 1.       , -4.798995 ]], dtype=float32)&gt;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">tf</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;tf.Tensor: shape=(2, 2), dtype=float32, numpy=
+array([[1., 0.],
+       [0., 1.]], dtype=float32)&gt;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">tf</span><span class="o">.</span><span class="n">tensordot</span><span class="p">(</span><span class="n">x_values_2</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">axes</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;tf.Tensor: shape=(200, 2), dtype=float32, numpy=
+array([[ 1.        , -5.        ],
+       [ 1.        , -4.9497485 ],
+       [ 1.        , -4.8994975 ],
+       [ 1.        , -4.849246  ],
+       [ 1.        , -4.798995  ],
+       [ 1.        , -4.7487435 ],
+       [ 1.        , -4.6984925 ],
+       [ 1.        , -4.648241  ],
+       [ 1.        , -4.59799   ],
+       [ 1.        , -4.5477386 ],
+       [ 1.        , -4.4974875 ],
+       [ 1.        , -4.447236  ],
+       [ 1.        , -4.396985  ],
+       [ 1.        , -4.3467336 ],
+       [ 1.        , -4.2964826 ],
+       [ 1.        , -4.246231  ],
+       [ 1.        , -4.19598   ],
+       [ 1.        , -4.1457286 ],
+       [ 1.        , -4.0954776 ],
+       [ 1.        , -4.045226  ],
+       [ 1.        , -3.9949749 ],
+       [ 1.        , -3.9447236 ],
+       [ 1.        , -3.8944724 ],
+       [ 1.        , -3.844221  ],
+       [ 1.        , -3.7939699 ],
+       [ 1.        , -3.7437186 ],
+       [ 1.        , -3.6934674 ],
+       [ 1.        , -3.6432161 ],
+       [ 1.        , -3.592965  ],
+       [ 1.        , -3.5427136 ],
+       [ 1.        , -3.4924624 ],
+       [ 1.        , -3.4422112 ],
+       [ 1.        , -3.39196   ],
+       [ 1.        , -3.3417087 ],
+       [ 1.        , -3.2914572 ],
+       [ 1.        , -3.241206  ],
+       [ 1.        , -3.1909547 ],
+       [ 1.        , -3.1407034 ],
+       [ 1.        , -3.0904522 ],
+       [ 1.        , -3.040201  ],
+       [ 1.        , -2.9899497 ],
+       [ 1.        , -2.9396985 ],
+       [ 1.        , -2.8894472 ],
+       [ 1.        , -2.839196  ],
+       [ 1.        , -2.7889447 ],
+       [ 1.        , -2.7386935 ],
+       [ 1.        , -2.6884422 ],
+       [ 1.        , -2.638191  ],
+       [ 1.        , -2.5879397 ],
+       [ 1.        , -2.5376885 ],
+       [ 1.        , -2.4874372 ],
+       [ 1.        , -2.437186  ],
+       [ 1.        , -2.3869348 ],
+       [ 1.        , -2.3366835 ],
+       [ 1.        , -2.2864323 ],
+       [ 1.        , -2.236181  ],
+       [ 1.        , -2.1859295 ],
+       [ 1.        , -2.1356783 ],
+       [ 1.        , -2.085427  ],
+       [ 1.        , -2.0351758 ],
+       [ 1.        , -1.9849247 ],
+       [ 1.        , -1.9346733 ],
+       [ 1.        , -1.8844221 ],
+       [ 1.        , -1.8341708 ],
+       [ 1.        , -1.7839196 ],
+       [ 1.        , -1.7336683 ],
+       [ 1.        , -1.6834171 ],
+       [ 1.        , -1.6331658 ],
+       [ 1.        , -1.5829146 ],
+       [ 1.        , -1.5326633 ],
+       [ 1.        , -1.4824121 ],
+       [ 1.        , -1.4321609 ],
+       [ 1.        , -1.3819095 ],
+       [ 1.        , -1.3316582 ],
+       [ 1.        , -1.281407  ],
+       [ 1.        , -1.2311558 ],
+       [ 1.        , -1.1809045 ],
+       [ 1.        , -1.1306533 ],
+       [ 1.        , -1.080402  ],
+       [ 1.        , -1.0301508 ],
+       [ 1.        , -0.9798995 ],
+       [ 1.        , -0.9296482 ],
+       [ 1.        , -0.879397  ],
+       [ 1.        , -0.8291457 ],
+       [ 1.        , -0.7788945 ],
+       [ 1.        , -0.72864324],
+       [ 1.        , -0.67839193],
+       [ 1.        , -0.6281407 ],
+       [ 1.        , -0.57788944],
+       [ 1.        , -0.5276382 ],
+       [ 1.        , -0.47738692],
+       [ 1.        , -0.42713568],
+       [ 1.        , -0.37688443],
+       [ 1.        , -0.32663316],
+       [ 1.        , -0.2763819 ],
+       [ 1.        , -0.22613065],
+       [ 1.        , -0.1758794 ],
+       [ 1.        , -0.12562814],
+       [ 1.        , -0.07537688],
+       [ 1.        , -0.02512563],
+       [ 1.        ,  0.02512563],
+       [ 1.        ,  0.07537688],
+       [ 1.        ,  0.12562814],
+       [ 1.        ,  0.1758794 ],
+       [ 1.        ,  0.22613065],
+       [ 1.        ,  0.2763819 ],
+       [ 1.        ,  0.32663316],
+       [ 1.        ,  0.37688443],
+       [ 1.        ,  0.42713568],
+       [ 1.        ,  0.47738692],
+       [ 1.        ,  0.5276382 ],
+       [ 1.        ,  0.57788944],
+       [ 1.        ,  0.6281407 ],
+       [ 1.        ,  0.67839193],
+       [ 1.        ,  0.72864324],
+       [ 1.        ,  0.7788945 ],
+       [ 1.        ,  0.8291457 ],
+       [ 1.        ,  0.879397  ],
+       [ 1.        ,  0.9296482 ],
+       [ 1.        ,  0.9798995 ],
+       [ 1.        ,  1.0301508 ],
+       [ 1.        ,  1.080402  ],
+       [ 1.        ,  1.1306533 ],
+       [ 1.        ,  1.1809045 ],
+       [ 1.        ,  1.2311558 ],
+       [ 1.        ,  1.281407  ],
+       [ 1.        ,  1.3316582 ],
+       [ 1.        ,  1.3819095 ],
+       [ 1.        ,  1.4321609 ],
+       [ 1.        ,  1.4824121 ],
+       [ 1.        ,  1.5326633 ],
+       [ 1.        ,  1.5829146 ],
+       [ 1.        ,  1.6331658 ],
+       [ 1.        ,  1.6834171 ],
+       [ 1.        ,  1.7336683 ],
+       [ 1.        ,  1.7839196 ],
+       [ 1.        ,  1.8341708 ],
+       [ 1.        ,  1.8844221 ],
+       [ 1.        ,  1.9346733 ],
+       [ 1.        ,  1.9849247 ],
+       [ 1.        ,  2.0351758 ],
+       [ 1.        ,  2.085427  ],
+       [ 1.        ,  2.1356783 ],
+       [ 1.        ,  2.1859295 ],
+       [ 1.        ,  2.236181  ],
+       [ 1.        ,  2.2864323 ],
+       [ 1.        ,  2.3366835 ],
+       [ 1.        ,  2.3869348 ],
+       [ 1.        ,  2.437186  ],
+       [ 1.        ,  2.4874372 ],
+       [ 1.        ,  2.5376885 ],
+       [ 1.        ,  2.5879397 ],
+       [ 1.        ,  2.638191  ],
+       [ 1.        ,  2.6884422 ],
+       [ 1.        ,  2.7386935 ],
+       [ 1.        ,  2.7889447 ],
+       [ 1.        ,  2.839196  ],
+       [ 1.        ,  2.8894472 ],
+       [ 1.        ,  2.9396985 ],
+       [ 1.        ,  2.9899497 ],
+       [ 1.        ,  3.040201  ],
+       [ 1.        ,  3.0904522 ],
+       [ 1.        ,  3.1407034 ],
+       [ 1.        ,  3.1909547 ],
+       [ 1.        ,  3.241206  ],
+       [ 1.        ,  3.2914572 ],
+       [ 1.        ,  3.3417087 ],
+       [ 1.        ,  3.39196   ],
+       [ 1.        ,  3.4422112 ],
+       [ 1.        ,  3.4924624 ],
+       [ 1.        ,  3.5427136 ],
+       [ 1.        ,  3.592965  ],
+       [ 1.        ,  3.6432161 ],
+       [ 1.        ,  3.6934674 ],
+       [ 1.        ,  3.7437186 ],
+       [ 1.        ,  3.7939699 ],
+       [ 1.        ,  3.844221  ],
+       [ 1.        ,  3.8944724 ],
+       [ 1.        ,  3.9447236 ],
+       [ 1.        ,  3.9949749 ],
+       [ 1.        ,  4.045226  ],
+       [ 1.        ,  4.0954776 ],
+       [ 1.        ,  4.1457286 ],
+       [ 1.        ,  4.19598   ],
+       [ 1.        ,  4.246231  ],
+       [ 1.        ,  4.2964826 ],
+       [ 1.        ,  4.3467336 ],
+       [ 1.        ,  4.396985  ],
+       [ 1.        ,  4.447236  ],
+       [ 1.        ,  4.4974875 ],
+       [ 1.        ,  4.5477386 ],
+       [ 1.        ,  4.59799   ],
+       [ 1.        ,  4.648241  ],
+       [ 1.        ,  4.6984925 ],
+       [ 1.        ,  4.7487435 ],
+       [ 1.        ,  4.798995  ],
+       [ 1.        ,  4.849246  ],
+       [ 1.        ,  4.8994975 ],
+       [ 1.        ,  4.9497485 ],
+       [ 1.        ,  5.        ]], dtype=float32)&gt;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">o</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">tensordot</span><span class="p">(</span><span class="n">x_values_2</span><span class="p">,</span> <span class="n">th</span><span class="p">,</span> <span class="n">axes</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="c1">#x_values*th[0]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_text output_error">
+<pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">ValueError</span>                                Traceback (most recent call last)
+Input <span class="ansi-green-fg">In [93]</span>, in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-fg">----&gt; 1</span> o <span style="color: rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">tf</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">tensordot</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">x_values_2</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">th</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">axes</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">1</span><span class="ansi-yellow-bg">)</span>
+
+File <span class="ansi-green-fg">~/miniforge3/lib/python3.9/site-packages/tensorflow/python/util/traceback_utils.py:153</span>, in <span class="ansi-cyan-fg">filter_traceback.&lt;locals&gt;.error_handler</span><span class="ansi-blue-fg">(*args, **kwargs)</span>
+<span class="ansi-green-intense-fg ansi-bold">    151</span> <span class="ansi-bold" style="color: rgb(0,135,0)">except</span> <span class="ansi-bold" style="color: rgb(215,95,95)">Exception</span> <span class="ansi-bold" style="color: rgb(0,135,0)">as</span> e:
+<span class="ansi-green-intense-fg ansi-bold">    152</span>   filtered_tb <span style="color: rgb(98,98,98)">=</span> _process_traceback_frames(e<span style="color: rgb(98,98,98)">.</span>__traceback__)
+<span class="ansi-green-fg">--&gt; 153</span>   <span class="ansi-bold" style="color: rgb(0,135,0)">raise</span> e<span style="color: rgb(98,98,98)">.</span>with_traceback(filtered_tb) <span class="ansi-bold" style="color: rgb(0,135,0)">from</span> <span style="color: rgb(0,135,0)">None</span>
+<span class="ansi-green-intense-fg ansi-bold">    154</span> <span class="ansi-bold" style="color: rgb(0,135,0)">finally</span>:
+<span class="ansi-green-intense-fg ansi-bold">    155</span>   <span class="ansi-bold" style="color: rgb(0,135,0)">del</span> filtered_tb
+
+File <span class="ansi-green-fg">~/miniforge3/lib/python3.9/site-packages/tensorflow/python/framework/constant_op.py:106</span>, in <span class="ansi-cyan-fg">convert_to_eager_tensor</span><span class="ansi-blue-fg">(value, ctx, dtype)</span>
+<span class="ansi-green-intense-fg ansi-bold">    104</span>     dtype <span style="color: rgb(98,98,98)">=</span> dtypes<span style="color: rgb(98,98,98)">.</span>as_dtype(dtype)<span style="color: rgb(98,98,98)">.</span>as_datatype_enum
+<span class="ansi-green-intense-fg ansi-bold">    105</span> ctx<span style="color: rgb(98,98,98)">.</span>ensure_initialized()
+<span class="ansi-green-fg">--&gt; 106</span> <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> <span class="ansi-yellow-bg">ops</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">EagerTensor</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">value</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">ctx</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">device_name</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">dtype</span><span class="ansi-yellow-bg">)</span>
+
+<span class="ansi-red-fg">ValueError</span>: TypeError: object of type 'MultivariateNormalDiag' has no len()
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">mu_prior</span><span class="o">=</span><span class="p">[</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">]</span>
+<span class="n">sigma_prior</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">]</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">tfp</span><span class="o">.</span><span class="n">distributions</span><span class="o">.</span><span class="n">MultivariateNormalDiag</span><span class="p">(</span><span class="n">loc</span> <span class="o">=</span> <span class="n">mu_prior</span><span class="p">,</span> <span class="n">scale_diag</span><span class="o">=</span><span class="n">sigma_prior</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"theta"</span><span class="p">)</span>
+<span class="n">t</span><span class="o">.</span><span class="n">sample</span><span class="p">()</span>
+
+<span class="n">th</span> <span class="o">=</span> <span class="n">tfd</span><span class="o">.</span><span class="n">JointDistributionCoroutine</span><span class="o">.</span><span class="n">Root</span><span class="p">(</span>
+        <span class="n">tfp</span><span class="o">.</span><span class="n">distributions</span><span class="o">.</span><span class="n">MultivariateNormalDiag</span><span class="p">(</span><span class="n">loc</span> <span class="o">=</span> <span class="n">mu_prior</span><span class="p">,</span> <span class="n">scale_diag</span><span class="o">=</span><span class="p">[</span><span class="n">sigma_prior</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="s2">"theta"</span><span class="p">)</span>
+    <span class="p">)</span>
+<span class="n">th</span><span class="o">.</span><span class="n">distribution</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">t</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">sigma</span> <span class="o">=</span> <span class="mf">1.</span>
+<span class="n">o</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">matvec</span><span class="p">(</span><span class="n">x_values</span><span class="p">,</span> <span class="n">th</span><span class="p">)</span>
+<span class="c1">#tfd.Normal(loc=tf.tensordot(x_values, th), scale=sigma, name="y")</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_text output_error">
+<pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">ValueError</span>                                Traceback (most recent call last)
+Input <span class="ansi-green-fg">In [118]</span>, in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-intense-fg ansi-bold">      9</span> th<span style="color: rgb(98,98,98)">.</span>distribution<span style="color: rgb(98,98,98)">.</span>sample(<span style="color: rgb(98,98,98)">2</span>), t<span style="color: rgb(98,98,98)">.</span>sample(<span style="color: rgb(98,98,98)">2</span>)
+<span class="ansi-green-intense-fg ansi-bold">     10</span> sigma <span style="color: rgb(98,98,98)">=</span> <span style="color: rgb(98,98,98)">1.</span>
+<span class="ansi-green-fg">---&gt; 11</span> o <span style="color: rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">tf</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">linalg</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">matvec</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">x_values</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">th</span><span class="ansi-yellow-bg">)</span>
+
+File <span class="ansi-green-fg">~/miniforge3/lib/python3.9/site-packages/tensorflow/python/util/traceback_utils.py:153</span>, in <span class="ansi-cyan-fg">filter_traceback.&lt;locals&gt;.error_handler</span><span class="ansi-blue-fg">(*args, **kwargs)</span>
+<span class="ansi-green-intense-fg ansi-bold">    151</span> <span class="ansi-bold" style="color: rgb(0,135,0)">except</span> <span class="ansi-bold" style="color: rgb(215,95,95)">Exception</span> <span class="ansi-bold" style="color: rgb(0,135,0)">as</span> e:
+<span class="ansi-green-intense-fg ansi-bold">    152</span>   filtered_tb <span style="color: rgb(98,98,98)">=</span> _process_traceback_frames(e<span style="color: rgb(98,98,98)">.</span>__traceback__)
+<span class="ansi-green-fg">--&gt; 153</span>   <span class="ansi-bold" style="color: rgb(0,135,0)">raise</span> e<span style="color: rgb(98,98,98)">.</span>with_traceback(filtered_tb) <span class="ansi-bold" style="color: rgb(0,135,0)">from</span> <span style="color: rgb(0,135,0)">None</span>
+<span class="ansi-green-intense-fg ansi-bold">    154</span> <span class="ansi-bold" style="color: rgb(0,135,0)">finally</span>:
+<span class="ansi-green-intense-fg ansi-bold">    155</span>   <span class="ansi-bold" style="color: rgb(0,135,0)">del</span> filtered_tb
+
+File <span class="ansi-green-fg">~/miniforge3/lib/python3.9/site-packages/tensorflow/python/framework/constant_op.py:106</span>, in <span class="ansi-cyan-fg">convert_to_eager_tensor</span><span class="ansi-blue-fg">(value, ctx, dtype)</span>
+<span class="ansi-green-intense-fg ansi-bold">    104</span>     dtype <span style="color: rgb(98,98,98)">=</span> dtypes<span style="color: rgb(98,98,98)">.</span>as_dtype(dtype)<span style="color: rgb(98,98,98)">.</span>as_datatype_enum
+<span class="ansi-green-intense-fg ansi-bold">    105</span> ctx<span style="color: rgb(98,98,98)">.</span>ensure_initialized()
+<span class="ansi-green-fg">--&gt; 106</span> <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> <span class="ansi-yellow-bg">ops</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">EagerTensor</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">value</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">ctx</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">device_name</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">dtype</span><span class="ansi-yellow-bg">)</span>
+
+<span class="ansi-red-fg">ValueError</span>: TypeError: object of type 'MultivariateNormalDiag' has no len()
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">generative_model</span><span class="p">(</span><span class="n">mu_prior</span><span class="p">,</span> <span class="n">sigma_prior</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
+    <span class="n">th</span> <span class="o">=</span> <span class="k">yield</span> <span class="n">tfd</span><span class="o">.</span><span class="n">JointDistributionCoroutine</span><span class="o">.</span><span class="n">Root</span><span class="p">(</span>
+        <span class="n">tfp</span><span class="o">.</span><span class="n">distributions</span><span class="o">.</span><span class="n">MultivariateNormalDiag</span><span class="p">(</span><span class="n">loc</span> <span class="o">=</span> <span class="n">mu_prior</span><span class="p">,</span> <span class="n">scale_diag</span><span class="o">=</span><span class="p">[</span><span class="n">sigma_prior</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="s2">"theta"</span><span class="p">)</span>
+    <span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="k">yield</span> <span class="n">tfd</span><span class="o">.</span><span class="n">Normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">matvec</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">th</span><span class="p">),</span> <span class="n">scale</span><span class="o">=</span><span class="n">sigma</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"y"</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">x_values</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+<span class="n">x_values</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">x_values</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+
+<span class="n">model_joint</span>  <span class="o">=</span> <span class="n">tfd</span><span class="o">.</span><span class="n">JointDistributionCoroutineAutoBatched</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="n">generative_model</span><span class="p">([</span><span class="mf">0.</span><span class="p">,</span><span class="mf">0.</span><span class="p">]</span> <span class="p">,</span>
+                                                                                  <span class="p">[</span><span class="mf">1.</span><span class="p">,</span><span class="mf">1.</span><span class="p">]</span> <span class="p">,</span>
+                                                                                  <span class="mf">1.</span><span class="p">,</span> 
+                                                                                  <span class="n">x_values_2</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">tf</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">matvec</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">theta</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_text output_error">
+<pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+Input <span class="ansi-green-fg">In [133]</span>, in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-fg">----&gt; 1</span> tf<span style="color: rgb(98,98,98)">.</span>linalg<span style="color: rgb(98,98,98)">.</span>matvec(X, <span class="ansi-yellow-bg">theta</span>)
+
+<span class="ansi-red-fg">NameError</span>: name 'theta' is not defined</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model_joint</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;tfp.distributions.JointDistributionCoroutineAutoBatched 'JointDistributionCoroutineAutoBatched' batch_shape=[] event_shape=StructTuple(
+  theta=[1, 2],
+  y=[1, 200]
+) dtype=StructTuple(
+  theta=float32,
+  y=float32
+)&gt;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model_joint_fixed_data_logprob</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">theta</span><span class="p">:</span> <span class="n">model_joint</span><span class="o">.</span><span class="n">log_prob</span><span class="p">(</span><span class="n">theta</span><span class="p">,</span> <span class="n">y_gt</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model_joint_fixed_data_logprob</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>2022-02-03 15:39:23.192890: W tensorflow/core/framework/op_kernel.cc:1745] OP_REQUIRES failed at reduction_ops_common.h:149 : INVALID_ARGUMENT: Invalid reduction arguments: Axes contains duplicate dimension: 0
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="output_subarea output_text output_error">
+<pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">InvalidArgumentError</span>                      Traceback (most recent call last)
+Input <span class="ansi-green-fg">In [141]</span>, in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-fg">----&gt; 1</span> <span class="ansi-yellow-bg">model_joint_fixed_data_logprob</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">[</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">0.</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">0.</span><span class="ansi-yellow-bg">]</span><span class="ansi-yellow-bg">)</span>
+
+Input <span class="ansi-green-fg">In [136]</span>, in <span class="ansi-cyan-fg">&lt;lambda&gt;</span><span class="ansi-blue-fg">(theta)</span>
+<span class="ansi-green-fg">----&gt; 1</span> model_joint_fixed_data_logprob <span style="color: rgb(98,98,98)">=</span> <span class="ansi-bold" style="color: rgb(0,135,0)">lambda</span> theta: <span class="ansi-yellow-bg">model_joint</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">log_prob</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">theta</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">y_gt</span><span class="ansi-yellow-bg">)</span>
+
+File <span class="ansi-green-fg">~/miniforge3/lib/python3.9/site-packages/tensorflow_probability/python/distributions/joint_distribution.py:902</span>, in <span class="ansi-cyan-fg">JointDistribution.log_prob</span><span class="ansi-blue-fg">(self, *args, **kwargs)</span>
+<span class="ansi-green-intense-fg ansi-bold">    893</span> <span style="color: rgb(175,0,0)">"""Log probability density/mass function.</span>
+<span class="ansi-green-intense-fg ansi-bold">    894</span> 
+<span class="ansi-green-intense-fg ansi-bold">    895</span> <span style="color: rgb(175,0,0)">${calling_convention_description}</span>
+<span class="ansi-green-fg">   (...)</span>
+<span class="ansi-green-intense-fg ansi-bold">    899</span> <span style="color: rgb(175,0,0)">    values of type `self.dtype`.</span>
+<span class="ansi-green-intense-fg ansi-bold">    900</span> <span style="color: rgb(175,0,0)">"""</span>
+<span class="ansi-green-intense-fg ansi-bold">    901</span> name <span style="color: rgb(98,98,98)">=</span> kwargs<span style="color: rgb(98,98,98)">.</span>pop(<span style="color: rgb(175,0,0)">'</span><span style="color: rgb(175,0,0)">name</span><span style="color: rgb(175,0,0)">'</span>, <span style="color: rgb(175,0,0)">'</span><span style="color: rgb(175,0,0)">log_prob</span><span style="color: rgb(175,0,0)">'</span>)
+<span class="ansi-green-fg">--&gt; 902</span> <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> <span class="ansi-yellow-bg" style="color: rgb(0,135,0)">self</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">_call_log_prob</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg" style="color: rgb(0,135,0)">self</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">_resolve_value</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">*</span><span class="ansi-yellow-bg">args</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">*</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">*</span><span class="ansi-yellow-bg">kwargs</span><span class="ansi-yellow-bg">)</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">name</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg">name</span><span class="ansi-yellow-bg">)</span>
+
+File <span class="ansi-green-fg">~/miniforge3/lib/python3.9/site-packages/tensorflow_probability/python/distributions/distribution.py:1298</span>, in <span class="ansi-cyan-fg">Distribution._call_log_prob</span><span class="ansi-blue-fg">(self, value, name, **kwargs)</span>
+<span class="ansi-green-intense-fg ansi-bold">   1296</span> <span class="ansi-bold" style="color: rgb(0,135,0)">with</span> <span style="color: rgb(0,135,0)">self</span><span style="color: rgb(98,98,98)">.</span>_name_and_control_scope(name, value, kwargs):
+<span class="ansi-green-intense-fg ansi-bold">   1297</span>   <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> <span style="color: rgb(0,135,0)">hasattr</span>(<span style="color: rgb(0,135,0)">self</span>, <span style="color: rgb(175,0,0)">'</span><span style="color: rgb(175,0,0)">_log_prob</span><span style="color: rgb(175,0,0)">'</span>):
+<span class="ansi-green-fg">-&gt; 1298</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> <span class="ansi-yellow-bg" style="color: rgb(0,135,0)">self</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">_log_prob</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">value</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">*</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">*</span><span class="ansi-yellow-bg">kwargs</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">   1299</span>   <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> <span style="color: rgb(0,135,0)">hasattr</span>(<span style="color: rgb(0,135,0)">self</span>, <span style="color: rgb(175,0,0)">'</span><span style="color: rgb(175,0,0)">_prob</span><span style="color: rgb(175,0,0)">'</span>):
+<span class="ansi-green-intense-fg ansi-bold">   1300</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> tf<span style="color: rgb(98,98,98)">.</span>math<span style="color: rgb(98,98,98)">.</span>log(<span style="color: rgb(0,135,0)">self</span><span style="color: rgb(98,98,98)">.</span>_prob(value, <span style="color: rgb(98,98,98)">*</span><span style="color: rgb(98,98,98)">*</span>kwargs))
+
+File <span class="ansi-green-fg">~/miniforge3/lib/python3.9/site-packages/tensorflow_probability/python/distributions/joint_distribution.py:679</span>, in <span class="ansi-cyan-fg">JointDistribution._log_prob</span><span class="ansi-blue-fg">(self, value)</span>
+<span class="ansi-green-intense-fg ansi-bold">    678</span> <span class="ansi-bold" style="color: rgb(0,135,0)">def</span> <span style="color: rgb(0,0,255)">_log_prob</span>(<span style="color: rgb(0,135,0)">self</span>, value):
+<span class="ansi-green-fg">--&gt; 679</span>   <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> <span class="ansi-yellow-bg" style="color: rgb(0,135,0)">self</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">_reduce_log_probs_over_dists</span><span class="ansi-yellow-bg">(</span>
+<span class="ansi-green-intense-fg ansi-bold">    680</span> <span class="ansi-yellow-bg">      </span><span class="ansi-yellow-bg" style="color: rgb(0,135,0)">self</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">_map_measure_over_dists</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">'</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">log_prob</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">'</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">value</span><span class="ansi-yellow-bg">)</span><span class="ansi-yellow-bg">)</span>
+
+File <span class="ansi-green-fg">~/miniforge3/lib/python3.9/site-packages/tensorflow_probability/python/distributions/joint_distribution.py:764</span>, in <span class="ansi-cyan-fg">JointDistribution._reduce_log_probs_over_dists</span><span class="ansi-blue-fg">(self, lps)</span>
+<span class="ansi-green-intense-fg ansi-bold">    761</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> <span style="color: rgb(0,135,0)">sum</span>(reduced_lps)<span style="color: rgb(98,98,98)">.</span>total
+<span class="ansi-green-intense-fg ansi-bold">    762</span> <span class="ansi-bold" style="color: rgb(0,135,0)">else</span>:
+<span class="ansi-green-intense-fg ansi-bold">    763</span>   <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> <span style="color: rgb(0,135,0)">sum</span>(maybe_check_wont_broadcast(
+<span class="ansi-green-fg">--&gt; 764</span>       <span class="ansi-yellow-bg" style="color: rgb(0,135,0)">self</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">_reduce_measure_over_dists</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">lps</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">reduce_fn</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg">tf</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">reduce_sum</span><span class="ansi-yellow-bg">)</span>,
+<span class="ansi-green-intense-fg ansi-bold">    765</span>       <span style="color: rgb(0,135,0)">self</span><span style="color: rgb(98,98,98)">.</span>validate_args))
+
+File <span class="ansi-green-fg">~/miniforge3/lib/python3.9/site-packages/tensorflow_probability/python/distributions/joint_distribution.py:775</span>, in <span class="ansi-cyan-fg">JointDistribution._reduce_measure_over_dists</span><span class="ansi-blue-fg">(self, xs, reduce_fn)</span>
+<span class="ansi-green-intense-fg ansi-bold">    770</span> num_trailing_batch_dims_treated_as_event <span style="color: rgb(98,98,98)">=</span> [
+<span class="ansi-green-intense-fg ansi-bold">    771</span>     ps<span style="color: rgb(98,98,98)">.</span>rank_from_shape(d<span style="color: rgb(98,98,98)">.</span>batch_shape_tensor()) <span style="color: rgb(98,98,98)">-</span> <span style="color: rgb(0,135,0)">self</span><span style="color: rgb(98,98,98)">.</span>batch_ndims
+<span class="ansi-green-intense-fg ansi-bold">    772</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">for</span> d <span class="ansi-bold" style="color: rgb(175,0,255)">in</span> <span style="color: rgb(0,135,0)">self</span><span style="color: rgb(98,98,98)">.</span>_get_single_sample_distributions()]
+<span class="ansi-green-intense-fg ansi-bold">    774</span> <span class="ansi-bold" style="color: rgb(0,135,0)">with</span> tf<span style="color: rgb(98,98,98)">.</span>control_dependencies(<span style="color: rgb(0,135,0)">self</span><span style="color: rgb(98,98,98)">.</span>_maybe_check_batch_shape()):
+<span class="ansi-green-fg">--&gt; 775</span>   <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> [reduce_fn(unreduced_x, axis<span style="color: rgb(98,98,98)">=</span>_get_reduction_axes(unreduced_x, nd))
+<span class="ansi-green-intense-fg ansi-bold">    776</span>           <span class="ansi-bold" style="color: rgb(0,135,0)">for</span> (unreduced_x, nd) <span class="ansi-bold" style="color: rgb(175,0,255)">in</span> <span style="color: rgb(0,135,0)">zip</span>(
+<span class="ansi-green-intense-fg ansi-bold">    777</span>               xs, num_trailing_batch_dims_treated_as_event)]
+
+File <span class="ansi-green-fg">~/miniforge3/lib/python3.9/site-packages/tensorflow_probability/python/distributions/joint_distribution.py:775</span>, in <span class="ansi-cyan-fg">&lt;listcomp&gt;</span><span class="ansi-blue-fg">(.0)</span>
+<span class="ansi-green-intense-fg ansi-bold">    770</span> num_trailing_batch_dims_treated_as_event <span style="color: rgb(98,98,98)">=</span> [
+<span class="ansi-green-intense-fg ansi-bold">    771</span>     ps<span style="color: rgb(98,98,98)">.</span>rank_from_shape(d<span style="color: rgb(98,98,98)">.</span>batch_shape_tensor()) <span style="color: rgb(98,98,98)">-</span> <span style="color: rgb(0,135,0)">self</span><span style="color: rgb(98,98,98)">.</span>batch_ndims
+<span class="ansi-green-intense-fg ansi-bold">    772</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">for</span> d <span class="ansi-bold" style="color: rgb(175,0,255)">in</span> <span style="color: rgb(0,135,0)">self</span><span style="color: rgb(98,98,98)">.</span>_get_single_sample_distributions()]
+<span class="ansi-green-intense-fg ansi-bold">    774</span> <span class="ansi-bold" style="color: rgb(0,135,0)">with</span> tf<span style="color: rgb(98,98,98)">.</span>control_dependencies(<span style="color: rgb(0,135,0)">self</span><span style="color: rgb(98,98,98)">.</span>_maybe_check_batch_shape()):
+<span class="ansi-green-fg">--&gt; 775</span>   <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> [<span class="ansi-yellow-bg">reduce_fn</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">unreduced_x</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">axis</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg">_get_reduction_axes</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">unreduced_x</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">nd</span><span class="ansi-yellow-bg">)</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    776</span>           <span class="ansi-bold" style="color: rgb(0,135,0)">for</span> (unreduced_x, nd) <span class="ansi-bold" style="color: rgb(175,0,255)">in</span> <span style="color: rgb(0,135,0)">zip</span>(
+<span class="ansi-green-intense-fg ansi-bold">    777</span>               xs, num_trailing_batch_dims_treated_as_event)]
+
+File <span class="ansi-green-fg">~/miniforge3/lib/python3.9/site-packages/tensorflow/python/util/traceback_utils.py:153</span>, in <span class="ansi-cyan-fg">filter_traceback.&lt;locals&gt;.error_handler</span><span class="ansi-blue-fg">(*args, **kwargs)</span>
+<span class="ansi-green-intense-fg ansi-bold">    151</span> <span class="ansi-bold" style="color: rgb(0,135,0)">except</span> <span class="ansi-bold" style="color: rgb(215,95,95)">Exception</span> <span class="ansi-bold" style="color: rgb(0,135,0)">as</span> e:
+<span class="ansi-green-intense-fg ansi-bold">    152</span>   filtered_tb <span style="color: rgb(98,98,98)">=</span> _process_traceback_frames(e<span style="color: rgb(98,98,98)">.</span>__traceback__)
+<span class="ansi-green-fg">--&gt; 153</span>   <span class="ansi-bold" style="color: rgb(0,135,0)">raise</span> e<span style="color: rgb(98,98,98)">.</span>with_traceback(filtered_tb) <span class="ansi-bold" style="color: rgb(0,135,0)">from</span> <span style="color: rgb(0,135,0)">None</span>
+<span class="ansi-green-intense-fg ansi-bold">    154</span> <span class="ansi-bold" style="color: rgb(0,135,0)">finally</span>:
+<span class="ansi-green-intense-fg ansi-bold">    155</span>   <span class="ansi-bold" style="color: rgb(0,135,0)">del</span> filtered_tb
+
+File <span class="ansi-green-fg">~/miniforge3/lib/python3.9/site-packages/tensorflow/python/framework/ops.py:7107</span>, in <span class="ansi-cyan-fg">raise_from_not_ok_status</span><span class="ansi-blue-fg">(e, name)</span>
+<span class="ansi-green-intense-fg ansi-bold">   7105</span> <span class="ansi-bold" style="color: rgb(0,135,0)">def</span> <span style="color: rgb(0,0,255)">raise_from_not_ok_status</span>(e, name):
+<span class="ansi-green-intense-fg ansi-bold">   7106</span>   e<span style="color: rgb(98,98,98)">.</span>message <span style="color: rgb(98,98,98)">+</span><span style="color: rgb(98,98,98)">=</span> (<span style="color: rgb(175,0,0)">"</span><span style="color: rgb(175,0,0)"> name: </span><span style="color: rgb(175,0,0)">"</span> <span style="color: rgb(98,98,98)">+</span> name <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> name <span class="ansi-bold" style="color: rgb(175,0,255)">is</span> <span class="ansi-bold" style="color: rgb(175,0,255)">not</span> <span class="ansi-bold" style="color: rgb(0,135,0)">None</span> <span class="ansi-bold" style="color: rgb(0,135,0)">else</span> <span style="color: rgb(175,0,0)">"</span><span style="color: rgb(175,0,0)">"</span>)
+<span class="ansi-green-fg">-&gt; 7107</span>   <span class="ansi-bold" style="color: rgb(0,135,0)">raise</span> core<span style="color: rgb(98,98,98)">.</span>_status_to_exception(e) <span class="ansi-bold" style="color: rgb(0,135,0)">from</span> <span style="color: rgb(0,135,0)">None</span>
+
+<span class="ansi-red-fg">InvalidArgumentError</span>: Invalid reduction arguments: Axes contains duplicate dimension: 0 [Op:Sum]</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">y_gt</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;tf.Tensor: shape=(200,), dtype=float32, numpy=
+array([-25.967142  , -19.379995  , -26.844185  , -35.017326  ,
+       -17.747574  , -17.520004  , -34.332302  , -26.375648  ,
+       -14.672673  , -23.673536  , -14.319008  , -14.09376   ,
+       -20.112734  ,  -1.1006279 ,  -2.6602535 , -12.45595   ,
+        -8.480262  , -19.334211  ,  -9.039804  ,  -4.7999563 ,
+       -27.685333  , -13.942368  , -15.998336  ,  -4.2670116 ,
+       -10.839106  , -15.54912   ,  -5.965022  , -16.953577  ,
+        -9.648678  , -11.646793  ,  -9.259438  , -25.962921  ,
+       -12.868235  ,  -5.63942   , -17.872028  ,  -4.2920184 ,
+       -13.287722  ,   0.6059685 ,  -3.2428703 , -12.398001  ,
+       -15.3657055 , -11.706034  ,  -9.778917  ,  -8.486196  ,
+        -1.697691  ,  -5.750602  ,  -6.9654098 , -14.768736  ,
+       -10.718226  ,   0.25965118, -10.049463  ,  -6.308896  ,
+        -4.703136  , -10.542006  , -12.146782  , -11.345927  ,
+        -3.2607067 ,  -5.357635  ,  -7.808787  , -10.14669   ,
+        -4.022374  ,  -4.9549875 ,  -1.2525063 ,  -0.78276014,
+        -7.818559  ,  -9.370882  ,  -4.1746397 ,  -7.4437    ,
+        -5.0594506 ,  -1.6858139 ,  -4.4835353 ,  -7.566236  ,
+        -2.8105307 ,  -6.825433  ,   4.306885  ,  -4.1795588 ,
+        -2.110111  ,  -0.97711915,  -1.600287  ,   2.9442372 ,
+        -0.46898475,  -1.3122191 ,  -2.9962962 ,   0.7137145 ,
+         1.36499   ,   1.0879877 ,  -0.6339625 ,   0.44629267,
+         1.7228384 ,   0.82017   ,   1.5203784 ,   1.036836  ,
+         2.6447635 ,   2.5808847 ,   2.8348336 ,   3.5312378 ,
+         3.0164402 ,   3.3062675 ,   3.6223447 ,   3.8861601 ,
+         4.054504  ,   4.3134704 ,   4.5420313 ,   4.597189  ,
+         5.05771   ,   5.605254  ,   6.8653474 ,   6.0160136 ,
+         6.355696  ,   6.315855  ,   4.6133575 ,   6.8588033 ,
+         7.216369  ,  10.734047  ,   7.362891  ,   8.36422   ,
+         8.088167  ,   6.3415213 ,  10.7730875 ,  10.373136  ,
+        10.780519  ,   7.4370017 ,  12.825415  ,   6.5936174 ,
+        11.600803  ,  16.020765  ,   8.020179  ,   9.344403  ,
+        11.4462385 ,   9.919344  ,   6.9100266 ,  12.131632  ,
+         8.695992  ,  14.011593  ,   9.480389  ,  18.449514  ,
+        10.297614  ,  12.208311  ,  16.821146  ,   9.038278  ,
+        15.101721  ,  19.879038  ,   7.8122573 ,  15.73684   ,
+        16.343195  ,  19.007332  ,   9.902693  ,   9.630985  ,
+        18.730068  ,  17.914648  ,  17.959787  ,  18.732874  ,
+        13.602886  ,  18.691013  ,  19.298737  ,  13.96015   ,
+        28.790579  ,  21.185465  ,  11.694345  ,  22.875874  ,
+        13.274548  ,  24.317156  ,  26.981129  ,  14.717253  ,
+        26.45103   ,  23.17459   ,  26.202715  ,  33.82749   ,
+        19.5217    ,  16.197521  ,  15.410978  ,  16.10247   ,
+        21.654284  ,  24.987404  ,  24.790298  ,  29.246466  ,
+        23.32107   ,  34.79386   ,  21.635622  ,  45.70889   ,
+        29.288063  ,  17.45645   ,  15.849384  ,  29.02879   ,
+        23.333406  ,  31.617794  ,  29.847744  ,  25.34447   ,
+        18.704395  ,  12.861425  ,  22.677427  ,  34.865376  ,
+        29.231524  ,  15.786273  ,  29.3885    ,  31.693249  ,
+        19.674147  ,  30.00384   ,  29.32498   ,  17.570297  ],
+      dtype=float32)&gt;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">jds_ab</span> <span class="o">=</span> <span class="n">tfd</span><span class="o">.</span><span class="n">JointDistributionSequentialAutoBatched</span><span class="p">([</span>
+    <span class="n">tfd</span><span class="o">.</span><span class="n">Normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mf">0.</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mf">1.</span><span class="p">),</span>   <span class="c1"># m</span>
+    <span class="n">tfd</span><span class="o">.</span><span class="n">Normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mf">0.</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mf">1.</span><span class="p">),</span>   <span class="c1"># b</span>
+    <span class="k">lambda</span> <span class="n">b</span><span class="p">,</span> <span class="n">m</span><span class="p">:</span> <span class="n">tfd</span><span class="o">.</span><span class="n">Normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="n">m</span><span class="o">*</span><span class="n">X</span> <span class="o">+</span> <span class="n">b</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mf">1.</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">'y'</span><span class="p">)</span> <span class="c1"># Y</span>
+<span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">jds_ab</span><span class="o">.</span><span class="n">sample</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[&lt;tf.Tensor: shape=(), dtype=float32, numpy=0.9248316&gt;,
+ &lt;tf.Tensor: shape=(), dtype=float32, numpy=0.18544923&gt;,
+ &lt;tf.Tensor: shape=(7,), dtype=float32, numpy=
+ array([-0.25196826,  0.6086206 ,  0.83282125,  3.8050735 ,  4.530766  ,
+         6.7291307 ,  6.2796655 ], dtype=float32)&gt;]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">jds_ab</span><span class="o">.</span><span class="n">log_prob</span><span class="p">([</span><span class="o">-</span><span class="mf">0.25196826</span><span class="p">,</span>  <span class="mf">0.6086206</span> <span class="p">,</span>  <span class="mf">0.83282125</span><span class="p">,</span>  <span class="mf">3.8050735</span> <span class="p">,</span>  <span class="mf">4.530766</span>  <span class="p">,</span>
+         <span class="mf">6.7291307</span> <span class="p">,</span>  <span class="mf">6.2796655</span> <span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;tf.Tensor: shape=(), dtype=float32, numpy=-12.738356&gt;</pre>
+</div>
+
 </div>
 
 </div>
