@@ -272,6 +272,20 @@ window.onload = wrap_img;
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>WARNING:absl:No GPU/TPU found, falling back to CPU. (Set TF_CPP_MIN_LOG_LEVEL=0 and rerun for more info.)
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
 </div>
     
 
@@ -326,6 +340,22 @@ window.onload = wrap_img;
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>tensor(2., grad_fn=&lt;AddBackward0&gt;)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
 </div>
     
 
@@ -371,11 +401,27 @@ window.onload = wrap_img;
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">l</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">l_torch</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
 <span class="n">x_torch</span><span class="o">.</span><span class="n">grad</span><span class="p">,</span> <span class="n">y_torch</span><span class="o">.</span><span class="n">grad</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(tensor(2.), tensor(2.))</pre>
+</div>
+
+</div>
+
 </div>
 </div>
 
@@ -403,6 +449,23 @@ window.onload = wrap_img;
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(DeviceArray(2., dtype=float32, weak_type=True),
+ DeviceArray(2., dtype=float32, weak_type=True))</pre>
+</div>
+
+</div>
+
 </div>
 </div>
 
@@ -467,6 +530,22 @@ window.onload = wrap_img;
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>tensor([1., 1.], requires_grad=True)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
 </div>
     
 
@@ -485,6 +564,22 @@ window.onload = wrap_img;
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>tensor(2., grad_fn=&lt;DotBackward0&gt;)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
 </div>
     
 
@@ -500,6 +595,22 @@ window.onload = wrap_img;
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>tensor([2., 2.])</pre>
+</div>
+
+</div>
+
 </div>
 </div>
 
@@ -537,6 +648,22 @@ window.onload = wrap_img;
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>DeviceArray(2., dtype=float32)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
 </div>
     
 
@@ -568,6 +695,22 @@ window.onload = wrap_img;
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(DeviceArray([2., 2.], dtype=float32),)</pre>
+</div>
+
+</div>
+
 </div>
 </div>
 
