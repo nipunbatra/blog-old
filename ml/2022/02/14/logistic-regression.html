@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Logistic Regression using PyTorch distributions | Nipun Batra</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="Logistic Regression using PyTorch distributions" />
+<meta name="author" content="Nipun Batra" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Nipun Batra’s blog" />
+<meta property="og:description" content="Nipun Batra’s blog" />
+<link rel="canonical" href="https://nipunbatra.github.io/blog/ml/2022/02/14/logistic-regression.html" />
+<meta property="og:url" content="https://nipunbatra.github.io/blog/ml/2022/02/14/logistic-regression.html" />
+<meta property="og:site_name" content="Nipun Batra" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-02-14T00:00:00-06:00" />
+<script type="application/ld+json">
+{"author":{"@type":"Person","name":"Nipun Batra"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://nipunbatra.github.io/blog/ml/2022/02/14/logistic-regression.html"},"description":"Nipun Batra’s blog","@type":"BlogPosting","url":"https://nipunbatra.github.io/blog/ml/2022/02/14/logistic-regression.html","headline":"Logistic Regression using PyTorch distributions","dateModified":"2022-02-14T00:00:00-06:00","datePublished":"2022-02-14T00:00:00-06:00","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/blog/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://nipunbatra.github.io/blog/feed.xml" title="Nipun Batra" /><!-- the google_analytics_id gets auto inserted from the config file -->
+
+
+
+<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-96903131-1','auto');ga('require','displayfeatures');ga('send','pageview');</script>
+
+<link rel="shortcut icon" type="image/x-icon" href="/blog/images/favicon.ico"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Logistic Regression using PyTorch distributions | Nipun Batra</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="Logistic Regression using PyTorch distributions" />
+<meta name="author" content="Nipun Batra" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Nipun Batra’s blog" />
+<meta property="og:description" content="Nipun Batra’s blog" />
+<link rel="canonical" href="https://nipunbatra.github.io/blog/ml/2022/02/14/logistic-regression.html" />
+<meta property="og:url" content="https://nipunbatra.github.io/blog/ml/2022/02/14/logistic-regression.html" />
+<meta property="og:site_name" content="Nipun Batra" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-02-14T00:00:00-06:00" />
+<script type="application/ld+json">
+{"author":{"@type":"Person","name":"Nipun Batra"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://nipunbatra.github.io/blog/ml/2022/02/14/logistic-regression.html"},"description":"Nipun Batra’s blog","@type":"BlogPosting","url":"https://nipunbatra.github.io/blog/ml/2022/02/14/logistic-regression.html","headline":"Logistic Regression using PyTorch distributions","dateModified":"2022-02-14T00:00:00-06:00","datePublished":"2022-02-14T00:00:00-06:00","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+<link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
+<link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css"><link type="application/atom+xml" rel="alternate" href="https://nipunbatra.github.io/blog/feed.xml" title="Nipun Batra" /><!-- the google_analytics_id gets auto inserted from the config file -->
+
+
+
+<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-96903131-1','auto');ga('require','displayfeatures');ga('send','pageview');</script>
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"> </script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement( document.body, {
+        delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "[%", right: "%]", display: true},
+            {left: "$", right: "$", display: false}
+        ]}
+        );
+    });
+    </script>
+
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head><body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/blog/">Nipun Batra</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/blog/about/">About Me</a><a class="page-link" href="/blog/search/">Search</a><a class="page-link" href="/blog/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Logistic Regression using PyTorch distributions</h1><p class="post-meta post-meta-title"><time class="dt-published" datetime="2022-02-14T00:00:00-06:00" itemprop="datePublished">
+        Feb 14, 2022
+      </time>• 
+          <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="p-author h-card" itemprop="name">Nipun Batra</span></span>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      1 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/blog/categories/#ML">ML</a>
+        
+      
+      </p>
+    
+
+    
+      
+        <div class="pb-5 d-flex flex-wrap flex-justify-end">
+          <div class="px-2">
+
+    <a href="https://github.com/nipunbatra/blog/tree/master/_notebooks/2022-02-14-logistic-regression.ipynb" role="button" target="_blank">
+<img class="notebook-badge-image" src="/blog/assets/badges/github.svg" alt="View On GitHub">
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://mybinder.org/v2/gh/nipunbatra/blog/master?filepath=_notebooks%2F2022-02-14-logistic-regression.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/blog/assets/badges/binder.svg" alt="Open In Binder"/>
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://colab.research.google.com/github/nipunbatra/blog/blob/master/_notebooks/2022-02-14-logistic-regression.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/blog/assets/badges/colab.svg" alt="Open In Colab"/>
+    </a>
+</div>
+        </div>
+      </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul class="section-nav">
+<li class="toc-entry toc-h3"><a href="#Basic-Imports">Basic Imports </a></li>
+<li class="toc-entry toc-h3"><a href="#Generative-model-for-logistic-regression">Generative model for logistic regression </a></li>
+</ul><!--
+#################################################
+### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
+#################################################
+# file to edit: _notebooks/2022-02-14-logistic-regression.ipynb
+-->
+
+<div class="container" id="notebook-container">
+        
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Basic-Imports">
+<a class="anchor" href="#Basic-Imports" aria-hidden="true"><span class="octicon octicon-link"></span></a>Basic Imports<a class="anchor-link" href="#Basic-Imports"> </a>
+</h3>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">dist</span> <span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">distributions</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">reset_defaults</span><span class="p">()</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="n">context</span><span class="o">=</span><span class="s2">"talk"</span><span class="p">,</span> <span class="n">font_scale</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="o">%</span><span class="k">config</span> InlineBackend.figure_format='retina'
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Generative-model-for-logistic-regression">
+<a class="anchor" href="#Generative-model-for-logistic-regression" aria-hidden="true"><span class="octicon octicon-link"></span></a>Generative model for logistic regression<a class="anchor-link" href="#Generative-model-for-logistic-regression"> </a>
+</h3>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+<span class="n">x_dash</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">vstack</span><span class="p">((</span><span class="n">torch</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">x</span><span class="p">))</span><span class="o">.</span><span class="n">t</span><span class="p">()</span>
+<span class="n">theta</span> <span class="o">=</span> <span class="n">dist</span><span class="o">.</span><span class="n">MultivariateNormal</span><span class="p">(</span><span class="n">loc</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">2.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">]),</span> <span class="n">covariance_matrix</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">theta_sample</span> <span class="o">=</span> <span class="n">theta</span><span class="o">.</span><span class="n">sample</span><span class="p">()</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">sigmoid</span><span class="p">(</span><span class="n">x_dash</span><span class="nd">@theta_sample</span><span class="p">)</span>
+
+<span class="n">y</span> <span class="o">=</span> <span class="n">dist</span><span class="o">.</span><span class="n">Bernoulli</span><span class="p">(</span><span class="n">probs</span><span class="o">=</span><span class="n">p</span><span class="p">)</span>
+<span class="n">y_sample</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">sample</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y_sample</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="n">y_sample</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;matplotlib.collections.PathCollection at 0x7efb58c20af0&gt;</pre>
+</div>
+
+</div>
+
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,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%0A" width="387" height="260">
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">theta_sample</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>tensor([ 1.3444, -0.6583])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+</div>
+
+
+
+  </div><!-- from https://github.com/utterance/utterances -->
+<script src="https://utteranc.es/client.js"
+        repo="nipunbatra/blog"
+        issue-term="title"
+        label="blogpost-comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script><a class="u-url" href="/blog/ml/2022/02/14/logistic-regression.html" hidden></a>
+</article>
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/blog/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/blog/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/blog/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>Nipun Batra&#39;s blog</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/nipunbatra" target="_blank" title="nipunbatra"><svg class="svg-icon grey"><use xlink:href="/blog/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/nipun_batra" target="_blank" title="nipun_batra"><svg class="svg-icon grey"><use xlink:href="/blog/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
