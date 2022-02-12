@@ -201,40 +201,12 @@ window.onload = wrap_img;
 <a class="anchor" href="#G1:-To-understand-matrix-vector-multiplication-as-transformation-of-the-vector" aria-hidden="true"><span class="octicon octicon-link"></span></a>G1: To understand matrix vector multiplication as transformation of the vector<a class="anchor-link" href="#G1:-To-understand-matrix-vector-multiplication-as-transformation-of-the-vector"> </a>
 </h3>
 <p>Multiplying a matrix A with a vector x transforms x</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">Transformation 1</th>
-<th style="text-align:center">Transformation 2</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center"><img src="/blog/images/copied_from_nb/Ax1.png" alt=""></td>
-<td style="text-align:center"><img src="Ax2.png" alt=""></td>
-</tr>
-</tbody>
-</table>
+<p><img src="/blog/images/copied_from_nb/Ax-combined.png" alt=""></p>
 <h3 id="G2:-Understanding-low-rank-matrices-as-applying-transformation-on-a-vector-resulting-in-a-subspace-of-the-original-vector-space">
 <a class="anchor" href="#G2:-Understanding-low-rank-matrices-as-applying-transformation-on-a-vector-resulting-in-a-subspace-of-the-original-vector-space" aria-hidden="true"><span class="octicon octicon-link"></span></a>G2: Understanding low rank matrices as applying transformation on a vector resulting in a subspace of the original vector space<a class="anchor-link" href="#G2:-Understanding-low-rank-matrices-as-applying-transformation-on-a-vector-resulting-in-a-subspace-of-the-original-vector-space"> </a>
 </h3>
 <p>Transforming a vector via a low rank matrix in the shown examples leads to a line</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">x = [1, -1]</th>
-<th style="text-align:center">x = [0.5, -0.7]</th>
-<th style="text-align:center">x = [-1., 1]</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center"><img src="/blog/images/copied_from_nb/lr-2.png" alt=""></td>
-<td style="text-align:center"><img src="lr-3.png" alt=""></td>
-<td style="text-align:center"><img src="lr-4.png" alt=""></td>
-</tr>
-</tbody>
-</table>
+<p><img src="/blog/images/copied_from_nb/lr-combined.png" alt=""></p>
 <p>We first study Goal 1. The interpretation of matrix vector product is borrowed from the excellent videos from the <a href="https://www.youtube.com/watch?v=kYB8IZa5AuE">3Blue1Brown channel</a>. I'll first set up the environment by importing a few relevant libraries.</p>
 
 </div>
@@ -723,22 +695,7 @@ $\displaystyle \left[\begin{matrix}3\\5\end{matrix}\right] = \left[\begin{matrix
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>To summarize</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">x = [1, -1]</th>
-<th style="text-align:center">x = [0.5, -0.7]</th>
-<th style="text-align:center">x = [-1., 1]</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center"><img src="/blog/images/copied_from_nb/lr-2.png" alt=""></td>
-<td style="text-align:center"><img src="lr-3.png" alt=""></td>
-<td style="text-align:center"><img src="lr-4.png" alt=""></td>
-</tr>
-</tbody>
-</table>
+<p><img src="/blog/images/copied_from_nb/lr-combined.png" alt=""></p>
 <p>In the above plots we can see that changing our x to any vector in the 2d space leads to us to transformed vector not covering the whole 2d space, but on line in the 2d space. One can easily take this learning to higher dimensional matrices A.</p>
 
 </div>
