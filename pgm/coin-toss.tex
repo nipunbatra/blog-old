@@ -64,7 +64,7 @@
 				\node[obs]                               (xn) {$x_n$};
 				\node[latent, above=of xn] (mu) {$\mathbf{\mu}$};
 				\factor[above=of xn] {y-f} {left:${Ber}$} {} {} ; %
-				\node[const, above=1 of mu, xshift=0.5cm] (beta) {$\mathbf{\beta}$};
+			\node[const, above=1 of mu, xshift=0.5cm] (beta) {$\mathbf{\beta}$};
 				\node[const, above=1 of mu, xshift=-0.5cm] (alpha) {$\mathbf{\alpha}$};
 				\factor[above=of mu] {mu-f} {left:${Beta}$} {} {} ; %
 				\plate{}{(xn)}{$n = 1, \cdots, N$};
