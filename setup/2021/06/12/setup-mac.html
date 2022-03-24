@@ -15,7 +15,7 @@
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2021-06-12T00:00:00-05:00" />
 <script type="application/ld+json">
-{"mainEntityOfPage":{"@type":"WebPage","@id":"https://nipunbatra.github.io/blog/setup/2021/06/12/setup-mac.html"},"description":"My Mac Setup","@type":"BlogPosting","url":"https://nipunbatra.github.io/blog/setup/2021/06/12/setup-mac.html","headline":"My Mac Setup","dateModified":"2021-06-12T00:00:00-05:00","datePublished":"2021-06-12T00:00:00-05:00","@context":"https://schema.org"}</script>
+{"description":"My Mac Setup","mainEntityOfPage":{"@type":"WebPage","@id":"https://nipunbatra.github.io/blog/setup/2021/06/12/setup-mac.html"},"@type":"BlogPosting","url":"https://nipunbatra.github.io/blog/setup/2021/06/12/setup-mac.html","headline":"My Mac Setup","dateModified":"2021-06-12T00:00:00-05:00","datePublished":"2021-06-12T00:00:00-05:00","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/blog/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://nipunbatra.github.io/blog/feed.xml" title="Nipun Batra" /><!-- the google_analytics_id gets auto inserted from the config file -->
 
@@ -36,7 +36,7 @@
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2021-06-12T00:00:00-05:00" />
 <script type="application/ld+json">
-{"mainEntityOfPage":{"@type":"WebPage","@id":"https://nipunbatra.github.io/blog/setup/2021/06/12/setup-mac.html"},"description":"My Mac Setup","@type":"BlogPosting","url":"https://nipunbatra.github.io/blog/setup/2021/06/12/setup-mac.html","headline":"My Mac Setup","dateModified":"2021-06-12T00:00:00-05:00","datePublished":"2021-06-12T00:00:00-05:00","@context":"https://schema.org"}</script>
+{"description":"My Mac Setup","mainEntityOfPage":{"@type":"WebPage","@id":"https://nipunbatra.github.io/blog/setup/2021/06/12/setup-mac.html"},"@type":"BlogPosting","url":"https://nipunbatra.github.io/blog/setup/2021/06/12/setup-mac.html","headline":"My Mac Setup","dateModified":"2021-06-12T00:00:00-05:00","datePublished":"2021-06-12T00:00:00-05:00","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 <link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
@@ -159,18 +159,6 @@ window.onload = wrap_img;
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 </code></pre></div></div>
 
-<p>Install fish shell</p>
-
-<p><code class="highlighter-rouge">brew install fish</code></p>
-
-<p>Make fish default</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo bash -c 'echo /opt/homebrew/bin/fish &gt;&gt; /etc/shells'
-chsh -s /opt/homebrew/bin/fish
-</code></pre></div></div>
-
-<p>Note: The above may be <code class="highlighter-rouge">/usr/local/bin</code> for you</p>
-
 <p>Install git</p>
 
 <p><code class="highlighter-rouge">brew install git</code></p>
@@ -204,14 +192,6 @@ open monokai.terminal
 
 <p>(set this theme as default)</p>
 
-<p>Install oh-my-fish</p>
-
-<p><code class="highlighter-rouge">curl -L https://get.oh-my.fish | fish</code></p>
-
-<p>Install fish theme</p>
-
-<p><code class="highlighter-rouge">omf install bobthefish</code></p>
-
 <p>Install Zoom</p>
 
 <p><code class="highlighter-rouge">brew install --cask zoom</code></p>
@@ -236,13 +216,10 @@ open monokai.terminal
 
 <p><code class="highlighter-rouge">brew install wget</code></p>
 
-<p>anaconda</p>
+<p>anaconda path setup in zsh</p>
 
-<p><code class="highlighter-rouge">brew install --cask anaconda</code></p>
-
-<p>anaconda path setup in fish</p>
-
-<p><code class="highlighter-rouge">./usr/local/anaconda3/condabin/conda init fish</code></p>
+<p><code class="highlighter-rouge">source ~/miniconda3/bin/activate</code>
+<code class="highlighter-rouge">conda init zsh</code></p>
 
 <p>Install MacTex (slow!)</p>
 
