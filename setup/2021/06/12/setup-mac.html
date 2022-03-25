@@ -140,6 +140,7 @@ window.onload = wrap_img;
 <ul>
 <li class="toc-entry toc-h3"><a href="#install-homebrew-and-some-pertinent-packages">Install homebrew and some pertinent packages</a></li>
 <li class="toc-entry toc-h3"><a href="#viewing-installed-packages">Viewing installed packages</a></li>
+<li class="toc-entry toc-h3"><a href="#installing-standard-python-packages-using-mamba">Installing standard Python packages using mamba</a></li>
 </ul>
 </li>
 </ul><h1 id="setting-up-a-new-mac">
@@ -216,10 +217,24 @@ open monokai.terminal
 
 <p><code class="highlighter-rouge">brew install wget</code></p>
 
-<p>anaconda path setup in zsh</p>
+<p>Download miniconda
+<code class="highlighter-rouge">wget https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh</code>
+<code class="highlighter-rouge">sh Miniconda3-latest-MacOSX-x86_64.sh</code></p>
+
+<p>Anaconda path setup in zsh</p>
 
 <p><code class="highlighter-rouge">source ~/miniconda3/bin/activate</code>
 <code class="highlighter-rouge">conda init zsh</code></p>
+
+<p>Install mamba (faster than conda)
+<code class="highlighter-rouge">conda install mamba -n base -c conda-forge</code></p>
+
+<p>Download oh-my-zsh
+<code class="highlighter-rouge">sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"</code></p>
+
+<p>VSCode configure Python
+Cmd + Shift + p -&gt; Select Python Interpreter -&gt; Point to the miniconda one
+<img src="/blog/images/vscode-interpreter.png" alt="" title="Setting Python Interpreter in VSCode"></p>
 
 <p>Install MacTex (slow!)</p>
 
@@ -268,8 +283,7 @@ wget
 
 <p>The content of casks.txt is:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>anaconda
-anydesk
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>anydesk
 arduino
 audacity
 firefox
@@ -289,6 +303,12 @@ vlc
 zoom
 </code></pre></div></div>
 
+<h3 id="installing-standard-python-packages-using-mamba">
+<a class="anchor" href="#installing-standard-python-packages-using-mamba" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installing standard Python packages using mamba</h3>
+<p><code class="highlighter-rouge">mamba install numpy scipy matplotlib pandas jupyter ipython -c conda-forge</code></p>
+
+<p>Periodically updating all packages
+<code class="highlighter-rouge">mamba update --all -c conda-forge</code></p>
 
   </div><a class="u-url" href="/blog/setup/2021/06/12/setup-mac.html" hidden></a>
 </article>
