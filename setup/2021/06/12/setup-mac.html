@@ -183,15 +183,24 @@ cd fonts
 Change font to powerline
 I am using Roboto Mono Light Powerline 18pt</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone git://github.com/stephenway/monokai.terminal.git
+<p>Use Argonaut theme for terminal</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/pwaleczek/Argonaut-theme
 
-cd monokai.terminal
+cd os-x-terminal
 
-open monokai.terminal
+open Argonaut.terminal
 
 </code></pre></div></div>
-
 <p>(set this theme as default)</p>
+
+<p>OhMyZSH customization</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+
+git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
+</code></pre></div></div>
+
+<p>In <code class="highlighter-rouge">~/.zshrc</code> set <code class="highlighter-rouge">plugins=(git zsh-autosuggestions zsh-syntax-highlighting)</code> and <code class="highlighter-rouge">ZSH_THEME="agnoster"</code></p>
 
 <p>Install Zoom</p>
 
